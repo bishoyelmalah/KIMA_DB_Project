@@ -126,11 +126,23 @@ body, html {
 .header h1 {
   font-size: 36px;
   font-weight: bold;
-  position: fixed;
+  position: relative;
   left: 250px;
   margin: 0;
 }
-
+.header img{
+    size: 100px;
+}
+#user{
+  position: fixed;
+  right: 40px;
+  margin: 0;
+}
+#bell{
+  position: fixed;
+  right: 110px;
+  margin: 0;
+}
 /* Main Content */
 .main-content {
   flex: 1;
