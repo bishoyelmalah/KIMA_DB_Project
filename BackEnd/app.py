@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from config import *
 from models import *
@@ -10,9 +10,47 @@ db.init_app(app)
 
 @app.route('/')
 def home():
+    return render_template("Home_Page.html")
+
+@app.route('/employees')
+def employees_page():
+    pass
+
+@app.route('/suppliers')
+def suppliers_page():
+    pass
+
+@app.route('/products')
+def products_page():
+    pass
+
+@app.route('/customers')
+def customers_page():
     customers = Customer.query.all()
-    print(customers)
-    return render_template("/Html_Files/test.html", customers = customers)
+    return render_template("Customer_Page.html", customers = customers)
+
+@app.route('/add_customer', methods=["POST"])
+def add_customer():
+    firstname = request.form.get("firstName")
+    lastname = request.form.get("lastName")
+    email = request.form.get("email")
+    phone = request.form.get("phone")
+    company = request.form.get("company")
+    address = request.form.get("address")
+
+    new_customer = Customer(
+        FirstName = firstname,
+        LastName = lastname,
+        Email = email,
+        City = address,
+        Country = "Egypt"
+    )
+
+    db.session.add(new_customer)
+    db.session.commit()
+    db.session.expire_all()
+
+    return redirect(url_for("customers_page"))
 
 
 

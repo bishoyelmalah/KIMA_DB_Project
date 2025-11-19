@@ -210,10 +210,6 @@
             fetch('/add_customer', {
                 method: 'POST',
                 body: formDataToSend,
-                headers: {
-                    // Flask will handle FormData automatically, but you can add CSRF token here if needed
-                    // 'X-CSRFToken': getCsrfToken() // Uncomment if using Flask-WTF CSRF
-                }
             })
             .then(response => {
                 // Check if response is JSON or HTML redirect
