@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIMA ASWAN - Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/Home_Page.css')}}">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="logo">
+                    <img src="{{url_for('static', filename='assets/KimaLogo.png')}}" style="width: 50px; height: 70px;" alt="logo" class="logo-icon">
+                    <h2> KIMA </h2>
+                </div>
+                <div class="search-container">
+                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
+                    <input type="text" class="search-box" placeholder="Search">
+                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-link">Home</a>
+                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
+                    <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;"></button>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+
+                <div class="dashboard-cards">
+                    <div class="dashboard-card" onclick="window.location.href='/employees'">
+                        <img src="https://i.postimg.cc/Dyn7QwCW/image.png" alt="Employees" class="dashboard-icon">
+                        <h3 class="dashboard-title">Employees</h3>
+                    </div>
+                    <div class="dashboard-card" onclick="window.location.href='/suppliers'">
+                        <img src="https://i.postimg.cc/sDTCp9QT/image.png" alt="Suppliers" class="dashboard-icon">
+                        <h3 class="dashboard-title">Suppliers</h3>
+                    </div>
+                    <div class="dashboard-card" onclick="window.location.href='/products'">
+                        <img src="https://i.postimg.cc/gkkfkXSY/image.png" alt="Products" class="dashboard-icon">
+                        <h3 class="dashboard-title">Products</h3>
+                    </div>
+                    <div class="dashboard-card" onclick="window.location.href='/customers'">
+                        <img src="https://i.postimg.cc/rygPby8P/image.png" alt="Customers" class="dashboard-icon">
+                        <h3 class="dashboard-title">Customers</h3>
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
+            <p class="footer-text">Designed for efficient chemical material inventory management</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact Support</a>
+                <a href="#" class="footer-link">Documentation</a>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+            function navigateTo(page) {
+            document.querySelectorAll('.page-content').forEach(p => {
+                p.classList.add('hidden');
+            });
+            }
+
+            
+</script>
+</html>
