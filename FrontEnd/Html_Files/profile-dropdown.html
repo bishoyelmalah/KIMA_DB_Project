@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Dropdown</title>
+    <link rel="stylesheet" href="../Styling_Files/profile.css">
+</head>
+<body>
+    <div class="profile-dropdown">
+        <div class="user-info">
+            <div class="user-icon">👤</div>
+            <div class="user-details">
+                <div class="username">Username</div>
+                <div class="email">user.mail@gmail.com</div>
+            </div>
+        </div>
+        <hr class="separator">
+        <button class="setting" onclick="openSettings()">
+            <div class="setting-icon">⚙️</div>
+            <span>Setting</span>
+        </button>
+        <button class="logout" onclick="logout()">
+            <div class="logout-icon">▶</div>
+            <span>Log out</span>
+        </button>
+    </div>
+    <script>
+        function logout() {
+            alert('Logged out successfully!');
+            window.location.href = 'login.html';
+        }
+
+        function openSettings() {
+            alert('Settings page coming soon!');
+            
+        }
+    </script>
+</body>
+</html>
