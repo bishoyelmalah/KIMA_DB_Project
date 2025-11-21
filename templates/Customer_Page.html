@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIMA ASWAN - Customers</title>
+    <link rel="stylesheet" href="../static/CSS/Customer_Page.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">☥</div>
+                <div class="logo-text">KIMA ASWAN</div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item" data-page="dashboard" onclick="window.location.href='Home_Page.html'">Dashboard</li>
+                <li class="nav-item" data-page="employees">Employees</li>
+                <li class="nav-item" data-page="suppliers">Suppliers</li>
+                <li class="nav-item" data-page="products">Products</li>
+                <li class="nav-item active" data-page="customers">Customers</li>
+            </ul>
+            <div class="help-section">
+                <div class="help-title">Need help?</div>
+                <div class="help-link">Open our help center</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
+                    <input type="text" class="search-box" placeholder="Search">
+                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-link">Home</a>
+                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
+                    <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;"></button>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <div class="page-header">
+                    <h1 class="page-title">Customers</h1>
+                    <div class="action-buttons">
+                        <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
+                        <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
+                        <button class="btn-primary btn" onclick="openAddCustomerModal()">+ Add candidate</button>
+                    </div>
+                </div>
+                <!-- Add Customer Modal -->
+    <div id="addCustomerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Customer</h2>
+                <span class="modal-close" onclick="closeAddCustomerModal()">&times;</span>
+            </div>
+            <form id="addCustomerForm" class="customer-form" action="/add_customer" method="POST">
+                <div class="form-group">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Enter first name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Enter last name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="customer@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="+20 123 456 7890" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company" class="form-label">Company</label>
+                    <input type="text" id="company" name="company" class="form-input" placeholder="Company name (optional)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea id="address" name="address" class="form-textarea" placeholder="Enter full address" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="status" class="form-label">Status</label>
+                    <select id="status" name="status" class="form-select" required>
+                        <option value="">Select status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="closeAddCustomerModal()">Cancel</button>
+                    <button type="submit" class="btn-submit">Add Customer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+                <div class="cards-grid">
+                    <!-- Example Customer Cards -->
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="status-badge status-active">Active</span>
+                            <span class="menu-dots">⋯</span>
+                        </div>
+                        <img src="https://i.postimg.cc/RFJZYpt2/9846829.jpg" alt="Customer" class="card-image">
+                        <div class="card-title">Customer ID: 12</div>
+                        <button class="card-btn">More details...</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="status-badge status-inactive">Not Active</span>
+                            <span class="menu-dots">⋯</span>
+                        </div>
+                        <img src="https://i.postimg.cc/RFJZYpt2/9846829.jpg" alt="Customer" class="card-image">
+                        <div class="card-title">Customer ID: 13</div>
+                        <button class="card-btn">More details...</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="status-badge status-pending">Pending</span>
+                            <span class="menu-dots">⋯</span>
+                        </div>
+                        <img src="https://i.postimg.cc/RFJZYpt2/9846829.jpg" alt="Customer" class="card-image">
+                        <div class="card-title">Customer ID: 14</div>
+                        <button class="card-btn">More details...</button>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
+            <p class="footer-text">Designed for efficient chemical material inventory management</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact Support</a>
+                <a href="#" class="footer-link">Documentation</a>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+
+    function navigateTo(page) {
+    document.querySelectorAll('.page-content').forEach(p => {
+        p.classList.add('hidden');
+    });
+    }
+    // Modal functions
+    function openAddCustomerModal() {
+            document.getElementById('addCustomerModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+
+        function closeAddCustomerModal() {
+            document.getElementById('addCustomerModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            document.getElementById('addCustomerForm').reset(); // Clear form
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('addCustomerModal');
+            if (event.target === modal) {
+                closeAddCustomerModal();
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('addCustomerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form element
+            const form = e.target;
+            const submitButton = form.querySelector('.btn-submit');
+            const originalButtonText = submitButton.textContent;
+            
+            // Get form data
+            const formData = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                company: document.getElementById('company').value.trim(),
+                address: document.getElementById('address').value.trim(),
+                status: document.getElementById('status').value
+            };
+            
+            // Validate form
+            if (!validateForm(formData)) {
+                return;
+            }
+            
+            // Disable submit button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Adding...';
+            
+            // Create FormData object for Flask (form-urlencoded format)
+            const formDataToSend = new FormData();
+            formDataToSend.append('firstName', formData.firstName);
+            formDataToSend.append('lastName', formData.lastName);
+            formDataToSend.append('email', formData.email);
+            formDataToSend.append('phone', formData.phone);
+            formDataToSend.append('company', formData.company || '');
+            formDataToSend.append('address', formData.address);
+            formDataToSend.append('status', formData.status);
+            
+            // Send data to Flask backend
+            fetch('/add_customer', {
+                method: 'POST',
+                body: formDataToSend,
+                headers: {
+                    // Flask will handle FormData automatically, but you can add CSRF token here if needed
+                    // 'X-CSRFToken': getCsrfToken() // Uncomment if using Flask-WTF CSRF
+                }
+            })
+            .then(response => {
+                // Check if response is JSON or HTML redirect
+                const contentType = response.headers.get('content-type');
+                
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json();
+                } else {
+                    // If Flask returns HTML (redirect or error page), handle it
+                    return response.text().then(text => {
+                        if (response.ok) {
+                            return { success: true, message: 'Customer added successfully!' };
+                        } else {
+                            throw new Error('Server error occurred');
+                        }
+                    });
+                }
+            })
+            .then(data => {
+                // Handle successful response
+                if (data.success) {
+                    // Add customer card to the page with data from Flask
+                    const customerData = data.customer || formData;
+                    const customerId = data.customer_id || Math.floor(Math.random() * 1000) + 15;
+                    
+                    addCustomerCard({...customerData, id: customerId});
+                    showSuccessMessage(data.message || 'Customer added successfully!');
+                    closeAddCustomerModal();
+                } else {
+                    throw new Error(data.message || 'Failed to add customer');
+                }
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', error);
+                showErrorMessage(error.message || 'Failed to add customer. Please try again.');
+            })
+            .finally(() => {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            });
+        });
+        
+        // Form validation function
+        function validateForm(data) {
+            if (!data.firstName) {
+                alert('Please enter a first name.');
+                document.getElementById('firstName').focus();
+                return false;
+            }
+            
+            if (!data.lastName) {
+                alert('Please enter a last name.');
+                document.getElementById('lastName').focus();
+                return false;
+            }
+            
+            if (!data.email || !isValidEmail(data.email)) {
+                alert('Please enter a valid email address.');
+                document.getElementById('email').focus();
+                return false;
+            }
+            
+            if (!data.phone) {
+                alert('Please enter a phone number.');
+                document.getElementById('phone').focus();
+                return false;
+            }
+            
+            if (!data.address) {
+                alert('Please enter an address.');
+                document.getElementById('address').focus();
+                return false;
+            }
+            
+            if (!data.status) {
+                alert('Please select a status.');
+                document.getElementById('status').focus();
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Email validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Add customer card to the page
+        function addCustomerCard(data) {
+            const cardsGrid = document.querySelector('.cards-grid');
+            
+            // Use ID from backend if available, otherwise generate one
+            const customerId = data.id || Math.floor(Math.random() * 1000) + 15;
+            
+            // Map status values to display text and class
+            const statusMap = {
+                'active': { text: 'Active', class: 'status-active' },
+                'inactive': { text: 'Not Active', class: 'status-inactive' },
+                'pending': { text: 'Pending', class: 'status-pending' }
+            };
+            
+            const status = statusMap[data.status] || statusMap['pending'];
+            
+            // Create new card element
+            const newCard = document.createElement('div');
+            newCard.className = 'card';
+            newCard.setAttribute('data-customer-id', customerId);
+            newCard.innerHTML = `
+                <div class="card-header">
+                    <span class="status-badge ${status.class}">${status.text}</span>
+                    <span class="menu-dots">⋯</span>
+                </div>
+                <img src="https://i.postimg.cc/RFJZYpt2/9846829.jpg" alt="Customer" class="card-image">
+                <div class="card-title">${data.firstName} ${data.lastName} - ID: ${customerId}</div>
+                <button class="card-btn">More details...</button>
+            `;
+            
+            // Add animation
+            newCard.style.opacity = '0';
+            newCard.style.transform = 'translateY(20px)';
+            
+            // Insert at the beginning of the grid
+            cardsGrid.insertBefore(newCard, cardsGrid.firstChild);
+            
+            // Animate in
+            setTimeout(() => {
+                newCard.style.transition = 'all 0.3s ease';
+                newCard.style.opacity = '1';
+                newCard.style.transform = 'translateY(0)';
+            }, 10);
+        }
+        
+        // Show error message
+        function showErrorMessage(message) {
+            // Create a temporary error message element
+            const errorMsg = document.createElement('div');
+            errorMsg.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #f44336;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 10000;
+                font-weight: 600;
+                animation: slideInRight 0.3s ease;
+            `;
+            errorMsg.textContent = message;
+            document.body.appendChild(errorMsg);
+            
+            // Remove after 4 seconds
+            setTimeout(() => {
+                errorMsg.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    if (document.body.contains(errorMsg)) {
+                        document.body.removeChild(errorMsg);
+                    }
+                }, 300);
+            }, 4000);
+        }
+        
+        // Show success message
+        function showSuccessMessage(message) {
+            // Create a temporary success message element
+            const successMsg = document.createElement('div');
+            successMsg.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4caf50;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 10000;
+                font-weight: 600;
+                animation: slideInRight 0.3s ease;
+            `;
+            successMsg.textContent = message;
+            document.body.appendChild(successMsg);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                successMsg.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(successMsg);
+                }, 300);
+            }, 3000);
+        }
+</script>
+</html>
