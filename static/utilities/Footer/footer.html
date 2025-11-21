@@ -1,23 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>footer</title>
-    <link rel="stylesheet" href="../Footer/footer.css">
-</head>
-<body>
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
-            <p class="footer-text">Designed for efficient chemical material inventory management</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Terms of Service</a>
-                <a href="#" class="footer-link">Contact Support</a>
-                <a href="#" class="footer-link">Documentation</a>
-            </div>
+<!-- Footer Component - All files in: static/utilities/Footer/ -->
+<!--  
+    USAGE INSTRUCTIONS FOR BACKEND DEVELOPER:
+    1. Include the footer CSS in your page's <head> section:
+       <link rel="stylesheet" href="{{ url_for('static', filename='utilities/Footer/footer.css') }}">
+    
+    2. Copy the footer HTML below (lines 21-34) into your Flask template, or create a helper function
+       to include this file content. Flask's {% include %} only works with files in templates/ folder.
+    
+    3. Update the href attributes with Flask's url_for() when routes are defined.
+       Example: href="{{ url_for('privacy_policy') }}"
+    
+    EXAMPLE:
+    <body>
+        Your page content here
+        
+        Copy footer HTML from this file here
+    </body> -->
+     
+
+<footer class="footer">
+    <div class="footer-content">
+        <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
+        <p class="footer-text">Designed for efficient chemical material inventory management</p>
+        <div class="footer-links">
+            <!-- Update these hrefs with Flask's url_for() when routes are defined -->
+            <!-- Example: href="{{ url_for('privacy_policy') }}" -->
+            <a href="#" class="footer-link" data-route="privacy_policy">Privacy Policy</a>
+            <a href="#" class="footer-link" data-route="terms_of_service">Terms of Service</a>
+            <a href="#" class="footer-link" data-route="contact_support">Contact Support</a>
+            <a href="#" class="footer-link" data-route="documentation">Documentation</a>
         </div>
-    </footer>
-</body>
-</html>
+    </div>
+</footer>

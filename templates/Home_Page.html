@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KIMA ASWAN - Dashboard</title>
     <link rel="stylesheet" href="../static/CSS/Home_Page.css">
+    
+    <!-- ============================================ -->
+    <!-- FOOTER CSS - ADD THIS LINE -->
+    <!-- ============================================ -->
 </head>
 <body>
     <div class="container">
@@ -24,6 +28,7 @@
                 <div class="header-right">
                     <a href="#" class="header-link">Home</a>
                     <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
+                    <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
                     <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;"></button>
                 </div>
             </header>
@@ -70,16 +75,16 @@
         </main>
     </div>
     
-    <!-- include Footer here -->
+    <!-- Include footer component from static/utilities/Footer/footer.html -->
     <footer class="footer">
         <div class="footer-content">
             <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
             <p class="footer-text">Designed for efficient chemical material inventory management</p>
             <div class="footer-links">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Terms of Service</a>
-                <a href="#" class="footer-link">Contact Support</a>
-                <a href="#" class="footer-link">Documentation</a>
+                <a href="#" class="footer-link" data-route="privacy_policy">Privacy Policy</a>
+                <a href="#" class="footer-link" data-route="terms_of_service">Terms of Service</a>
+                <a href="#" class="footer-link" data-route="contact_support">Contact Support</a>
+                <a href="#" class="footer-link" data-route="documentation">Documentation</a>
             </div>
         </div>
     </footer>

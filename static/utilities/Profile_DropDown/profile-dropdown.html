@@ -1,25 +1,21 @@
-<!-- Profile Dropdown Component for Flask -->
+<!-- Profile Dropdown Component - All files in: static/utilities/Profile_DropDown/ -->
 <!-- 
-    USAGE INSTRUCTIONS:
+    USAGE INSTRUCTIONS FOR BACKEND DEVELOPER:
     1. Include the profile dropdown CSS in your page's <head> section:
        <link rel="stylesheet" href="{{ url_for('static', filename='utilities/Profile_DropDown/profile-dropdown.css') }}">
     
     2. Include the profile dropdown JavaScript before closing </body> tag:
        <script src="{{ url_for('static', filename='utilities/Profile_DropDown/profile-dropdown.js') }}"></script>
     
-    3. Replace your profile icon button with this component in the header-right section:
-       {% include 'utilities/profile-dropdown.html' %}
+    3. Copy the profile dropdown HTML below (lines 25-49) into your Flask template where you want
+       the profile button, or create a helper function to include this file content.
+       Flask's {% include %} only works with files in templates/ folder.
     
-    EXAMPLE:
-    <div class="header-right">
-        <a href="#" class="header-link">Home</a>
-        <button class="icon-btn"><img src="..." alt="Notification Bell"></button>
-        {% include 'utilities/profile-dropdown.html' %}
-    </div>
+    4. Update user data with Flask context variables when available.
+       Example: {{ current_user.username if current_user else 'Username' }}
     
     NOTE: The component includes both the profile button and the dropdown menu.
           It will automatically handle show/hide functionality.
-          All files are located in: static/utilities/Profile_DropDown/
 -->
 
 <div class="profile-dropdown-wrapper">
