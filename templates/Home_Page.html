@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KIMA ASWAN - Dashboard</title>
     <link rel="stylesheet" href="../static/CSS/Home_Page.css">
+    <link rel="stylesheet" href="../static/CSS/utilities/profile-dropdown.css">
+    <link rel="stylesheet" href="../static/CSS/utilities/footer.css">
     
     <!-- ============================================ -->
     <!-- FOOTER CSS - ADD THIS LINE -->
@@ -29,7 +31,7 @@
                     <a href="#" class="header-link">Home</a>
                     <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
                     <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
-                    <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;"></button>
+                    {% include 'utilities/profile-dropdown.html' %}
                 </div>
             </header>
 
@@ -37,58 +39,32 @@
             <div class="content">
 
                 <div class="dashboard-cards">
-                    <div class="dashboard-card" onclick="window.location.href='Employee_Page.html'">
+                    <div class="dashboard-card" onclick="window.location.href='/employees'">
                         <img src="https://i.postimg.cc/Dyn7QwCW/image.png" alt="Employees" class="dashboard-icon">
                         <h3 class="dashboard-title">Employees</h3>
                     </div>
-                    <div class="dashboard-card" onclick="window.location.href='customers.html'">
+                    <div class="dashboard-card" onclick="window.location.href='/suppliers'">
                         <img src="https://i.postimg.cc/sDTCp9QT/image.png" alt="Suppliers" class="dashboard-icon">
                         <h3 class="dashboard-title">Suppliers</h3>
                     </div>
-                    <div class="dashboard-card" onclick="window.location.href='customers.html'">
+                    <div class="dashboard-card" onclick="window.location.href='/products'">
                         <img src="https://i.postimg.cc/gkkfkXSY/image.png" alt="Products" class="dashboard-icon">
                         <h3 class="dashboard-title">Products</h3>
                     </div>
-                    <div class="dashboard-card" onclick="window.location.href='Customer_Page.html'">
+                    <div class="dashboard-card" onclick="window.location.href='/customers'">
                         <img src="https://i.postimg.cc/rygPby8P/image.png" alt="Customers" class="dashboard-icon">
                         <h3 class="dashboard-title">Customers</h3>
                     </div>
-                    <div class="dashboard-card" onclick="window.location.href='Customer_Page.html'">
-                        <img src="https://i.postimg.cc/rygPby8P/image.png" alt="Customers" class="dashboard-icon">
-                        <h3 class="dashboard-title">Customers</h3>
-                    </div>
-                    <div class="dashboard-card" onclick="window.location.href='Customer_Page.html'">
-                        <img src="https://i.postimg.cc/rygPby8P/image.png" alt="Customers" class="dashboard-icon">
-                        <h3 class="dashboard-title">Customers</h3>
-                    </div>
-                    <div class="dashboard-card" onclick="window.location.href='Customer_Page.html'">
-                        <img src="https://i.postimg.cc/rygPby8P/image.png" alt="Customers" class="dashboard-icon">
-                        <h3 class="dashboard-title">Customers</h3>
-                    </div>
-                    <div class="dashboard-card" onclick="window.location.href='Customer_Page.html'">
-                        <img src="https://i.postimg.cc/rygPby8P/image.png" alt="Customers" class="dashboard-icon">
-                        <h3 class="dashboard-title">Customers</h3>
-                    </div>
-                    
                 </div>
             </div>
         </main>
     </div>
     
     <!-- Include footer component from static/utilities/Footer/footer.html -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
-            <p class="footer-text">Designed for efficient chemical material inventory management</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link" data-route="privacy_policy">Privacy Policy</a>
-                <a href="#" class="footer-link" data-route="terms_of_service">Terms of Service</a>
-                <a href="#" class="footer-link" data-route="contact_support">Contact Support</a>
-                <a href="#" class="footer-link" data-route="documentation">Documentation</a>
-            </div>
-        </div>
-    </footer>
+    {% include 'utilities/footer.html' %}
+
 </body>
+<script src="../static/JS/utilities/profile-dropdown.js"></script>
 <script>
             function navigateTo(page) {
             document.querySelectorAll('.page-content').forEach(p => {

@@ -14,7 +14,7 @@ def home():
 
 @app.route('/employees')
 def employees_page():
-    pass
+    return render_template("Employee_Page.html")
 
 @app.route('/suppliers')
 def suppliers_page():
