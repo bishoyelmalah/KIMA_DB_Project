@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex;
+}
+
+.left-section {
+    background-color: #1d4b43;
+    width: 35%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10vh;
+}
+
+.logo-box {
+    background-color: #bcd9c9;
+    padding: 20px 100px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ankh {
+    font-size: 3rem;
+    color: #1d4b43;
+    margin-bottom: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    color: #1d4b43;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.shape-circle {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.shape-diamond {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.shape-small {
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: rotate(30deg);
+    border-radius: 10px;
+}
+
+.right-section {
+    background-color: #bcd9c9;
+    width: 65%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.title {
+    font-size: 2rem;
+    color: #1d4b43;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 15px 50px 15px 50px;
+    border: none;
+    border-radius: 25px;
+    background-color: #bdd9c4;
+    font-size: 1rem;
+    color: #1d4b43;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-field:focus {
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(29, 75, 67, 0.2);
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1d4b43;
+    font-size: 1.2rem;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1d4b43;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #0f3d35;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0a2e28;
+}
+
+.forgot-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #1d4b43;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .left-section {
+        padding-top: 5vh;
+    }
+
+    .logo-box {
+        padding: 15px 20px;
+    }
+
+    .ankh {
+        font-size: 2.5rem;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .shape-circle, .shape-diamond, .shape-small {
+        display: none;
+    }
+
+    .login-form {
+        max-width: 90%;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .input-field {
+        padding: 12px 45px 12px 45px;
+    }
+
+    .eye-icon {
+        font-size: 1rem;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+}
