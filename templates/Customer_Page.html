@@ -10,23 +10,32 @@
     <div class="container">
         <!-- Include sidebar component from static/utilities/Sidebar/Sidebar.html -->
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <button id="sidebarToggle" class="sidebar-toggle">
+            <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+        </button>
+        
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
+        
+        <aside id="sidebar" class="sidebar">
             <div class="logo">
                 <div class="logo-icon">☥</div>
                 <div class="logo-text">KIMA ASWAN</div>
             </div>
+        
             <ul class="nav-menu">
-                <li class="nav-item" data-page="dashboard" onclick="window.location.href='Home_Page.html'">Dashboard</li>
-                <li class="nav-item" data-page="employees">Employees</li>
-                <li class="nav-item" data-page="suppliers">Suppliers</li>
-                <li class="nav-item" data-page="products">Products</li>
-                <li class="nav-item active" data-page="customers">Customers</li>
+                <li class="nav-item">Dashboard</li>
+                <li class="nav-item">Employees</li>
+                <li class="nav-item">Suppliers</li>
+                <li class="nav-item">Products</li>
+                <li class="nav-item active">Customers</li>
             </ul>
+        
             <div class="help-section">
                 <div class="help-title">Need help?</div>
                 <div class="help-link">Open our help center</div>
             </div>
         </aside>
+        
 
         <!-- Main Content -->
         <main class="main-content">
@@ -428,5 +437,74 @@
                 }, 300);
             }, 3000);
         }
+// ----- عناصر الصفحة -----
+const sidebar = document.getElementById("sidebar");
+const toggle = document.getElementById("sidebarToggle");
+const overlay = document.getElementById("sidebarOverlay");
+
+
+// ----- Updates toggle button visibility -----
+function updateToggleVisibility() {
+    if (sidebar.classList.contains("closed")) {
+        toggle.style.display = "flex";   // السايدبار مقفولة → زرار ظاهر
+    } else {
+        toggle.style.display = "none";   // السايدبار مفتوحة → اخفي الزرار
+    }
+}
+
+
+// ----- فتح وقفل السايدبار -----
+function toggleSidebar() {
+    const isClosed = sidebar.classList.toggle("closed");
+
+    if (!isClosed) {
+        // Open
+        overlay.classList.add("active");
+        document.body.classList.add("sidebar-open");
+    } else {
+        // Closed
+        overlay.classList.remove("active");
+        document.body.classList.remove("sidebar-open");
+    }
+
+    updateToggleVisibility();
+}
+
+
+// ----- الضغط على زرار التوجل -----
+toggle.addEventListener("click", () => {
+    toggleSidebar();
+});
+
+
+// ----- الضغط على overlay -----
+overlay.addEventListener("click", () => {
+    sidebar.classList.add("closed");
+    overlay.classList.remove("active");
+    document.body.classList.remove("sidebar-open");
+    updateToggleVisibility();
+});
+
+
+// ----- عند تحميل الصفحة: السايدبار مقفولة على كل الأجهزة -----
+window.addEventListener("load", () => {
+    sidebar.classList.add("closed");
+    overlay.classList.remove("active");
+    document.body.classList.remove("sidebar-open");
+    updateToggleVisibility();
+});
+
+
+// ----- عند تغيير حجم الشاشة -----
+window.addEventListener("resize", () => {
+    sidebar.classList.add("closed");
+    overlay.classList.remove("active");
+    document.body.classList.remove("sidebar-open");
+    updateToggleVisibility();
+});
+
+
+
+
 </script>
 </html>

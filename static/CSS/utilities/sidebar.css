@@ -1,55 +1,60 @@
-/* Sidebar Styles */
 .sidebar {
     width: 250px;
-    background: linear-gradient(180deg, #2d5f4f 0%, #1a3d32 100%);
-    color: white;
-    padding: 20px 0;
+    background: linear-gradient(180deg, #2d5f4f, #1a3d32);
     position: fixed;
-    height: 100vh;
-    left: 0;
     top: 0;
+    left: 0;
+    height: 100vh;
+    color: white;
     z-index: 1000;
-    transition: transform 0.3s ease;
     overflow-y: auto;
+    transition: transform 0.35s ease-in-out;
 }
 
-/* Sidebar Toggle Button (visible on mobile) */
+/* Sidebar closed state */
+.sidebar.closed {
+    transform: translateX(-250px);
+}
+
+/* ---------------- Toggle Button ---------------- */
 .sidebar-toggle {
-    display: none;
     position: fixed;
     top: 15px;
     left: 15px;
-    z-index: 1001;
-    background: #2d5f4f;
-    color: white;
+    width: 40px;
+    height: 40px;
+    size: 50px;
+    background: #F5F5F5;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    z-index: 1100;
+    display: flex; /* دايمًا ظاهر */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.sidebar-toggle:hover {
-    background: #1a3d32;
+.sidebar-toggle .bar {
+    width: 70%;
+    height: 5px;
+    background: #2d5f4f;
+    margin: 4px 0;
+    transition: 0.3s ease;
+    border-radius: 8px;
+    
 }
 
-.toggle-icon {
-    display: block;
-}
 
-/* Overlay for mobile */
+
+/* ---------------- Overlay ---------------- */
 .sidebar-overlay {
-    display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 900;
     opacity: 0;
+    display: none;
     transition: opacity 0.3s ease;
 }
 
@@ -58,126 +63,24 @@
     opacity: 1;
 }
 
-/* Logo Section */
-.sidebar .logo {
-    background: #e8f5e9;
-    color: #2d5f4f;
-    padding: 20px;
-    margin: 0 20px 30px 20px;
-    text-align: center;
-    border-radius: 8px;
+/* ---------------- Main Content ---------------- */
+.main-content {
+    flex: 1;
+    margin-left: 250px; /* Sidebar width */
+    transition: margin-left 0.35s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
 }
 
-.sidebar .logo-icon {
-    font-size: 32px;
-    margin-bottom: 5px;
+/* When sidebar is closed */
+.sidebar.closed ~ .main-content {
+    margin-left: 0;
 }
-
-.sidebar .logo-text {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 2px;
+.sidebar:not(.closed) ~ .sidebar-toggle {
+    display: none;
 }
-
-/* Navigation Menu */
-.sidebar .nav-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar .nav-item {
-    margin: 5px 10px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.sidebar .nav-link {
-    display: block;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    transition: all 0.3s ease;
-}
-
-.sidebar .nav-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.sidebar .nav-item.active {
-    background: #e8f5e9;
-}
-
-.sidebar .nav-item.active .nav-link {
-    color: #2d5f4f;
-    font-weight: 600;
-}
-
-/* Help Section */
-.sidebar .help-section {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-}
-
-.sidebar .help-title {
-    font-weight: 600;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.sidebar .help-link {
-    font-size: 12px;
-    color: #a5d6a7;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.sidebar .help-link:hover {
-    color: white;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .sidebar {
-        transform: translateX(-100%);
-    }
-    
-    .sidebar.open {
-        transform: translateX(0);
-    }
-    
-    .sidebar-toggle {
-        display: block;
-    }
-    
-    /* Adjust main content when sidebar is open on mobile */
-    body.sidebar-open {
-        overflow: hidden;
-    }
-}
-
-/* Tablet adjustments */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .sidebar {
-        width: 220px;
-    }
-}
-
-/* Ensure main content has proper margin when sidebar is visible */
-@media (min-width: 769px) {
-    .container {
-        margin-left: 250px;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .container {
-        margin-left: 220px;
-    }
+/* لما ال sidebar مفتوحة الزرار يختفي */
+body.sidebar-open .sidebar-toggle {
+    display: none;
 }
