@@ -179,6 +179,7 @@ body {
     width: 100%;
     margin-left: 0;
     box-sizing: border-box;
+    position: sticky;
 }
 
 .footer-content {

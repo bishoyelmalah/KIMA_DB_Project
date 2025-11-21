@@ -1,0 +1,29 @@
+<!-- Profile Dropdown Component Include File for Flask -->
+<!-- This template includes the profile dropdown component -->
+<!-- All source files are located in: static/utilities/Profile_DropDown/ -->
+
+<div class="profile-dropdown-wrapper">
+    <button class="icon-btn profile-icon-btn" id="profileIconBtn" type="button">
+        <img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;">
+    </button>
+    <div class="profile-dropdown" id="profileDropdown">
+        <div class="user-info">
+            <div class="user-icon">👤</div>
+            <div class="user-details">
+                <!-- Update these with actual user data from Flask context -->
+                <!-- Example: {{ current_user.username if current_user else 'Username' }} -->
+                <div class="username">Username</div>
+                <div class="email">user.mail@gmail.com</div>
+            </div>
+        </div>
+        <hr class="separator">
+        <button class="dropdown-item setting" onclick="openSettings()">
+            <div class="setting-icon">⚙️</div>
+            <span>Setting</span>
+        </button>
+        <button class="dropdown-item logout" onclick="logout()">
+            <div class="logout-icon">▶</div>
+            <span>Log out</span>
+        </button>
+    </div>
+</div>
