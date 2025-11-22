@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="../static/CSS/utilities/header.css">
+
+<header class="header">
+    <div class="search-container">
+        <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
+        <input type="text" class="search-box" placeholder="Search">
+        <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+    </div>
+    <div class="header-right">
+        <a href="#" class="header-link">Home</a>
+        <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
+        <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
+        <div class="profile-dropdown-wrapper">
+            <button class="icon-btn profile-icon-btn" id="profileIconBtn" type="button">
+                <img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;">
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="user-info">
+                    <div class="user-icon">👤</div>
+                    <div class="user-details">
+                        <div class="username">Username</div>
+                        <div class="email">user.mail@gmail.com</div>
+                    </div>
+                </div>
+                <hr class="separator">
+                <button class="dropdown-item setting" onclick="openSettings()">
+                    <div class="setting-icon">⚙️</div>
+                    <span>Setting</span>
+                </button>
+                <button class="dropdown-item logout" onclick="logout()">
+                    <div class="logout-icon">▶</div>
+                    <span>Log out</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script src="../../static/JS/utilities/profile-dropdown.js"></script>

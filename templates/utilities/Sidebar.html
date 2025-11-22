@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../static/CSS/utilities/sidebar.css">
+
 <!-- Sidebar Toggle Button (for mobile) -->
 <button id="sidebarToggle" class="sidebar-toggle">
     <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
@@ -5,14 +7,14 @@
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar closed">
     <div class="logo">
         <div class="logo-icon">☥</div>
         <div class="logo-text">KIMA ASWAN</div>
     </div>
 
     <ul class="nav-menu">
-        <li class="nav-item">Dashboard</li>
+        <li class="nav-item" onclick="window.location.href='/'">Dashboard</li>
         <li class="nav-item">Employees</li>
         <li class="nav-item">Suppliers</li>
         <li class="nav-item">Products</li>
@@ -24,3 +26,5 @@
         <div class="help-link">Open our help center</div>
     </div>
 </aside>
+
+<script src="../../static/JS/utilities/sidebar.js"></script>

@@ -5,35 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KIMA ASWAN - Dashboard</title>
     <link rel="stylesheet" href="../static/CSS/Home_Page.css">
-    <link rel="stylesheet" href="../static/CSS/utilities/profile-dropdown.css">
-    <link rel="stylesheet" href="../static/CSS/utilities/footer.css">
-    
-    <!-- ============================================ -->
-    <!-- FOOTER CSS - ADD THIS LINE -->
-    <!-- ============================================ -->
 </head>
 <body>
     <div class="container">
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
-                <div class="logo">
-                    <img src="../static/assets/KimaLogo.png" style="width: 50px; height: 70px;" alt="logo" class="logo-icon">
-                    <h2> KIMA </h2>
-                </div>
-                <div class="search-container">
-                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-                    <input type="text" class="search-box" placeholder="Search">
-                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
-                </div>
-                <div class="header-right">
-                    <a href="#" class="header-link">Home</a>
-                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
-                    <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
-                    {% include 'utilities/profile-dropdown.html' %}
-                </div>
-            </header>
+            {% include 'utilities/home_page_header.html' %}
 
             <!-- Content -->
             <div class="content">

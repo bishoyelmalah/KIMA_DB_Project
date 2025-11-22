@@ -1,3 +1,22 @@
+// ----- عناصر الصفحة -----
+const sidebar = document.getElementById("sidebar");
+const toggle = document.getElementById("sidebarToggle");
+const overlay = document.getElementById("sidebarOverlay");
+
+
+// ----- Updates toggle button visibility -----
+function updateToggleVisibility() {
+    if (sidebar.classList.contains("closed")) {
+        setTimeout(() => {
+        toggle.style.display = 'flex';
+    }, 250);    // السايدبار مقفولة → زرار ظاهر
+    } else {
+        toggle.style.display = "none";   // السايدبار مفتوحة → اخفي الزرار
+    }
+}
+
+
+// ----- فتح وقفل السايدبار -----
 function toggleSidebar() {
     const isClosed = sidebar.classList.toggle("closed");
 

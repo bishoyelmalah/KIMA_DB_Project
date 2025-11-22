@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KIMA ASWAN - Employees</title>
     <link rel="stylesheet" href="../static/CSS/Employee_Page.css">
-    {% include 'utilities/css_files.html' %}
 </head>
 <body>
     <div class="container">
@@ -15,19 +14,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
-                <div class="search-container">
-                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-                    <input type="text" class="search-box" id="searchBox" placeholder="Search">
-                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
-                </div>
-                <div class="header-right">
-                    <a href="#" class="header-link">Home</a>
-                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
-                    <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
-                    {% include 'utilities/profile-dropdown.html' %}
-                </div>
-            </header>
+            {% include 'utilities/header.html' %}
 
             <!-- Content -->
             <div class="content">
@@ -297,6 +284,5 @@
             });
         });
     </script>
-    {% include 'utilities/js_files.html' %}
 </body>
 </html>

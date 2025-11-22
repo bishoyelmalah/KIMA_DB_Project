@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KIMA ASWAN - Customers</title>
     <link rel="stylesheet" href="../static/CSS/Customer_Page.css">
-    {% include 'utilities/css_files.html' %}
 </head>
 <body>
     <div class="container">
@@ -16,19 +15,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
-                <div class="search-container">
-                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-                    <input type="text" class="search-box" placeholder="Search">
-                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
-                </div>
-                <div class="header-right">
-                    <a href="#" class="header-link">Home</a>
-                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
-                    <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
-                    {% include 'utilities/profile-dropdown.html' %}
-                </div>
-            </header>
+            {% include 'utilities/header.html' %}
 
             <!-- Content -->
             <div class="content">
@@ -36,7 +23,7 @@
                     <h1 class="page-title">Customers</h1>
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
-                        <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
+                        <button class="btn-icon"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
                         <button class="btn-primary btn" onclick="openAddCustomerModal()">+ Add candidate</button>
                     </div>
                 </div>
@@ -402,75 +389,5 @@
                 }, 300);
             }, 3000);
         }
-// ----- عناصر الصفحة -----
-const sidebar = document.getElementById("sidebar");
-const toggle = document.getElementById("sidebarToggle");
-const overlay = document.getElementById("sidebarOverlay");
-
-
-// ----- Updates toggle button visibility -----
-function updateToggleVisibility() {
-    if (sidebar.classList.contains("closed")) {
-        toggle.style.display = "flex";   // السايدبار مقفولة → زرار ظاهر
-    } else {
-        toggle.style.display = "none";   // السايدبار مفتوحة → اخفي الزرار
-    }
-}
-
-
-// ----- فتح وقفل السايدبار -----
-function toggleSidebar() {
-    const isClosed = sidebar.classList.toggle("closed");
-
-    if (!isClosed) {
-        // Open
-        overlay.classList.add("active");
-        document.body.classList.add("sidebar-open");
-    } else {
-        // Closed
-        overlay.classList.remove("active");
-        document.body.classList.remove("sidebar-open");
-    }
-
-    updateToggleVisibility();
-}
-
-
-// ----- الضغط على زرار التوجل -----
-toggle.addEventListener("click", () => {
-    toggleSidebar();
-});
-
-
-// ----- الضغط على overlay -----
-overlay.addEventListener("click", () => {
-    sidebar.classList.add("closed");
-    overlay.classList.remove("active");
-    document.body.classList.remove("sidebar-open");
-    updateToggleVisibility();
-});
-
-
-// ----- عند تحميل الصفحة: السايدبار مقفولة على كل الأجهزة -----
-window.addEventListener("load", () => {
-    sidebar.classList.add("closed");
-    overlay.classList.remove("active");
-    document.body.classList.remove("sidebar-open");
-    updateToggleVisibility();
-});
-
-
-// ----- عند تغيير حجم الشاشة -----
-window.addEventListener("resize", () => {
-    sidebar.classList.add("closed");
-    overlay.classList.remove("active");
-    document.body.classList.remove("sidebar-open");
-    updateToggleVisibility();
-});
-
-
-
-
 </script>
-{% include 'utilities/js_files.html' %}
 </html>
