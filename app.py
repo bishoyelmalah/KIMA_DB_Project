@@ -55,4 +55,5 @@ def add_customer():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # This tells the server to listen on all public IPs (0.0.0.0)
+    app.run(host='0.0.0.0', port=5000, debug=True)
