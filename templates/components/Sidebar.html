@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../static/CSS/components/sidebar.css">
+
+<!-- Sidebar Toggle Button (for mobile) -->
+<button id="sidebarToggle" class="sidebar-toggle">
+    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+</button>
+
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<aside id="sidebar" class="sidebar closed">
+    <div class="logo">
+        <div class="logo-icon">☥</div>
+        <div class="logo-text">KIMA ASWAN</div>
+    </div>
+
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="window.location.href='/'">Dashboard</li>
+        <li class="nav-item" onclick="window.location.href='/employees'">Employees</li>
+        <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
+        <li class="nav-item" onclick="window.location.href='/products'">Products</li>
+        <li class="nav-item" onclick="window.location.href='/customers'">Customers</li>
+    </ul>
+
+    <div class="help-section">
+        <div class="help-title">Need help?</div>
+        <div class="help-link">Open our help center</div>
+    </div>
+</aside>
+
+<script src="../../static/JS/components/sidebar.js"></script>
