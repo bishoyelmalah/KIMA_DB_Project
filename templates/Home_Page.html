@@ -11,7 +11,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            {% include 'utilities/home_page_header.html' %}
+            {% include 'components/home_page_header.html' %}
 
             <!-- Content -->
             <div class="content">
@@ -38,11 +38,11 @@
         </main>
     </div>
     
-    <!-- Include footer component from static/utilities/Footer/footer.html -->
-    {% include 'utilities/footer.html' %}
+    <!-- Include footer component from static/components/Footer/footer.html -->
+    {% include 'components/footer.html' %}
 
 </body>
-<script src="../static/JS/utilities/profile-dropdown.js"></script>
+<script src="../static/JS/components/profile-dropdown.js"></script>
 <script>
             function navigateTo(page) {
             document.querySelectorAll('.page-content').forEach(p => {

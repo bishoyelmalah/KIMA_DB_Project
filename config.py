@@ -12,3 +12,5 @@ class Config:
     # --- 2. Configuration Flags ---
     # Turning this off saves resources
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # SQLALCHEMY_ECHO = True
+    # SQLALCHEMY_RECORD_QUERIES = True

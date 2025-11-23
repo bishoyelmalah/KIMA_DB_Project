@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import record_queries as rq
 from config import *
 from models import *
 # from extensions import db
@@ -53,6 +53,15 @@ def add_customer():
     return redirect(url_for("customers_page"))
 
 
+# @app.after_request
+# def after_request(response):
+#     for query_info in rq.get_recorded_queries():
+#         print(f"Statement: {query_info.statement}")
+#         print(f"Parameters: {query_info.parameters}")
+#         print(f"Duration: {query_info.duration} seconds")
+#         print(f"Location: {query_info.location}")
+#         print("-" * 20)
+#     return response
 
 if __name__ == "__main__":
     # This tells the server to listen on all public IPs (0.0.0.0)
