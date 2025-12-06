@@ -50,7 +50,7 @@ def add_customer():
     db.session.commit()
     db.session.expire_all()
 
-    return redirect(url_for("customers_page"))
+    return redirect(url_for("Customer_page"))
 
 
 # @app.after_request
