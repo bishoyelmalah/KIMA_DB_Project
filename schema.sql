@@ -73,7 +73,7 @@ CREATE TABLE Machines (
     M_Status VARCHAR(50),
     M_Serial_Num VARCHAR(100),
     M_Model_Num VARCHAR(100),
-    M_LMD DATE -- Last Maintenance Date? Assuming Date based on context
+    M_LMD DATE 
 );
 
 CREATE TABLE Maintenance (
@@ -83,7 +83,7 @@ CREATE TABLE Maintenance (
     Ma_End_Time TIMESTAMP,
     Ma_Next_Schedule_Date DATE,
     M_ID INTEGER NOT NULL,
-    E_ID INTEGER, -- Employee performing maintenance
+    E_ID INTEGER,
     FOREIGN KEY (M_ID) REFERENCES Machines(M_ID),
     FOREIGN KEY (E_ID) REFERENCES Employees(E_ID)
 );
@@ -127,11 +127,11 @@ CREATE TABLE Products (
     P_ID INTEGER PRIMARY KEY,
     P_Name VARCHAR(255) NOT NULL,
     P_Description TEXT,
-    P_Expiry_Duration VARCHAR(100), -- Or INTEGER days? Keeping as VARCHAR to be safe unless specified
+    P_Expiry_Duration INTEGER, -- Or INTEGER days? Keeping as VARCHAR to be safe unless specified
     P_Unit_Price DECIMAL(10, 2),
     P_Cost_Price DECIMAL(10, 2),
     P_Amount INTEGER,
-    P_Can_buy BOOLEAN,
+    P_Can_buy BIT,
     St_ID INTEGER,
     FOREIGN KEY (St_ID) REFERENCES Stocks(St_ID)
 );
@@ -209,18 +209,20 @@ CREATE TABLE need_to_buy (
 CREATE TABLE Invoices (
     I_ID INTEGER PRIMARY KEY,
     I_Amount DECIMAL(10, 2),
-    I_Customer VARCHAR(255), -- Redundant if linked to Customers? Keeping as per schema.
+    -- I_Customer VARCHAR(255), -- Redundant if linked to Customers? Keeping as per schema.
     I_Currency VARCHAR(10),
     Status VARCHAR(50),
     Method VARCHAR(50),
     Date DATE,
-    I_Recorded_By VARCHAR(100), -- Employee Name or ID?
+    -- I_Recorded_By VARCHAR(100), -- Employee Name or ID?
+    E_ID INTEGER,
     CF_ID INTEGER,
     C_ID INTEGER,
     Co_ID INTEGER,
     FOREIGN KEY (CF_ID) REFERENCES Customer_feedbacks(CF_ID),
     FOREIGN KEY (C_ID) REFERENCES Customers(C_ID),
-    FOREIGN KEY (Co_ID) REFERENCES Costs(Co_ID)
+    FOREIGN KEY (Co_ID) REFERENCES Costs(Co_ID),
+    FOREIGN KEY (E_ID) REFERENCES Employees(E_ID)
 );
 
 CREATE TABLE is_recorded_in (
