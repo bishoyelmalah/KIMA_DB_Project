@@ -10,27 +10,30 @@ def create_app():
     
     import repositories.Customers as Customers
 
+    #Home Page
     @app.route('/')
     def home():
         return render_template("Home_Page.html")
 
+    #Employee page
     @app.route('/employees')
     def employees_page():
         return render_template("Employee_Page.html")
 
+    #Suppliers page
     @app.route('/suppliers')
     def suppliers_page():
         pass
-
+    
+    #Products Page
     @app.route('/products')
     def products_page():
         pass
-
+    
+    #Customers Page
     @app.route('/customers')
     def customers_page():
-        customers = Customers.get(
-            "FirstName, LastName", 
-            "CustomerID = 1")
+        customers = Customers.get(conditions="CustomerID IN (1, 2, 5, 7, 9)")
         print(customers)
         return render_template("Customer_Page.html", customers = customers)
 
@@ -43,12 +46,7 @@ def create_app():
         company = request.form.get("company")
         address = request.form.get("address")
 
-    @app.route('/test_add')
-    def test():
-        Customers.add("Ahmed", "Mohammed", "test@test.com", "Aswan", "Egypt")
-        print("Customer added successfully")
 
-        return redirect(url_for("customer_page"))
     
     return app
 

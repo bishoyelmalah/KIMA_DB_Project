@@ -1,5 +1,5 @@
 venv/
-.vscode
+.vscode/
 db_config.py
-__pycache__
-repositories/__pycache__
+__pycache__/
+repositories/__pycache__/
