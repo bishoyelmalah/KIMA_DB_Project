@@ -64,6 +64,11 @@
     display: block;
     opacity: 1;
 }
+.sidebar-toggle:hover {
+    background: #e0e0e0;
+    transform: scale(1.02);
+}
+
 
 /* When sidebar is closed */
 .sidebar.closed ~ .main-content {
