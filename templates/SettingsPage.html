@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & Settings</title>
+    <link rel="stylesheet" href="../static/CSS/SettingsPage.css">
+</head>
+<body class="profile-page">
+    <!-- Profile Page -->
+    <header class="header">
+                <div class="logo">
+                    <img src="../static/assets/KimaLogo.png" style="width: 50px; height: 70px;" alt="logo" class="logo-icon">
+                    <h2> KIMA </h2>
+                </div>  
+                <div class="search-container">
+                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
+                    <input type="text" class="search-box" placeholder="Search">
+                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+                </div>
+        <div class="user-section">
+            <a href="Home_Page.html" class="header-link">Home</a>
+            <div class="user-info">
+                <div class="user-name">John Doe</div>
+                <div class="user-role">Administrator</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>preference</h3>
+            <ul>
+                <li><a href="#" class="active" onclick="showProfile(); return false;">Profile</a></li>
+                <li><a href="#" onclick="showSettings(); return false;">Preference</a></li>
+                <li><a href="#" onclick="showChangePassword(); return false;">Change Password</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <!-- Profile Section -->
+            <div id="profileSection">
+                <h1 class="page-title">Profile</h1>
+                
+                <div class="card">
+                    <div class="profile-header">
+                        <div class="avatar">
+                            <span class="avatar-icon"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;"></span>
+                        </div>
+                        <div class="user-info">
+                            <p><strong>Name:</strong> John Doe</p>
+                            <p><strong>Email:</strong> john.doe@kimaaswan.com</p>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="card">
+                    <h2 class="section-title">Personal Information</h2>
+                    <div class="info-item"><strong>Employee ID:</strong> EMP-001</div>
+                    <div class="info-item"><strong>Birth Date:</strong> January 1, 1990</div>
+                    <div class="info-item"><strong>Address:</strong> 123 Nile St., Aswan, Egypt</div>
+                    <div class="info-item"><strong>Gender:</strong> Male</div>
+                    <div class="info-item"><strong>SSN:</strong> 123-45-6789</div>
+                </div>
+                <div class="card">
+                    <h2 class="section-title">Contact Information</h2>
+                    <div class="info-item"><strong>Phone:</strong> +20 123 456 7890</div>
+                    <div class="info-item"><strong>Email:</strong> john.engineer@example.com</div>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title">Employee Information</h2>
+                    <div class="info-item"><strong>Department:</strong> Chemical Engineering</div>
+                    <div class="info-item"><strong>Position:</strong> Senior Engineer</div>
+                    <div class="info-item"><strong>Employee ID:</strong> EMP-001</div>
+                    <div class="info-item"><strong>Date of Hire:</strong> March 15, 2015</div>
+                    <div class="info-item"><strong>Manager:</strong> Sarah Johnson</div>        
+                    <div class="info-item"><strong>Job type:</strong> Full-time</div>
+                    <div class="info-item"><strong>Shift:</strong> Morning 8 AM - 4 PM</div>
+                    <div class="info-item"><strong>Scientific degree:</strong> PhD in Chemical Engineering</div>
+                </div>
+
+                <div class="help-text">
+                    Need to update your information? <a href="#" class="help-link">Contact HR</a>
+                </div>
+            </div>
+
+            <!-- Preference Section -->
+            <div id="settingsSection" style="display: none;">
+                <h1 class="page-title">Preference</h1>
+                
+                <div class="card">
+                    <h2 class="section-title">Account Settings</h2>
+                    <div class="form-group">
+                        <label>Email Notifications</label>
+                        <input type="checkbox" checked> Receive email notifications
+                    </div>
+                    <div class="form-group">
+                        <label>Language</label>
+                        <select>
+                            <option>English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Theme</label>
+                        <select>
+                            <option>Light</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Time Zone</label>
+                        <select id="timezoneSelect">
+                            <option value="Africa/Cairo">Cairo (EET)</option>
+                        </select>
+                    </div>                    
+                    <div class="form-group">
+                        <label>Local Time</label>
+                        <div class="time-display">
+                            <span id="local-time"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cairo Time</label>
+                        <div class="time-display">
+                            <span id="cairo-time"></span>
+                        </div>
+                    </div>
+                    <button class="primary-btn">Save Changes</button>
+                </div>
+            </div>
+
+            <!-- Change Password Section -->
+            <div id="changePasswordSection" style="display: none;">
+                <h1 class="page-title">Change Password</h1>
+                
+                <div class="card">
+                    <h2 class="section-title">Update Your Password</h2>
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" placeholder="Enter current password">
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" placeholder="Enter new password">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <input type="password" placeholder="Confirm new password">
+                    </div>
+                    <button class="primary-btn">Change Password</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../static/JS/SettingsPage.js"></script>
+</body>
+</html>

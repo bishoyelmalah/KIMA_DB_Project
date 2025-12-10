@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIMA ASWAN - Customers</title>
+    <link rel="stylesheet" href="../static/CSS/CustomerPtTwo.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">☥</div>
+                <div class="logo-text">KIMA ASWAN</div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item" onclick="window.location.href='Home_Page.html'">Dashboard</li>
+                <li class="nav-item" onclick="window.location.href='Employee_Page.html'">Employees</li>
+                <li class="nav-item" onclick="window.location.href='Supplier_Page.html'">Suppliers</li>
+                <li class="nav-item" onclick="window.location.href='Product_Page.html'">Products</li>
+                <li class="nav-item active" onclick="window.location.href='CustomerPtTwo.html'">Customers</li>
+                <li class="nav-item" onclick="window.location.href='Dependents.html'">Dependents</li>
+            </ul>
+            <div class="help-section">
+                <div class="help-title">Need help?</div>
+                <div class="help-link">Open our help center</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" style="width:20px; height:20px;"></span>
+                    <input type="text" class="search-box" id="searchBox" placeholder="Search customers...">
+                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" style="width:20px; height:20px;"></span>
+                </div>
+                <div class="header-right">
+                    <a href="Home_Page.html" class="header-link">Home</a>
+                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" style="width:20px; height:20px;"></button>
+                    <a href="SettingsPage.html" class="icon-btn-link">
+                        <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" style="width:20px; height:20px;"></button>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <div class="page-header">
+                    <h1 class="page-title">Customers</h1>
+                    <div class="action-buttons">
+                        <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" style="width:20px; height:20px;"></button>
+                        <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" style="width:20px; height:20px;"></button>
+                        <button class="btn-add-employee" onclick="openAddModal()">+ Add Customer</button>
+                    </div>
+                </div>
+
+                <!-- Filter and Sort -->
+                <div class="table-controls">
+                    <button class="control-btn"><img src="https://i.postimg.cc/tg4Mg8N2/filter-icon.png" style="width:16px; margin-right:5px;"> Filter</button>
+                    <button class="control-btn"><img src="https://i.postimg.cc/ZYdD0865/sort-icon.png" style="width:16px; margin-right:5px;"> Sort</button>
+                </div>
+
+                <!-- Customers Table -->
+                <div class="table-container">
+                    <table class="employees-table">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- Customer Row 1 -->
+                            <tr class="employee-row">
+                                <td><img src="../static/assets/0000009295.png" class="employee-photo" alt="Ethyco"></td>
+                                <td class="employee-name">Ethyco</td>
+                                <td class="employee-id">CUST-001</td>
+                                <td>produce.ETHYDCO@example.com</td>
+                                <td>+20 123 456 7890</td>
+                                <td><button class="details-btn" onclick="openModal('modal1')">More details...</button></td>
+                            </tr>
+
+                            <!-- Customer Row 2 -->
+                            <tr class="employee-row">
+                                <td><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="employee-photo" alt="Adam Samuel"></td>
+                                <td class="employee-name">Adam Samuel</td>
+                                <td class="employee-id">CUST-002</td>
+                                <td>produce.ADAM@example.com</td>
+                                <td>+20 123 456 7891</td>
+                                <td><button class="details-btn" onclick="openModal('modal2')">More details...</button></td>
+                            </tr>
+
+                            <!-- Customer Row 3 -->
+                            <tr class="employee-row">
+                                <td><img src="../static/assets/0000004486.jpg" class="employee-photo" alt="Evergrow"></td>
+                                <td class="employee-name">Evergrow</td>
+                                <td class="employee-id">CUST-003</td>
+                                <td>produce.EVERGROW@example.com</td>
+                                <td>+20 123 456 7892</td>
+                                <td><button class="details-btn" onclick="openModal('modal3')">More details...</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Customer Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Customer Details</h2>
+                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+            </div>
+
+            <div class="modal-body">
+                <div class="detail-section">
+                    <div class="detail-photo-container">
+                        <img src="../static/assets/0000009295.png" class="detail-photo" alt="Evergrow">
+                        <h3 class="detail-name">Ethyco</h3>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3 class="section-title">Customer Information</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Customer ID:</span>
+                            <span class="detail-value">CUST-001</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Name:</span>
+                            <span class="detail-value">Ethyco</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3 class="section-title">Contact Information</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Email:</span>
+                            <span class="detail-value">ethyco@example.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Phone:</span>
+                            <span class="detail-value">+20 123 456 7890</span>
+                        </div>
+                        <div class="detail-item full-width">
+                            <span class="detail-label">Address:</span>
+                            <span class="detail-value">123 Nile Street, Aswan, Egypt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3 class="section-title">Purchase History</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Registration Date:</span>
+                            <span class="detail-value">19 October 2023</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Customer Type</span>
+                            <span class="detail-value">Regular</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="modal-footer-right">
+                    <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
+                    <button class="btn-add-employee">Edit Customer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Customer Details</h2>
+                <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Customer details for John Smith...</p>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer-right">
+                    <button class="btn-secondary" onclick="closeModal('modal2')">Close</button>
+                    <button class="btn-add-employee">Edit Customer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Customer Details</h2>
+                <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Customer details for Michael Chen...</p>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer-right">
+                    <button class="btn-secondary" onclick="closeModal('modal3')">Close</button>
+                    <button class="btn-add-employee">Edit Customer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Modal 4 -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Customer Details</h2>
+                <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Customer details for Omar Mahmoud...</p>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer-right">
+                    <button class="btn-secondary" onclick="closeModal('modal4')">Close</button>
+                    <button class="btn-add-employee">Edit Customer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Customer Modal -->
+    <div id="customerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Customer</h2>
+                <span class="close-btn" onclick="closeAddModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="customerForm">
+                    <div class="detail-grid">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" placeholder="Enter first name" id="firstName">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Enter last name" id="lastName">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="Enter email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-input" placeholder="Enter phone number" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Customer ID</label>
+                            <input type="text" class="form-input" placeholder="Enter customer ID" id="customerId">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-input" placeholder="Enter address" id="address">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer-right">
+                    <button class="btn-secondary" onclick="closeAddModal()">Cancel</button>
+                    <button class="btn-add-employee" onclick="saveCustomer()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
+            <p class="footer-text">Designed for efficient chemical material inventory management</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact Support</a>
+                <a href="#" class="footer-link">Documentation</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function openAddModal() {
+            document.getElementById('customerForm').reset();
+            document.getElementById('customerModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAddModal() {
+            document.getElementById('customerModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function saveCustomer() {
+            alert('Customer saved successfully!');
+            closeAddModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Search functionality
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('.employee-row');
+            
+            rows.forEach(row => {
+                const name = row.querySelector('.employee-name').textContent.toLowerCase();
+                const id = row.querySelector('.employee-id').textContent.toLowerCase();
+                const email = row.querySelectorAll('td')[3].textContent.toLowerCase();
+                
+                if (name.includes(searchTerm) || id.includes(searchTerm) || email.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
