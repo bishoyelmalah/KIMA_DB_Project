@@ -6,6 +6,10 @@ def get_all():
         sql = text("SELECT * FROM Customers")
         result = conn.execute(sql)
         return [row._asdict() for row in result]
+    
+def get(columns, conditions="NULL"):
+    pass
+
 
 def add(firstname, lastname, email, city, country):
     with db.engine.connect() as conn:
@@ -17,7 +21,4 @@ def edit():
     pass
 
 def delete():
-    pass
-
-def get_where():
     pass
