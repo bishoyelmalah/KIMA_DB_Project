@@ -8,40 +8,82 @@
 </head>
 <body>
     <div class="container">
+        <!-- Include sidebar component from static/components/Sidebar/Sidebar.html -->
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo">
-                <div class="logo-icon">☥</div>
-                <div class="logo-text">KIMA ASWAN</div>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item" data-page="dashboard" onclick="window.location.href='Home_Page.html'">Dashboard</li>
-                <li class="nav-item" data-page="employees">Employees</li>
-                <li class="nav-item" data-page="suppliers">Suppliers</li>
-                <li class="nav-item" data-page="products">Products</li>
-                <li class="nav-item active" data-page="customers">Customers</li>
-            </ul>
-            <div class="help-section">
-                <div class="help-title">Need help?</div>
-                <div class="help-link">Open our help center</div>
-            </div>
-        </aside>
+        <link rel="stylesheet" href="../../static/CSS/components/sidebar.css">
+
+<!-- Sidebar Toggle Button (for mobile) -->
+<button id="sidebarToggle" class="sidebar-toggle">
+    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+</button>
+
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<aside id="sidebar" class="sidebar closed">
+    <div class="logo">
+        <div class="logo-icon">☥</div>
+        <div class="logo-text">KIMA ASWAN</div>
+    </div>
+
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="window.location.href='/'">Home Page</li>
+        <li class="nav-item" onclick="window.location.href='/employees'">Employees</li>
+        <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
+        <li class="nav-item" onclick="window.location.href='/products'">Products</li>
+        <li class="nav-item" onclick="window.location.href='/customers'">Customers</li>
+    </ul>
+
+    <div class="help-section">
+        <div class="help-title">Need help?</div>
+        <div class="help-link">Open our help center</div>
+    </div>
+</aside>
+
+<script src="../../static/JS/components/sidebar.js"></script>
 
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
-                <div class="search-container">
-                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-                    <input type="text" class="search-box" placeholder="Search">
-                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+            <link rel="stylesheet" href="../../static/CSS/components/header.css">
+
+<header class="header">
+    <div class="search-container">
+        <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
+        <input type="text" class="search-box" placeholder="Search">
+        <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+    </div>
+    <div class="header-right">
+        <a class="header-link" onclick="window.location.href='/'">Home</a>
+        <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
+        <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
+        <div class="profile-dropdown-wrapper">
+            <button class="icon-btn profile-icon-btn" id="profileIconBtn" type="button">
+                <img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;">
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="user-info">
+                    <div class="user-icon">👤</div>
+                    <div class="user-details">
+                        <div class="username">Username</div>
+                        <div class="email">user.mail@gmail.com</div>
+                    </div>
                 </div>
-                <div class="header-right">
-                    <a href="#" class="header-link">Home</a>
-                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
-                    <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;"></button>
-                </div>
-            </header>
+                <hr class="separator">
+                <button class="dropdown-item setting" onclick="openSettings()">
+                    <div class="setting-icon">⚙️</div>
+                    <span>Setting</span>
+                </button>
+                <button class="dropdown-item logout" onclick="logout()">
+                    <div class="logout-icon">▶</div>
+                    <span>Log out</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script src="../../static/JS/components/profile-dropdown.js"></script>
+
 
             <!-- Content -->
             <div class="content">
@@ -49,7 +91,7 @@
                     <h1 class="page-title">Customers</h1>
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
-                        <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
+                        <button class="btn-icon"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
                         <button class="btn-primary btn" onclick="openAddCustomerModal()">+ Add candidate</button>
                     </div>
                 </div>
@@ -143,18 +185,22 @@
         </main>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
-            <p class="footer-text">Designed for efficient chemical material inventory management</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Terms of Service</a>
-                <a href="#" class="footer-link">Contact Support</a>
-                <a href="#" class="footer-link">Documentation</a>
-            </div>
+    <!-- Include footer component from static/components/Footer/footer.html -->
+    <link rel="stylesheet" href="../../static/CSS/components/footer.css">
+
+<footer class="footer">
+    <div class="footer-content">
+        <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
+        <p class="footer-text">Designed for efficient chemical material inventory management</p>
+        <div class="footer-links">
+            <a href="#" class="footer-link" data-route="privacy_policy">Privacy Policy</a>
+            <a href="#" class="footer-link" data-route="terms_of_service">Terms of Service</a>
+            <a href="#" class="footer-link" data-route="contact_support">Contact Support</a>
+            <a href="#" class="footer-link" data-route="documentation">Documentation</a>
         </div>
-    </footer>
+    </div>
+</footer>
+
 </body>
 <script>
 
