@@ -28,7 +28,9 @@ def create_app():
 
     @app.route('/customers')
     def customers_page():
-        customers = Customers.get_all()
+        customers = Customers.get(
+            "FirstName, LastName", 
+            "CustomerID = 1")
         print(customers)
         return render_template("Customer_Page.html", customers = customers)
 
