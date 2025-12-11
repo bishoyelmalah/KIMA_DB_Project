@@ -33,7 +33,10 @@ def create_app():
     #Customers Page
     @app.route('/customers')
     def customers_page():
-        customers = Customers.get(conditions="CustomerID IN (1, 2, 5, 7, 9)")
+        customers = Customers.get(
+            columns="C_ID, C_Name",
+            conditions="C_ID > 5"
+        )
         print(customers)
         return render_template("Customer_Page.html", customers = customers)
 

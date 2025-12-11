@@ -39,7 +39,7 @@ def delete(condition):
         conn.execute(sql)
         conn.commit()
 
-print(get(
-    columns="C_ID, C_Name",
-    conditions="C_ID > 5"
-))
+# print(get(
+#     columns="C_ID, C_Name",
+#     conditions="C_ID > 5"
+# ))
