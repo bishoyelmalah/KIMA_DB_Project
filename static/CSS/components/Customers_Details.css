@@ -1,0 +1,263 @@
+.card-container {
+    position: relative;
+    width: min(1100px, 90%);
+    margin: 120px auto 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card{
+    background: white;
+    width: 100%;
+    height: auto;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    border-radius: 1.5rem;
+    padding: 1.5rem 2rem;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.card-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 16px;
+    background: #e8f5e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-avatar img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.info-label {
+    font-weight: 700;
+    color: #064e3b;
+    font-size: 1rem;
+}
+
+.info-text {
+    font-size: 1rem;
+    color: #1f2937;
+}
+
+.transport-details-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+
+.transport-id {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+}
+
+.action-buttons {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    z-index: 10;
+}
+
+.action-btn {
+    background: #f59e0b;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.action-btn:hover {
+    background: #d97706;
+}
+
+.action-btn svg {
+    width: 28px;
+    height: 28px;
+    stroke: #ffffff;
+    fill: none;
+    stroke-width: 2.5;
+}
+
+.details-list {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 3rem;
+    padding: 0 2rem 2rem;
+    width: 100%;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.detail-label {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0.5rem;
+    font-family: Arial, sans-serif;
+}
+
+.detail-value {
+    width: 100%;
+    padding: 0.5rem 0;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 1rem;
+    outline: none;
+    font-family: Arial, sans-serif;
+    background: transparent;
+    transition: border-color 0.3s ease;
+}
+
+.detail-value:focus {
+    border-bottom-color: #064e3b;
+}
+
+@media (max-width: 1024px) {
+    .card-container {
+        width: 94%;
+        margin: 100px auto 40px;
+    }
+
+    .transport-details-card {
+        width: 94%;
+        margin: 100px auto 40px;
+        padding-bottom: 1rem;
+    }
+
+    .transport-badge {
+        width: 200px;
+        height: 240px;
+    }
+
+    .transport-badge .icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .details-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 2.5rem;
+        padding: 0 1.5rem 1.5rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-container {
+        width: 100%;
+        margin: 80px auto 30px;
+        padding: 0 1rem;
+    }
+
+    .transport-details-card {
+        width: 100%;
+        margin: 70px auto 40px;
+        padding: 0 0 1.5rem;
+    }
+
+    .transport-badge {
+        width: 170px;
+        height: 210px;
+    }
+
+    .transport-badge .icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .transport-icon-section {
+        margin-bottom: 2rem;
+    }
+
+    .details-list {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1.25rem 1.5rem;
+    }
+
+    .action-buttons {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .action-btn {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+        margin: 80px auto 20px;
+        padding: 1.25rem 1.5rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .card-avatar {
+        width: 76px;
+        height: 76px;
+    }
+}
+/* Add this class to your existing CSS */
+.hidden {
+    display: none !important;
+}
+
+/* Update the detail-content to manage display */
+.detail-content {
+    display: flex; /* or block, depending on desired layout */
+    width: 100%;
+    /* No change to the existing detail-value styling, as it applies to detail-input now */
+}

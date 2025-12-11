@@ -23,7 +23,7 @@
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
                         <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
-                        <button class="btn-primary btn">+ Add Employees</button>
+                        <button class="btn-add-employee">+ Add Employees</button>
                     </div>
                 </div>
 <!-- ComputerShow? -->
@@ -183,8 +183,13 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
-                <button class="btn-primary">Edit Employee</button>
+                <button class="dependent-btn" onclick="window.location.href='Dependents.html'">
+                    Dependents details
+                </button>
+                <div class="modal-footer-right">
+                    <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
+                    <button class="btn-primary">Edit Employee</button>
+                </div>
             </div>
         </div>
     </div>
