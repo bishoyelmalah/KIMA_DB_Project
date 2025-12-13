@@ -97,7 +97,7 @@
                                 <td class="employee-id">CUST-002</td>
                                 <td>produce.ADAM@example.com</td>
                                 <td>+20 123 456 7891</td>
-                                <td><button class="details-btn" onclick="openModal('modal2')">More details...</button></td>
+                                <td><button class="details-btn" onclick="alert('Details not available for this customer')">More details...</button></td>
                             </tr>
 
                             <!-- Customer Row 3 -->
@@ -107,7 +107,7 @@
                                 <td class="employee-id">CUST-003</td>
                                 <td>produce.EVERGROW@example.com</td>
                                 <td>+20 123 456 7892</td>
-                                <td><button class="details-btn" onclick="openModal('modal3')">More details...</button></td>
+                                <td><button class="details-btn" onclick="alert('Details not available for this customer')">More details...</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -116,178 +116,47 @@
         </main>
     </div>
 
-    <!-- Customer Modal 1 -->
+
+
+    <!-- Customer Details Modal -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Customer Details</h2>
                 <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
             </div>
-
             <div class="modal-body">
-                <div class="detail-section">
-                    <div class="detail-photo-container">
-                        <img src="../static/assets/0000009295.png" class="detail-photo" alt="Evergrow">
-                        <h3 class="detail-name">Ethyco</h3>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Customer Information</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Customer ID:</span>
-                            <span class="detail-value">CUST-001</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Name:</span>
-                            <span class="detail-value">Ethyco</span>
+                <!-- Content Cards in Modal -->
+                <div class="cards-container">
+                    <div class="card-section">
+                        <h3 class="section-header">Business Information</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Company Name:</strong> <span class="editable-text" data-field="companyName">Ethyco</span></p>
+                                <p><strong>Industry:</strong> <span class="editable-text" data-field="industry">Chemical Manufacturing</span></p>
+                                <p><strong>Business Type:</strong> <span class="editable-text" data-field="businessType">Corporation</span></p>
+                                <p><strong>Registration Number:</strong> <span class="editable-text" data-field="regNumber">REG-ETH-2020-001</span></p>
+                                <p><strong>Tax ID:</strong> <span class="editable-text" data-field="taxId">TAX-ETH-789456</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Contact Information</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Email:</span>
-                            <span class="detail-value">ethyco@example.com</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Phone:</span>
-                            <span class="detail-value">+20 123 456 7890</span>
-                        </div>
-                        <div class="detail-item full-width">
-                            <span class="detail-label">Address:</span>
-                            <span class="detail-value">123 Nile Street, Aswan, Egypt</span>
+                    <div class="card-section">
+                        <h3 class="section-header">Contact Details</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Email:</strong> <span class="editable-text" data-field="email">produce.ETHYDCO@example.com</span></p>
+                                <p><strong>Phone:</strong> <span class="editable-text" data-field="phone">+20 123 456 7890</span></p>
+                                <p><strong>Address:</strong> <span class="editable-text" data-field="address">Industrial Zone, Cairo, Egypt</span></p>
+                                <p><strong>Website:</strong> <span class="editable-text" data-field="website">www.ethyco.com</span></p>
+                                <p><strong>Contact Person:</strong> <span class="editable-text" data-field="contactPerson">Ahmed El-Masry</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Purchase History</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Registration Date:</span>
-                            <span class="detail-value">19 October 2023</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Customer Type</span>
-                            <span class="detail-value">Regular</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="modal-footer">
-                <div class="modal-footer-right">
-                    <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
-                    <button class="btn-add-employee">Edit Customer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Customer Modal 2 -->
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Customer Details</h2>
-                <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>Customer details for John Smith...</p>
             </div>
             <div class="modal-footer">
-                <div class="modal-footer-right">
-                    <button class="btn-secondary" onclick="closeModal('modal2')">Close</button>
-                    <button class="btn-add-employee">Edit Customer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Customer Modal 3 -->
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Customer Details</h2>
-                <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>Customer details for Michael Chen...</p>
-            </div>
-            <div class="modal-footer">
-                <div class="modal-footer-right">
-                    <button class="btn-secondary" onclick="closeModal('modal3')">Close</button>
-                    <button class="btn-add-employee">Edit Customer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Customer Modal 4 -->
-    <div id="modal4" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Customer Details</h2>
-                <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>Customer details for Omar Mahmoud...</p>
-            </div>
-            <div class="modal-footer">
-                <div class="modal-footer-right">
-                    <button class="btn-secondary" onclick="closeModal('modal4')">Close</button>
-                    <button class="btn-add-employee">Edit Customer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add/Edit Customer Modal -->
-    <div id="customerModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Add New Customer</h2>
-                <span class="close-btn" onclick="closeAddModal()">&times;</span>
-            </div>
-            <div class="modal-body">
-                <form id="customerForm">
-                    <div class="detail-grid">
-                        <div class="form-group">
-                            <label class="form-label">First Name</label>
-                            <input type="text" class="form-input" placeholder="Enter first name" id="firstName">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Last Name</label>
-                            <input type="text" class="form-input" placeholder="Enter last name" id="lastName">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-input" placeholder="Enter email" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Phone</label>
-                            <input type="tel" class="form-input" placeholder="Enter phone number" id="phone">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Customer ID</label>
-                            <input type="text" class="form-input" placeholder="Enter customer ID" id="customerId">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Address</label>
-                            <input type="text" class="form-input" placeholder="Enter address" id="address">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <div class="modal-footer-right">
-                    <button class="btn-secondary" onclick="closeAddModal()">Cancel</button>
-                    <button class="btn-add-employee" onclick="saveCustomer()">Save</button>
-                </div>
+                <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
+                <button class="btn-primary" id="editBtn1" onclick="toggleEdit('modal1')">Edit Details</button>
             </div>
         </div>
     </div>
@@ -344,6 +213,46 @@
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
                 document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Edit functionality
+        function toggleEdit(modalId) {
+            const modal = document.getElementById(modalId);
+            const editBtn = modal.querySelector('.btn-primary');
+            const editableElements = modal.querySelectorAll('.editable-text');
+            
+            if (editBtn.textContent === 'Edit Details') {
+                // Switch to edit mode
+                editBtn.textContent = 'Save Changes';
+                editBtn.style.backgroundColor = '#4caf50';
+                
+                editableElements.forEach(element => {
+                    const currentText = element.textContent;
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = currentText;
+                    input.className = 'edit-input';
+                    input.dataset.originalValue = currentText;
+                    
+                    element.style.display = 'none';
+                    element.parentNode.insertBefore(input, element.nextSibling);
+                });
+            } else {
+                // Save changes and switch back to view mode
+                editBtn.textContent = 'Edit Details';
+                editBtn.style.backgroundColor = '#4caf50';
+                
+                const inputs = modal.querySelectorAll('.edit-input');
+                inputs.forEach(input => {
+                    const editableElement = input.previousSibling;
+                    editableElement.textContent = input.value;
+                    editableElement.style.display = 'inline';
+                    input.remove();
+                });
+                
+                // You can add AJAX call here to save data to server
+                console.log('Customer changes saved for', modalId);
             }
         }
 

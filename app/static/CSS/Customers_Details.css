@@ -1,3 +1,23 @@
+/* Component Container - for isolation and modal positioning */
+.customer-details-component {
+    position: relative; /* Base for modal overlay */
+}
+
+/* Modal Overlay Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 1000; /* Ensure it's above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Main Card Container and Modal Positioning --- */
 .card-container {
     position: relative;
     width: min(1100px, 90%);
@@ -7,7 +27,23 @@
     gap: 1rem;
 }
 
-.card{
+.customer-card-modal {
+    /* Override for Modal View */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    width: min(1100px, 90%);
+    margin: 0;
+    max-height: 90vh; 
+    overflow-y: auto; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); 
+    border-radius: 1.5rem;
+}
+
+/* General Card Styling */
+.card {
     background: white;
     width: 100%;
     height: auto;
@@ -18,10 +54,12 @@
     padding: 1.5rem 2rem;
 }
 
+/* --- Header Section Styling (Section 1) --- */
+
 .card-header {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 2rem; /* زيادة التباعد بين الصورة والمعلومات */
 }
 
 .card-avatar {
@@ -45,45 +83,36 @@
 .card-info {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.8rem; /* تباعد أكبر بين صفوف الاسم والمعرف */
 }
 
 .info-row {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem;
+    display: flex; /* تغيير إلى Flexbox لمرونة المحتوى */
     align-items: center;
+    gap: 1.5rem; /* تباعد بين العنوان والقيمة */
 }
 
 .info-label {
     font-weight: 700;
     color: #064e3b;
-    font-size: 1rem;
+    font-size: 1.1rem; /* تكبير الخط قليلاً */
+    min-width: 60px; /* ضمان مساحة كافية للكلمة (Name: / ID:) */
 }
 
-.info-text {
+.detail-content {
+    display: flex; 
+    width: 100%;
+    /* للحفاظ على محاذاة جيدة في وضع القراءة */
+    padding: 0.2rem 0;
+}
+
+.detail-text {
     font-size: 1rem;
     color: #1f2937;
+    font-weight: 500;
 }
 
-.transport-details-card {
-    background: #ffffff;
-    border-radius: 1.5rem;
-    padding: 0;
-    margin: 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;    
-    height: auto;
-    position: relative;
-}
-
-
-.transport-id {
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 600;
-    font-family: Arial, sans-serif;
-}
+/* --- Action Buttons --- */
 
 .action-buttons {
     position: absolute;
@@ -111,20 +140,31 @@
     background: #d97706;
 }
 
-.action-btn svg {
-    width: 28px;
-    height: 28px;
-    stroke: #ffffff;
-    fill: none;
-    stroke-width: 2.5;
+.action-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+/* --- Details Card Styling (Section 2) --- */
+
+.transport-details-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; 
+    height: auto;
+    position: relative;
 }
 
 .details-list {
     margin-top: 30px;
+    /* عمودان متساويان */
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem 3rem;
-    padding: 0 2rem 2rem;
+    grid-template-columns: 1fr 1fr; 
+    gap: 2rem 5rem; /* تباعد رأسي أكبر (2rem) وتباعد أفقي كبير (5rem) */
+    padding: 0 2.5rem 2.5rem; /* زيادة التبطين للحواف */
     width: 100%;
 }
 
@@ -140,11 +180,14 @@
     color: #000000;
     margin-bottom: 0.5rem;
     font-family: Arial, sans-serif;
+    border-bottom: 2px solid #e0e0e0; /* خط فاصل تحت العنوان */
+    padding-bottom: 0.5rem;
 }
 
 .detail-value {
+    /* ينطبق هذا على detail-input فقط في وضع التعديل */
     width: 100%;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0; /* زيادة التبطين الرأسي لتبدو البيانات منتظمة */
     border: none;
     border-bottom: 1px solid #e5e7eb;
     font-size: 1rem;
@@ -158,106 +201,61 @@
     border-bottom-color: #064e3b;
 }
 
-@media (max-width: 1024px) {
+/* --- Utility Class --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Responsive Design (التصميم المتجاوب) --- */
+
+@media (max-width: 800px) {
     .card-container {
-        width: 94%;
+        width: 80%;
         margin: 100px auto 40px;
     }
-
-    .transport-details-card {
-        width: 94%;
-        margin: 100px auto 40px;
-        padding-bottom: 1rem;
+    .customer-card-modal {
+        width: 80%;
     }
-
-    .transport-badge {
-        width: 200px;
-        height: 240px;
-    }
-
-    .transport-badge .icon {
-        width: 80px;
-        height: 80px;
-    }
-
     .details-list {
-        grid-template-columns: repeat(2, 1fr);
         gap: 2rem 2.5rem;
         padding: 0 1.5rem 1.5rem;
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 650px) {
+    .customer-card-modal {
+        width: 80%;
+        margin: 0;
+    }
     .card-container {
-        width: 100%;
+        width: 80%;
         margin: 80px auto 30px;
         padding: 0 1rem;
     }
-
-    .transport-details-card {
-        width: 100%;
-        margin: 70px auto 40px;
-        padding: 0 0 1.5rem;
-    }
-
-    .transport-badge {
-        width: 170px;
-        height: 210px;
-    }
-
-    .transport-badge .icon {
-        width: 70px;
-        height: 70px;
-    }
-
-    .transport-icon-section {
-        margin-bottom: 2rem;
-    }
-
-    .details-list {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 0 1.25rem 1.5rem;
-    }
-
-    .action-buttons {
-        top: 1rem;
-        right: 1rem;
-    }
-
-    .action-btn {
-        width: 45px;
-        height: 45px;
-    }
-}
-
-@media (max-width: 768px) {
     .card {
-        width: 90%;
-        margin: 80px auto 20px;
         padding: 1.25rem 1.5rem;
     }
-
     .card-header {
+        /* التنسيق الرأسي للأجهزة الصغيرة */
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
     }
-
     .card-avatar {
         width: 76px;
         height: 76px;
     }
-}
-/* Add this class to your existing CSS */
-.hidden {
-    display: none !important;
-}
-
-/* Update the detail-content to manage display */
-.detail-content {
-    display: flex; /* or block, depending on desired layout */
-    width: 100%;
-    /* No change to the existing detail-value styling, as it applies to detail-input now */
+    .details-list {
+        grid-template-columns: 1fr; /* عمود واحد على الأجهزة الصغيرة */
+        gap: 1.5rem;
+        padding: 0 1.25rem 1.5rem;
+    }
+    .action-buttons {
+        top: 1rem;
+        right: 1rem;
+    }
+    .action-btn {
+        width: 45px;
+        height: 45px;
+    }
 }

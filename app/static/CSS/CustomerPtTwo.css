@@ -541,10 +541,80 @@ body {
     padding: 20px 30px;
     border-top: 2px solid #e8f5e9;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 10px;
     background: #f9f9f9;
     border-radius: 0 0 12px 12px;
+}
+
+/* Modal Card Styles - matching Employee_Page_Details design */
+.modal .cards-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.modal .card-section {
+    flex: 1;
+}
+
+.modal .section-header {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.modal .card {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 180px;
+}
+
+.modal .card-content p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333333;
+    font-weight: 500;
+}
+
+/* Edit Input Styles */
+.edit-input {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: #333333;
+    font-weight: 500;
+    width: auto;
+    min-width: 150px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.edit-input:focus {
+    outline: none;
+    border-color: #F6A416;
+    box-shadow: 0 0 0 2px rgba(246, 164, 22, 0.25);
+    background-color: white;
+}
+
+.editable-text {
+    display: inline;
+}
+
+/* Modal button transitions */
+.modal .btn-primary {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal .btn-primary:active {
+    transform: scale(0.98);
 }
 
 .dependent-btn {
