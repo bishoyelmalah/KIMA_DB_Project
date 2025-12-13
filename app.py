@@ -33,12 +33,9 @@ def create_app():
     #Customers Page
     @app.route('/customers')
     def customers_page():
-        customers = Customers.get(
-            columns="C_ID, C_Name",
-            conditions="C_ID > 5"
-        )
+        customers = Customers.get()
         print(customers)
-        return render_template("Customer_Page.html", customers = customers)
+        return render_template("CustomerPtTwo.html", customers = customers)
 
     @app.route('/add_customer', methods=["POST"])
     def add_customer():

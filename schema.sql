@@ -142,7 +142,7 @@ Create table Products(
     P_Name varchar(100) not null, 
     P_Description varchar(255),
     P_Expiry_Duration int, -- in years
-    p_Unit_Price Decimal (10,2),
+    P_Unit_Price Decimal (10,2),
     P_Cost_Price Decimal (10,2),
     P_Amount int ,
     P_Can_buy bit , -- boolean

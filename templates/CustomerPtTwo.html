@@ -10,43 +10,13 @@
     <div class="container">
 
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo">
-                <div class="logo-icon">☥</div>
-                <div class="logo-text">KIMA ASWAN</div>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item" onclick="window.location.href='Home_Page.html'">Dashboard</li>
-                <li class="nav-item" onclick="window.location.href='Employee_Page.html'">Employees</li>
-                <li class="nav-item" onclick="window.location.href='Supplier_Page.html'">Suppliers</li>
-                <li class="nav-item" onclick="window.location.href='Product_Page.html'">Products</li>
-                <li class="nav-item active" onclick="window.location.href='CustomerPtTwo.html'">Customers</li>
-                <li class="nav-item" onclick="window.location.href='Dependents.html'">Dependents</li>
-            </ul>
-            <div class="help-section">
-                <div class="help-title">Need help?</div>
-                <div class="help-link">Open our help center</div>
-            </div>
-        </aside>
+        {% include 'components/Sidebar.html' %}
 
         <!-- Main Content -->
         <main class="main-content">
 
             <!-- Header -->
-            <header class="header">
-                <div class="search-container">
-                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" style="width:20px; height:20px;"></span>
-                    <input type="text" class="search-box" id="searchBox" placeholder="Search customers...">
-                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" style="width:20px; height:20px;"></span>
-                </div>
-                <div class="header-right">
-                    <a href="Home_Page.html" class="header-link">Home</a>
-                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" style="width:20px; height:20px;"></button>
-                    <a href="SettingsPage.html" class="icon-btn-link">
-                        <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" style="width:20px; height:20px;"></button>
-                    </a>
-                </div>
-            </header>
+            {% include 'components/header.html' %}
 
             <!-- Content -->
             <div class="content">
@@ -79,36 +49,17 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <!-- Customer Row 1 -->
+                            {% for customer in customers %}
+                            <!-- Customer Row -->
                             <tr class="employee-row">
                                 <td><img src="../static/assets/0000009295.png" class="employee-photo" alt="Ethyco"></td>
-                                <td class="employee-name">Ethyco</td>
-                                <td class="employee-id">CUST-001</td>
-                                <td>produce.ETHYDCO@example.com</td>
-                                <td>+20 123 456 7890</td>
+                                <td class="employee-name">{{ customer.C_Name }}</td>
+                                <td class="employee-id">{{ customer.C_ID }}</td>
+                                <td>{{ customer.C_Email }}</td>
+                                <td>{{ customer.C_Phone }}</td>
                                 <td><button class="details-btn" onclick="openModal('modal1')">More details...</button></td>
                             </tr>
-
-                            <!-- Customer Row 2 -->
-                            <tr class="employee-row">
-                                <td><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="employee-photo" alt="Adam Samuel"></td>
-                                <td class="employee-name">Adam Samuel</td>
-                                <td class="employee-id">CUST-002</td>
-                                <td>produce.ADAM@example.com</td>
-                                <td>+20 123 456 7891</td>
-                                <td><button class="details-btn" onclick="openModal('modal2')">More details...</button></td>
-                            </tr>
-
-                            <!-- Customer Row 3 -->
-                            <tr class="employee-row">
-                                <td><img src="../static/assets/0000004486.jpg" class="employee-photo" alt="Evergrow"></td>
-                                <td class="employee-name">Evergrow</td>
-                                <td class="employee-id">CUST-003</td>
-                                <td>produce.EVERGROW@example.com</td>
-                                <td>+20 123 456 7892</td>
-                                <td><button class="details-btn" onclick="openModal('modal3')">More details...</button></td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -117,7 +68,7 @@
     </div>
 
     <!-- Customer Modal 1 -->
-    <div id="modal1" class="modal">
+    <div id="modal1" class="modal" onclick=window.location.href()>
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Customer Details</h2>
@@ -293,18 +244,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
-            <p class="footer-text">Designed for efficient chemical material inventory management</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Terms of Service</a>
-                <a href="#" class="footer-link">Contact Support</a>
-                <a href="#" class="footer-link">Documentation</a>
-            </div>
-        </div>
-    </footer>
+    {% include 'components/footer.html' %}
 
     <script>
         function openModal(id) {
