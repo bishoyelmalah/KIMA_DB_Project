@@ -12,9 +12,7 @@
         <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
 
 <!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
+
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
@@ -45,9 +43,12 @@
             <link rel="stylesheet" href="../static/CSS/components/header.css">
 
 <header class="header">
+    <button id="sidebarToggle" class="sidebar-toggle">
+        <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+    </button>
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-        <input type="text" class="search-box" placeholder="Search">
+        <input type="text" id="searchBox" class="search-box" placeholder="Search">
         <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
     </div>
     <div class="header-right">
@@ -133,47 +134,24 @@
     </footer>
 
     <script>
-        // Modal Functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
         // Search functionality
-        document.getElementById('searchBox').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('.employee-row');
-            
-            rows.forEach(row => {
-                const name = row.querySelector('.employee-name').textContent.toLowerCase();
-                const id = row.querySelector('.employee-id').textContent.toLowerCase();
+        const searchBox = document.getElementById('searchBox');
+        if (searchBox) {
+            searchBox.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('.supplier-card');
                 
-                if (name.includes(searchTerm) || id.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+                cards.forEach(card => {
+                    const transportId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
+                    
+                    if (transportId && transportId.includes(searchTerm)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
-        });
+        }
     </script>
 </body>
 </html>
