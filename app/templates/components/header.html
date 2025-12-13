@@ -1,6 +1,11 @@
-<link rel="stylesheet" href="../../static/CSS/components/header.css">
+<!-- Header Component -->
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/components/header.css') }}">
 
 <header class="header">
+    <!-- Sidebar Toggle Button (for mobile) -->
+    <button id="sidebarToggle" class="sidebar-toggle">
+        <img src="{{ url_for('static', filename='assets/menu-bar.png') }}" style="width: 35px; height: 35px;">
+    </button>
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
         <input type="text" class="search-box" placeholder="Search">
@@ -9,7 +14,7 @@
     <div class="header-right">
         <a class="header-link" onclick="window.location.href='/'">Home</a>
         <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
-        <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
+        <!-- Profile Dropdown -->
         <div class="profile-dropdown-wrapper">
             <button class="icon-btn profile-icon-btn" id="profileIconBtn" type="button">
                 <img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;">
@@ -36,4 +41,4 @@
     </div>
 </header>
 
-<script src="../../static/JS/components/profile-dropdown.js"></script>
+<script src="{{ url_for('static', filename='JS/components/profile-dropdown.js') }}"></script>
