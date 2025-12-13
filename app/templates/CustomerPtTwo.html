@@ -10,43 +10,82 @@
     <div class="container">
 
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo">
-                <div class="logo-icon">☥</div>
-                <div class="logo-text">KIMA ASWAN</div>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item" onclick="window.location.href='Home_Page.html'">Dashboard</li>
-                <li class="nav-item" onclick="window.location.href='Employee_Page.html'">Employees</li>
-                <li class="nav-item" onclick="window.location.href='Supplier_Page.html'">Suppliers</li>
-                <li class="nav-item" onclick="window.location.href='Product_Page.html'">Products</li>
-                <li class="nav-item active" onclick="window.location.href='CustomerPtTwo.html'">Customers</li>
-                <li class="nav-item" onclick="window.location.href='Dependents.html'">Dependents</li>
-            </ul>
-            <div class="help-section">
-                <div class="help-title">Need help?</div>
-                <div class="help-link">Open our help center</div>
-            </div>
-        </aside>
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<aside id="sidebar" class="sidebar closed">
+    <div class="logo">
+        <div class="logo-icon">☥</div>
+        <div class="logo-text">KIMA ASWAN</div>
+    </div>
+
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="window.location.href='/'">Dashboard</li>
+        <li class="nav-item" onclick="window.location.href='/employees'">Employees</li>
+        <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
+        <li class="nav-item" onclick="window.location.href='/products'">Products</li>
+        <li class="nav-item" onclick="window.location.href='/customers'">Customers</li>
+        <li class="nav-item" onclick="window.location.href='/Suppliers'">Suppliers</li>
+        <li class="nav-item" onclick="window.location.href='/Transportation'">Transportation</li>
+        <li class="nav-item" onclick="window.location.href='/Invoices'">Invoices</li>
+    </ul>
+
+    <div class="help-section">
+        <div class="help-title">Need help?</div>
+        <div class="help-link">Open our help center</div>
+    </div>
+</aside>
+
 
         <!-- Main Content -->
         <main class="main-content">
 
             <!-- Header -->
-            <header class="header">
-                <div class="search-container">
-                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" style="width:20px; height:20px;"></span>
-                    <input type="text" class="search-box" id="searchBox" placeholder="Search customers...">
-                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" style="width:20px; height:20px;"></span>
+            <link rel="stylesheet" href="../static/CSS/components/header.css">
+            <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
+
+<header class="header">
+    <!-- Sidebar Toggle Button (for mobile) -->
+    <button id="sidebarToggle" class="sidebar-toggle">
+        <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35px;">
+    </button>
+    <div class="search-container">
+        <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
+        <input type="text" class="search-box" placeholder="Search">
+        <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+    </div>
+    <div class="header-right">
+        <a class="header-link" onclick="window.location.href='/'">Home</a>
+        <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
+        <!-- Profile Dropdown -->
+        <div class="profile-dropdown-wrapper">
+            <button class="icon-btn profile-icon-btn" id="profileIconBtn" type="button">
+                <img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;">
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="user-info">
+                    <div class="user-icon">👤</div>
+                    <div class="user-details">
+                        <div class="username">Username</div>
+                        <div class="email">user.mail@gmail.com</div>
+                    </div>
                 </div>
-                <div class="header-right">
-                    <a href="Home_Page.html" class="header-link">Home</a>
-                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" style="width:20px; height:20px;"></button>
-                    <a href="SettingsPage.html" class="icon-btn-link">
-                        <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" style="width:20px; height:20px;"></button>
-                    </a>
-                </div>
-            </header>
+                <hr class="separator">
+                <button class="dropdown-item setting" onclick="openSettings()">
+                    <div class="setting-icon">⚙️</div>
+                    <span>Setting</span>
+                </button>
+                <button class="dropdown-item logout" onclick="logout()">
+                    <div class="logout-icon">▶</div>
+                    <span>Log out</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script src="../static/JS/components/profile-dropdown.js"></script>
+<script src="../static/JS/components/sidebar.js"></script>
+
 
             <!-- Content -->
             <div class="content">
@@ -87,7 +126,7 @@
                                 <td class="employee-id">CUST-001</td>
                                 <td>produce.ETHYDCO@example.com</td>
                                 <td>+20 123 456 7890</td>
-                                <td><button class="details-btn" onclick="openModal('modal1')">More details...</button></td>
+                                <td><button class="details-btn" onclick="alert('Customer details will be shown here')">More details...</button></td>
                             </tr>
 
                             <!-- Customer Row 2 -->
@@ -116,51 +155,6 @@
         </main>
     </div>
 
-
-
-    <!-- Customer Details Modal -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Customer Details</h2>
-                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <!-- Content Cards in Modal -->
-                <div class="cards-container">
-                    <div class="card-section">
-                        <h3 class="section-header">Business Information</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Company Name:</strong> <span class="editable-text" data-field="companyName">Ethyco</span></p>
-                                <p><strong>Industry:</strong> <span class="editable-text" data-field="industry">Chemical Manufacturing</span></p>
-                                <p><strong>Business Type:</strong> <span class="editable-text" data-field="businessType">Corporation</span></p>
-                                <p><strong>Registration Number:</strong> <span class="editable-text" data-field="regNumber">REG-ETH-2020-001</span></p>
-                                <p><strong>Tax ID:</strong> <span class="editable-text" data-field="taxId">TAX-ETH-789456</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <h3 class="section-header">Contact Details</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Email:</strong> <span class="editable-text" data-field="email">produce.ETHYDCO@example.com</span></p>
-                                <p><strong>Phone:</strong> <span class="editable-text" data-field="phone">+20 123 456 7890</span></p>
-                                <p><strong>Address:</strong> <span class="editable-text" data-field="address">Industrial Zone, Cairo, Egypt</span></p>
-                                <p><strong>Website:</strong> <span class="editable-text" data-field="website">www.ethyco.com</span></p>
-                                <p><strong>Contact Person:</strong> <span class="editable-text" data-field="contactPerson">Ahmed El-Masry</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
-                <button class="btn-primary" id="editBtn1" onclick="toggleEdit('modal1')">Edit Details</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -176,102 +170,31 @@
     </footer>
 
     <script>
-        function openModal(id) {
-            const modal = document.getElementById(id);
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
         function openAddModal() {
-            document.getElementById('customerForm').reset();
-            document.getElementById('customerModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeAddModal() {
-            document.getElementById('customerModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function saveCustomer() {
-            alert('Customer saved successfully!');
-            closeAddModal();
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Edit functionality
-        function toggleEdit(modalId) {
-            const modal = document.getElementById(modalId);
-            const editBtn = modal.querySelector('.btn-primary');
-            const editableElements = modal.querySelectorAll('.editable-text');
-            
-            if (editBtn.textContent === 'Edit Details') {
-                // Switch to edit mode
-                editBtn.textContent = 'Save Changes';
-                editBtn.style.backgroundColor = '#4caf50';
-                
-                editableElements.forEach(element => {
-                    const currentText = element.textContent;
-                    const input = document.createElement('input');
-                    input.type = 'text';
-                    input.value = currentText;
-                    input.className = 'edit-input';
-                    input.dataset.originalValue = currentText;
-                    
-                    element.style.display = 'none';
-                    element.parentNode.insertBefore(input, element.nextSibling);
-                });
-            } else {
-                // Save changes and switch back to view mode
-                editBtn.textContent = 'Edit Details';
-                editBtn.style.backgroundColor = '#4caf50';
-                
-                const inputs = modal.querySelectorAll('.edit-input');
-                inputs.forEach(input => {
-                    const editableElement = input.previousSibling;
-                    editableElement.textContent = input.value;
-                    editableElement.style.display = 'inline';
-                    input.remove();
-                });
-                
-                // You can add AJAX call here to save data to server
-                console.log('Customer changes saved for', modalId);
-            }
+            alert('Add customer functionality will be implemented');
         }
 
         // Search functionality
-        document.getElementById('searchBox').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('.employee-row');
-            
-            rows.forEach(row => {
-                const name = row.querySelector('.employee-name').textContent.toLowerCase();
-                const id = row.querySelector('.employee-id').textContent.toLowerCase();
-                const email = row.querySelectorAll('td')[3].textContent.toLowerCase();
-                
-                if (name.includes(searchTerm) || id.includes(searchTerm) || email.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.querySelector('.search-box');
+            if (searchBox) {
+                searchBox.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const rows = document.querySelectorAll('.employee-row');
+                    
+                    rows.forEach(row => {
+                        const name = row.querySelector('.employee-name').textContent.toLowerCase();
+                        const id = row.querySelector('.employee-id').textContent.toLowerCase();
+                        const email = row.querySelectorAll('td')[3].textContent.toLowerCase();
+                        
+                        if (name.includes(searchTerm) || id.includes(searchTerm) || email.includes(searchTerm)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            }
         });
     </script>
 
