@@ -17,7 +17,7 @@ def get(columns="*", conditions=None, order_by=None):
         result = conn.execute(sql)
         return [row._asdict() for row in result]
 
-def add(name, Description, ExpiaryDuration,UnitPrice , CostPrice, amount, canBuy, st_id):
+def add(name, Description, ExpiaryDuration, UnitPrice, CostPrice, amount, canBuy, st_id):
     with db.engine.connect() as conn:
         sql = text(
             f"INSERT INTO Products VALUES ('{name}' ,'{Description}', '{ExpiaryDuration}', '{UnitPrice}', '{CostPrice}', '{amount}' ,'{canBuy}','{st_id}')"
