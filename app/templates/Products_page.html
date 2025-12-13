@@ -11,15 +11,10 @@
     <div class="container">
         <!-- Include sidebar component from static/components/Sidebar/Sidebar.html -->
         {% include 'components/Sidebar.html' %}
-
-<script src="../static/JS/components/sidebar.js"></script>
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
             {% include 'components/header.html' %}
-
-<script src="../static/JS/components/profile-dropdown.js"></script>
-
 
             <!-- Content -->
             <div class="content">
@@ -28,7 +23,7 @@
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
                         <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
-                        <button class="btn-add-employee">+ Add Product</button>
+                        <button class="btn-add-employee" onclick="window.location.href='/add_product'">+ Add Product</button>
                     </div>
                 </div>
             <!-- ComputerShow? -->
@@ -39,8 +34,10 @@
                 </div>
 
                 <!-- Supplier cards -->
+                <div class="cards-container">
                 {% for product in products %}
-                <div class="supplier-card" onclick="openProductModal()">
+                <!-- <div class="supplier-card" onclick="openProductModal({{product.P_ID}})"> -->
+                <div class="supplier-card" onclick="window.location.href='/product_details/{{product.P_ID}}'">
                     <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
                     <div class="supplier-card__content">
                         <div class="supplier-card__id">Product ID: {{product.P_ID}}</div>
@@ -48,7 +45,7 @@
                     </div>
                 </div>
                 {% endfor %}
-
+            </div>
             </div>
         </main>
     </div>
@@ -159,12 +156,13 @@
 
     <script>
         // Product Modal Functions
-        function openProductModal() {
+        function openProductModal(id) {
             const modal = document.getElementById('productDetailsModal');
             if (modal) {
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }
+            window.location.href = `/product_details/${id}`;
         }
 
         function closeProductModal() {

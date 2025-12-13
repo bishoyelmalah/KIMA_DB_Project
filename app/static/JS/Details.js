@@ -101,9 +101,10 @@ async function saveTransport() {
 /**
  * Handles the delete action (as you had before)
  */
-function deleteTransport() {
+function deleteTransport(id) {
     if (confirm('Are you sure you want to delete this transportation record?')) {
         console.log('Delete action triggered for ID:', transportId);
+        window.location.href='/delete_product/';
         // Add your AJAX delete logic here
     }
 }
