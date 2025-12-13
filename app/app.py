@@ -5,6 +5,7 @@ from extensions import db
 # Import blueprints
 from routes.customer_routes import customer_bp
 from routes.product_routes import product_bp
+from routes.Suppliers_routes import suppliers_bp
 
 def create_app():
     app = Flask(__name__)
@@ -14,6 +15,7 @@ def create_app():
     # This tells Flask: "Go look in customer_routes.py for more URLs"
     app.register_blueprint(customer_bp)
     app.register_blueprint(product_bp)
+    app.register_blueprint(suppliers_bp)
 
     #Home Page
     @app.route('/')

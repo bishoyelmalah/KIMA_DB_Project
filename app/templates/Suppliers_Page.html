@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KIMA ASWAN - Employees</title>
-    <link rel="stylesheet" href="../Draft/EmptyMainPage.css">
+    <link rel="stylesheet" href="../static/CSS/Suppliers_Page.css">
 </head>
 <body>
     <div class="container">
@@ -101,13 +101,17 @@
                 </div>
 
                 <!-- Supplier cards -->
+                {% for supplier in suppliers %}
+
                 <div class="supplier-card">
                     <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
                     <div class="supplier-card__content">
-                        <div class="supplier-card__id">Supplier ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
+                        <div class="supplier-card__id">Supplier ID: {{supplier.Sup_ID}}</div>
+                        <div class="supplier-card__name">Name: {{supplier.Sup_Name}}</div>
                     </div>
                 </div>
+
+                {% endfor %}
 
             </div>
         </main>
