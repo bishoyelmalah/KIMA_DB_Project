@@ -1,67 +1,49 @@
-// ----- عناصر الصفحة -----
-const sidebar = document.getElementById("sidebar");
-const toggle = document.getElementById("sidebarToggle");
-const overlay = document.getElementById("sidebarOverlay");
+// Sidebar functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-
-// ----- Updates toggle button visibility -----
-function updateToggleVisibility() {
-    if (sidebar.classList.contains("closed")) {
-        setTimeout(() => {
-        toggle.style.display = 'flex';
-    }, 250);    // السايدبار مقفولة → زرار ظاهر
-    } else {
-        toggle.style.display = "none";   // السايدبار مفتوحة → اخفي الزرار
-    }
-}
-
-
-// ----- فتح وقفل السايدبار -----
-function toggleSidebar() {
-    const isClosed = sidebar.classList.toggle("closed");
-
-    if (!isClosed) {
-        // Open
-        overlay.classList.add("active");
-        document.body.classList.add("sidebar-open");
-    } else {
-        // Closed
-        overlay.classList.remove("active");
-        document.body.classList.remove("sidebar-open");
+    // Toggle sidebar
+    function toggleSidebar() {
+        const isOpen = !sidebar.classList.contains('closed');
+        
+        if (isOpen) {
+            // Close sidebar
+            sidebar.classList.add('closed');
+            sidebarOverlay.classList.remove('active');
+            sidebarToggle.classList.remove('hidden');
+        } else {
+            // Open sidebar
+            sidebar.classList.remove('closed');
+            sidebarOverlay.classList.add('active');
+            sidebarToggle.classList.add('hidden');
+        }
     }
 
-    updateToggleVisibility();
-}
+    // Close sidebar
+    function closeSidebar() {
+        sidebar.classList.add('closed');
+        sidebarOverlay.classList.remove('active');
+        sidebarToggle.classList.remove('hidden');
+    }
 
+    // Event listeners
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', toggleSidebar);
+    }
 
-// ----- الضغط على زرار التوجل -----
-toggle.addEventListener("click", () => {
-    toggleSidebar();
-});
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
 
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSidebar();
+        }
+    });
 
-// ----- الضغط على overlay -----
-overlay.addEventListener("click", () => {
-    sidebar.classList.add("closed");
-    overlay.classList.remove("active");
-    document.body.classList.remove("sidebar-open");
-    updateToggleVisibility();
-});
-
-
-// ----- عند تحميل الصفحة: السايدبار مقفولة على كل الأجهزة -----
-window.addEventListener("load", () => {
-    sidebar.classList.add("closed");
-    overlay.classList.remove("active");
-    document.body.classList.remove("sidebar-open");
-    updateToggleVisibility();
-});
-
-
-// ----- عند تغيير حجم الشاشة -----
-window.addEventListener("resize", () => {
-    sidebar.classList.add("closed");
-    overlay.classList.remove("active");
-    document.body.classList.remove("sidebar-open");
-    updateToggleVisibility();
+    // Initialize sidebar as closed
+    sidebar.classList.add('closed');
 });

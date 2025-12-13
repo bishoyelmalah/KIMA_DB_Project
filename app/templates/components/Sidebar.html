@@ -1,9 +1,5 @@
-<link rel="stylesheet" href="../../static/CSS/components/sidebar.css">
-
-<!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
+<!-- Sidebar Component -->
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/components/sidebar.css') }}">
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
@@ -27,4 +23,4 @@
     </div>
 </aside>
 
-<script src="../../static/JS/components/sidebar.js"></script>
+<script src="{{ url_for('static', filename='JS/components/sidebar.js') }}"></script>

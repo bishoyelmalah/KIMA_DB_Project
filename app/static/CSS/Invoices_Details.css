@@ -175,3 +175,11 @@
     width: 100%;
     /* No change to the existing detail-value styling, as it applies to detail-input now */
 }
+.cards-container{
+    padding: 30px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    align-content: start;
+}

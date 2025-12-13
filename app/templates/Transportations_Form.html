@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transportation</title>
+    <link rel="stylesheet" href="../Form Pages/Form_Style.css">
+</head>
+<body class="profile-page">
+    <!-- Profile Page -->
+    <header class="header">
+                <div class="logo">
+                    <img src="../app/static/assets/KimaLogo.png" style="width: 50px; height: 70px;" alt="logo" class="logo-icon">
+                    <h2> KIMA </h2>
+                </div>  
+                <div class="search-container">
+                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
+                    <input type="text" class="search-box" placeholder="Search">
+                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+                </div>
+        <div class="user-section">
+            <a href="Home_Page.html" class="header-link">Home</a>
+                <div class="header-right">
+                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
+                    <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;"></button>
+                </div>
+        </div>
+    </header>
+
+          <!--- Personal Information -->
+        <main class="main-content">
+         <div class="card">
+    <h2 class="section-title">Transportation Information</h2>
+
+    <form>
+        <div class="info-item">
+            <label for="transportationId"><strong>Transportation ID:</strong></label>
+            <input type="text" id="transportationId" name="transportationId" placeholder="TRANS-001">
+        </div>
+        <div class="info-item">
+            <!-- Adding foreign key for Cost -->
+            <label for="costId"><strong>Cost ID:</strong></label>
+            <input type="text" id="costId" name="costId" placeholder="COST-001">
+        </div>
+        <div class="info-item">
+            <!-- Adding foreign key for Invoices -->
+            <label for="invoiceId"><strong>Invoice ID:</strong></label>
+            <input type="text" id="invoiceId" name="invoiceId" placeholder="INV-001">
+        </div>
+    </form>
+</div> 
+
+
+                <!--- Distination Information -->
+ <div class="card">
+    <h2 class="section-title">Distination Information</h2>
+
+    <form>
+        <div class="info-item">
+            <label for="status"><strong>Status:</strong></label>
+            <input type="text" id="status" name="status" placeholder="In Transit">
+        </div>
+        <div class="info-item">
+            <label for="shippingAddress"><strong>Shipping Address:</strong></label>
+            <input type="text" id="shippingAddress" name="shippingAddress" placeholder="123 Nile St., Aswan, Egypt  ">
+        </div>
+        <div class="info-item">
+            <label for="departureDate"><strong>Departure Date:</strong></label>
+            <input type="date" id="departureDate" name="departureDate">
+        </div>
+        <div class="info-item">
+            <label for="arrivalDate"><strong>Arrival Date:</strong></label>
+            <input type="date" id="arrivalDate" name="arrivalDate">
+        </div>
+    </form>
+</div>
+
+<!--  Bottoms  -->
+<div class="button-group">
+    <button type="submit" class="btn btn-save">Save</button>
+    <button type="reset" class="btn btn-cancel">Cancel</button>
+</div>
+
+<div class="help-text">
+    Need to update your information? <a href="#" class="help-link">Contact HR</a>
+</body>
+</html>

@@ -11,19 +11,27 @@
     {% include 'components/header.html' %}
 
     <!-- Sidebar -->
-     {% include 'components/Sidebar.html' %}
+    {% include 'components/Sidebar.html' %}
 
-          <!--- Personal Information -->
+        <!--- Personal Information -->
         <main class="main-content">
-         <div class="card">
+        <div class="card">
     <h2 class="section-title">Product Information</h2>
 
     <form>
-         <div class="info-item">
+        <div class="info-item">
             <label for="productName"><strong>Product Name:</strong></label>
             <input type="text" id="productName" name="productName" placeholder="Product A">
         </div>
-
+        <div class="info-item">
+            <label for="productId"><strong>Product ID:</strong></label>
+            <input type="text" id="productId" name="productId" placeholder="PROD-001">
+        </div>
+        <!-- Adding foreign key for Stocks -->
+       <div class="info-item">
+            <label for="stocksId"><strong>Stocks ID:</strong></label>
+            <input type="text" id="stocksId" name="stocksId" placeholder="STOCK-001">
+        </div>
         <div class="info-item">
             <label for="Description"><strong>Description:</strong></label>
             <input type="text" id="description" name="description" placeholder="Description of the product">
