@@ -198,106 +198,7 @@
         </div>
     </div>
 
-    <!-- Additional modals for other employees would follow the same structure -->
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>Details for Ahmed Hassan...</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal2')">Close</button>
-                <button class="btn-primary">Edit Employee</button>
-            </div>
-        </div>
-    </div>
 
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <!-- Content Cards in Modal -->
-                <div class="cards-container">
-                    <div class="card-section">
-                        <h3 class="section-header">Job information</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Job type:</strong> <span class="editable-text" data-field="jobType">Full-time</span></p>
-                                <p><strong>positions:</strong> <span class="editable-text" data-field="position">Software Engineer</span></p>
-                                <p><strong>shift:</strong> <span class="editable-text" data-field="shift">Flexible</span></p>
-                                <p><strong>salary:</strong> <span class="editable-text" data-field="salary">$42,000/year</span></p>
-                                <p><strong>scientific degree:</strong> <span class="editable-text" data-field="degree">Bachelor's in Computer Science</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <h3 class="section-header">Personal details</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Birth date:</strong> <span class="editable-text" data-field="birthDate">July 22, 1988</span></p>
-                                <p><strong>Age:</strong> <span class="editable-text" data-field="age">36 years</span></p>
-                                <p><strong>Gender:</strong> <span class="editable-text" data-field="gender">Male</span></p>
-                                <p><strong>Marital status:</strong> <span class="editable-text" data-field="maritalStatus">Single</span></p>
-                                <p><strong>Military status:</strong> <span class="editable-text" data-field="militaryStatus">Completed</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal3')">Close</button>
-                <button class="btn-primary" id="editBtn3" onclick="toggleEdit('modal3')">Edit Details</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal4" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <!-- Content Cards in Modal -->
-                <div class="cards-container">
-                    <div class="card-section">
-                        <h3 class="section-header">Job information</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Job type:</strong> <span class="editable-text" data-field="jobType">Part-time</span></p>
-                                <p><strong>positions:</strong> <span class="editable-text" data-field="position">Production Assistant</span></p>
-                                <p><strong>shift:</strong> <span class="editable-text" data-field="shift">Evening (4 PM - 12 AM)</span></p>
-                                <p><strong>salary:</strong> <span class="editable-text" data-field="salary">$28,000/year</span></p>
-                                <p><strong>scientific degree:</strong> <span class="editable-text" data-field="degree">High School Diploma</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <h3 class="section-header">Personal details</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Birth date:</strong> <span class="editable-text" data-field="birthDate">December 10, 1995</span></p>
-                                <p><strong>Age:</strong> <span class="editable-text" data-field="age">29 years</span></p>
-                                <p><strong>Gender:</strong> <span class="editable-text" data-field="gender">Male</span></p>
-                                <p><strong>Marital status:</strong> <span class="editable-text" data-field="maritalStatus">Married</span></p>
-                                <p><strong>Military status:</strong> <span class="editable-text" data-field="militaryStatus">Completed</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal4')">Close</button>
-                <button class="btn-primary" id="editBtn4" onclick="toggleEdit('modal4')">Edit Details</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Include footer component from static/components/Footer/footer.html -->
     <link rel="stylesheet" href="../../static/CSS/components/footer.css">
@@ -379,9 +280,8 @@
                 // You can add AJAX call here to save data to server
                 console.log('Changes saved for', modalId);
             }
-        }
+        }   
 
-        // Search functionality
         document.getElementById('searchBox').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
             const rows = document.querySelectorAll('.employee-row');
@@ -389,8 +289,9 @@
             rows.forEach(row => {
                 const name = row.querySelector('.employee-name').textContent.toLowerCase();
                 const id = row.querySelector('.employee-id').textContent.toLowerCase();
+                const email = row.querySelectorAll('td')[3].textContent.toLowerCase();
                 
-                if (name.includes(searchTerm) || id.includes(searchTerm)) {
+                if (name.includes(searchTerm) || id.includes(searchTerm) || email.includes(searchTerm)) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';
