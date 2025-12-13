@@ -154,33 +154,6 @@
                 }
             },
 
-            async deleteProfile() {
-                if (!confirm('Are you sure you want to delete this customer profile? This action cannot be undone.')) {
-                    return;
-                }
-
-                try {
-                    // Replace with your actual API endpoint
-                    const response = await fetch(`/api/customer/${this.profileId}`, {
-                        method: 'DELETE',
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
-                    this.showMessage('Customer profile deleted successfully!', 'success');
-                    
-                    // Redirect after 2 seconds
-                    setTimeout(() => {
-                        window.location.href = '/customers'; // Update with your customers list page
-                    }, 2000);
-
-                } catch (error) {
-                    console.error('Error deleting customer profile:', error);
-                    this.showMessage('Failed to delete customer profile. Please try again.', 'error');
-                }
-            },
 
             triggerImageUpload() {
                 if (this.isEditing) {

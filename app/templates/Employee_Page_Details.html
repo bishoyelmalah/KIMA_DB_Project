@@ -5,31 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Card</title>
     <link rel="stylesheet" href="../static/CSS/Employee_Page_Details.css">
-    <style>
-       
-    </style>
 </head>
 <body>
+    {% include 'components/header.html' %}
+    {% include 'components/Sidebar.html' %}
     <div class="container">
         <h1>Profile</h1>
         
         <div class="profile-wrapper" data-profile-id="12345">
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="action-btn" onclick="profileManager.deleteProfile()" title="Delete Profile" aria-label="Delete profile">
+                <button class="action-btn" onclick="window.location.href='/delete_employee/{{details.E_ID}}'" title="Delete Profile" aria-label="Delete profile">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6'/%3E%3C/svg%3E" alt="Delete">
                 </button>
                 <button class="action-btn hidden" id="save-btn" onclick="profileManager.saveProfile()" title="Save Changes" aria-label="Save changes">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z'/%3E%3Cpolyline points='17 21 17 13 7 13 7 21'/%3E%3Cpolyline points='7 3 7 8 15 8'/%3E%3C/svg%3E" alt="Save">
                 </button>
-                <button class="action-btn" id="edit-btn" onclick="profileManager.toggleEditMode()" title="Edit Profile" aria-label="Edit profile">
+                <button class="action-btn" id="edit-btn" onclick="window.location.href='/edit_employee/{{details.E_ID}}'" title="Edit Profile" aria-label="Edit profile">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/%3E%3Cpath d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/%3E%3C/svg%3E" alt="Edit">
                 </button>
             </div>
 
             <!-- Upper Section -->
             <div class="upper-section">
-                <div class="profile-image-container">
+                <!-- <div class="profile-image-container">
                     <div class="white-circle" onclick="profileManager.triggerImageUpload()">
                         <img src="https://via.placeholder.com/200/0d4d3d/ffffff?text=Profile" alt="Profile" class="profile-image" id="profile-img">
                         <div class="image-upload-overlay">
@@ -37,32 +36,31 @@
                         </div>
                     </div>
                     <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="profileManager.handleImageUpload(event)">
-                </div>
+                </div> -->
                 
                 <div class="green-info-box">
                     <div class="info-item">
                         <span class="info-label">Name:</span>
-                        <span class="info-text" data-field="name">John Doe</span>
+                        <span class="info-text" data-field="name">{{details.Fname + " " + details.Mname + " " + details.Lname}}</span>
                         <input type="text" class="info-input hidden" name="name" placeholder="Enter name">
                     </div>
                     <div class="info-item">
                         <span class="info-label">ID:</span>
-                        <span class="info-text" data-field="id">EMP-12345</span>
-                        <input type="text" class="info-input hidden" name="id" placeholder="Enter ID">
+                        <span class="info-text" data-field="id">{{details.E_ID}}</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">SSN:</span>
-                        <span class="info-text" data-field="ssn">***-**-1234</span>
+                        <span class="info-text" data-field="ssn">{{details.E_SSN}}</span>
                         <input type="text" class="info-input hidden" name="ssn" placeholder="Enter SSN">
                     </div>
                     <div class="info-item">
                         <span class="info-label">Email:</span>
-                        <span class="info-text" data-field="email">john.doe@company.com</span>
+                        <span class="info-text" data-field="email">{{details.E_Email}}</span>
                         <input type="email" class="info-input hidden" name="email" placeholder="Enter email">
                     </div>
                     <div class="info-item">
                         <span class="info-label">Phone:</span>
-                        <span class="info-text" data-field="phone">+1 (555) 123-4567</span>
+                        <span class="info-text" data-field="phone"></span>
                         <input type="tel" class="info-input hidden" name="phone" placeholder="Enter phone">
                     </div>
                 </div>
@@ -73,28 +71,28 @@
                 <div class="section">
                     <h3 class="section-title">Job Information</h3>
                     <div class="detail-item">
-                        <span class="detail-label">Job type:</span>
-                        <span class="detail-text" data-field="job_type">Full-time</span>
+                        <span class="detail-label">Degree:</span>
+                        <span class="detail-text" data-field="job_type">{{details.E_Job_Degree}}</span>
                         <input type="text" class="detail-input hidden" name="job_type" placeholder="Enter job type">
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Position:</span>
-                        <span class="detail-text" data-field="position">Senior Developer</span>
+                        <span class="detail-text" data-field="position">{{details.E_Job_Position}}</span>
                         <input type="text" class="detail-input hidden" name="position" placeholder="Enter position">
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Shift:</span>
-                        <span class="detail-text" data-field="shift">Day Shift (9AM - 5PM)</span>
+                        <span class="detail-text" data-field="shift">{{details.E_Shift}}</span>
                         <input type="text" class="detail-input hidden" name="shift" placeholder="Enter shift">
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Salary:</span>
-                        <span class="detail-text" data-field="salary">$85,000/year</span>
+                        <span class="detail-text" data-field="salary"></span>
                         <input type="text" class="detail-input hidden" name="salary" placeholder="Enter salary">
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Scientific degree:</span>
-                        <span class="detail-text" data-field="degree">Bachelor of Science</span>
+                        <span class="detail-text" data-field="degree">{{details.E_Scientific_Degree}}</span>
                         <input type="text" class="detail-input hidden" name="degree" placeholder="Enter degree">
                     </div>
                 </div>
@@ -103,17 +101,17 @@
                     <h3 class="section-title">Personal Details</h3>
                     <div class="detail-item">
                         <span class="detail-label">Birth date:</span>
-                        <span class="detail-text" data-field="birth_date">January 15, 1990</span>
+                        <span class="detail-text" data-field="birth_date">{{details.E_BD}}</span>
                         <input type="date" class="detail-input hidden" name="birth_date">
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Age:</span>
-                        <span class="detail-text" data-field="age">34 years</span>
+                        <span class="detail-text" data-field="age"></span>
                         <input type="number" class="detail-input hidden" name="age" placeholder="Enter age">
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Gender:</span>
-                        <span class="detail-text" data-field="gender">Male</span>
+                        <span class="detail-text" data-field="gender">{{details.E_Gender}}</span>
                         <select class="detail-input hidden" name="gender">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -122,7 +120,7 @@
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Marital status:</span>
-                        <span class="detail-text" data-field="marital_status">Married</span>
+                        <span class="detail-text" data-field="marital_status">{{details.E_Marital_Status}}</span>
                         <select class="detail-input hidden" name="marital_status">
                             <option value="Single">Single</option>
                             <option value="Married">Married</option>
@@ -132,7 +130,7 @@
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Military status:</span>
-                        <span class="detail-text" data-field="military_status">Completed</span>
+                        <span class="detail-text" data-field="military_status">{{details.E_Military_Status}}</span>
                         <select class="detail-input hidden" name="military_status">
                             <option value="Completed">Completed</option>
                             <option value="Exempted">Exempted</option>
@@ -144,6 +142,7 @@
             </div>
         </div>
     </div>
-    <script src="../static/JS/Employee&CustomerDetails.js"></script>
+    {% include 'components/footer.html' %}
+    <script src="../static/JS/EmployeeDetails.js"></script>
 </body>
 </html>

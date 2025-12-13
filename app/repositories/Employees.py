@@ -53,10 +53,10 @@ def delete(condition):
         
 #-----------------------------------------------------------------------------------
 
-#Fname, Mname, Lname, E_SSN, E_Email, E_Job_Position, E_Job_Degree, E_Marital_Status, E_Military_Status, E_BD, E_Gender, E_Shift, E_Governate, E_City, E_Street, E_Scientific_Degree, Dep_ID
+def custom(query):
+    with db.engine.connect() as conn:
+        sql = text(query)
+        result = conn.execute(sql)
+        return [row._asdict() for row in result]
 
-# add ("bavly","peter","barsoum","30507062800366","fvfvf@gmail.com","Engineer","Senior","single","exempted","2005-7-6","male","night","cairo","cairo","5th avenue","phd", "1")
-# add ("Maria","peter","barsoum","305070628008988366","fvfmvf@gmail.com","Engineer","Senior","single","exempted","2005-7-6","male","night","cairo","cairo","5th avenue","phd", "1")
-# edit ("E_ID = 16", "Bavitooo","peter","barsoum","655665565656605070628008988366","bavito@Kima.com","Engineer","Senior","single","exempted","2005-7-6","male","night","cairo","cairo","5th avenue","phd", "1")
-# delete ("E_ID = 20")
-# print(get())
+# print(custom("SELECT Dep_ID FROM Departments WHERE Dep_Name = 'Quality Control'"))

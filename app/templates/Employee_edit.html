@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Employee</title>
+    <title>Edit Employee</title>
     <link rel="stylesheet" href="../static/CSS/Form_Style.css">
 </head>
 <body class="profile-page">
@@ -13,7 +13,7 @@
 
     <main class="main-content">
         <!-- Single form wrapping all three sections -->
-        <form method="POST" action="{{ url_for('employee.add_employee') }}">
+        <form method="POST" action="{{ url_for('employee.edit_employee', id=employee.E_ID) }}">
             
             <!--- Personal Information -->
             <div class="card">
@@ -21,59 +21,59 @@
 
                 <div class="info-item">
                     <label for="firstName"><strong>First Name:</strong></label>
-                    <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                    <input type="text" id="firstName" name="firstName" value="{{employee.Fname}}" placeholder="John" required>
                 </div>
                 <div class="info-item">
                     <label for="middleName"><strong>Middle Name:</strong></label>
-                    <input type="text" id="middleName" name="middleName" placeholder="Doe">
+                    <input type="text" id="middleName" name="middleName" value="{{employee.Mname}}" placeholder="Doe">
                 </div>
                 <div class="info-item">
                     <label for="lastName"><strong>Last Name:</strong></label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
+                    <input type="text" id="lastName" name="lastName" value="{{employee.Lname}}" placeholder="Smith" required>
                 </div>
 
                 <div class="info-item">
                     <label for="birthDate"><strong>Birth Date:</strong></label>
-                    <input type="date" id="birthDate" name="birthDate" required>
+                    <input type="date" id="birthDate" name="birthDate" value="{{employee.E_BD}}" required>
                 </div>
 
                 <div class="info-item">
                     <label for="governate"><strong>Governate:</strong></label>
-                    <input type="text" id="governate" name="governate" placeholder="Egypt" required>
+                    <input type="text" id="governate" name="governate" value="{{employee.E_Governate}}" placeholder="Egypt" required>
                 </div>
 
                 <div class="info-item">
                     <label for="city"><strong>City:</strong></label>
-                    <input type="text" id="city" name="city" placeholder="Aswan" required>
+                    <input type="text" id="city" name="city" value="{{employee.E_City}}" placeholder="Aswan" required>
                 </div>
 
                 <div class="info-item">
                     <label for="street"><strong>Street:</strong></label>
-                    <input type="text" id="street" name="street" placeholder="123 Nile St." required>
+                    <input type="text" id="street" name="street" value="{{employee.E_Street}}" placeholder="123 Nile St." required>
                 </div>
 
                 <div class="info-item">
                     <label for="gender"><strong>Gender:</strong></label>
                     <select id="gender" name="gender" required>
                         <option value="">Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="male" {% if employee.E_Gender == 'male' %}selected{% endif %}>Male</option>
+                        <option value="female" {% if employee.E_Gender == 'female' %}selected{% endif %}>Female</option>
                     </select>
                 </div>
 
                 <div class="info-item">
                     <label for="ssn"><strong>SSN:</strong></label>
-                    <input type="text" id="ssn" name="ssn" placeholder="123-45-6789" required>
+                    <input type="text" id="ssn" name="ssn" value="{{employee.E_SSN}}" placeholder="123-45-6789" required>
                 </div>
 
                 <div class="info-item">
                     <label for="maritalStatus"><strong>Marital Status:</strong></label>
-                    <input type="text" id="maritalStatus" name="maritalStatus" placeholder="Single/Married" required>
+                    <input type="text" id="maritalStatus" name="maritalStatus" value="{{employee.E_Marital_Status}}" placeholder="Single/Married" required>
                 </div>
 
                 <div class="info-item">
                     <label for="militaryStatus"><strong>Military Status:</strong></label>
-                    <input type="text" id="militaryStatus" name="militaryStatus" placeholder="Completed/Exempted">
+                    <input type="text" id="militaryStatus" name="militaryStatus" value="{{employee.E_Military_Status}}" placeholder="Completed/Exempted">
                 </div>
             </div> 
 
@@ -88,7 +88,7 @@
 
                 <div class="info-item">
                     <label for="email"><strong>Email:</strong></label>
-                    <input type="email" id="email" name="email" placeholder="john.engineer@example.com" required>
+                    <input type="email" id="email" name="email" value="{{employee.E_Email}}" placeholder="john.engineer@example.com" required>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
                     <select id="department" name="department" required>
                         <option value="">Select</option>
                         {% for dept in depts %}
-                        <option value="{{dept.Dep_Name}}">{{dept.Dep_Name}}</option>
+                        <option value="{{dept.Dep_Name}}" {% if dept.Dep_Name == dept_name %}selected{% endif %}>{{dept.Dep_Name}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -111,7 +111,7 @@
                     <select id="position" name="position" required>
                         <option value="">Select</option>
                         {% for position in positions %}
-                        <option value="{{position.S_Job_Position}}">{{position.S_Job_Position}}</option>
+                        <option value="{{position.S_Job_Position}}" {% if position.S_Job_Position == employee.E_Job_Position %}selected{% endif %}>{{position.S_Job_Position}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -121,7 +121,7 @@
                     <select id="jobDegree" name="jobDegree" required>
                         <option value="">Select</option>
                         {% for degree in degrees %}
-                        <option value="{{degree.S_Job_Degree}}">{{degree.S_Job_Degree}}</option>
+                        <option value="{{degree.S_Job_Degree}}" {% if degree.S_Job_Degree == employee.E_Job_Degree %}selected{% endif %}>{{degree.S_Job_Degree}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -130,22 +130,22 @@
                     <label for="shift"><strong>Job Shift:</strong></label>
                     <select id="shift" name="shift" required>
                         <option value="">Select</option>
-                        <option value="morning">Morning</option>
-                        <option value="evening">Evening</option>
-                        <option value="night">Night</option>
+                        <option value="morning" {% if employee.E_Shift == 'morning' %}selected{% endif %}>Morning</option>
+                        <option value="evening" {% if employee.E_Shift == 'evening' %}selected{% endif %}>Evening</option>
+                        <option value="night" {% if employee.E_Shift == 'night' %}selected{% endif %}>Night</option>
                     </select>
                 </div>
 
                 <div class="info-item">
                     <label for="degree"><strong>Scientific Degree:</strong></label>
-                    <input type="text" id="degree" name="degree" placeholder="PhD in Chemical Engineering" required>
+                    <input type="text" id="degree" name="degree" value="{{employee.E_Scientific_Degree}}" placeholder="PhD in Chemical Engineering" required>
                 </div>
             </div>
 
             <!--  Buttons  -->
             <div class="button-group" style="margin: 10;">
                 <button type="submit" class="btn btn-save">Save</button>
-                <button type="reset" class="btn btn-cancel">Cancel</button>
+                <button type="button" class="btn btn-cancel" onclick="window.location.href='/employee_details/{{employee.E_ID}}'">Cancel</button>
             </div>
         </form>
     </main>
