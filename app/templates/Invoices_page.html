@@ -99,16 +99,26 @@
                 </div>
 
                 <!-- Supplier cards -->
-
-                {% for invoice in invoices %}
-                <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/receipt.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Invoice ID: {{invoice.I_ID}}</div>
-                    </div>
+                <div class="cards-container">
+                        <div class="supplier-card">
+                            <div class="supplier-card__image"> <img src="../static/assets/receipt.png" width="150px" height="150px"></div>
+                            <div class="supplier-card__content">
+                                <div class="supplier-card__id">Invoice ID: 1200</div>
+                            </div>
+                        </div>
+                        <div class="supplier-card">
+                            <div class="supplier-card__image"> <img src="../static/assets/receipt.png" width="150px" height="150px"></div>
+                            <div class="supplier-card__content">
+                                <div class="supplier-card__id">Invoice ID: 1200</div>
+                            </div>
+                        </div>
+                        <div class="supplier-card">
+                            <div class="supplier-card__image"> <img src="../static/assets/receipt.png" width="150px" height="150px"></div>
+                            <div class="supplier-card__content">
+                                <div class="supplier-card__id">Invoice ID: 1200</div>
+                            </div>
+                        </div>
                 </div>
-                {% endfor %}
-
             </div>
         </main>
     </div>

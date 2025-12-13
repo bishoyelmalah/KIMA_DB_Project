@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="../static/CSS/Form_Style.css">
+</head>
+<body class="profile-page">
+    <!-- Profile Page -->
+    {% include 'components/header.html' %}
+
+    <!-- Sidebar -->
+    {% include 'components/Sidebar.html' %}
+
+        <!--- Personal Information -->
+        <main class="main-content">
+        <div class="card">
+        <h2 class="section-title">Product Information</h2>
+
+<form method="POST" action="{{ url_for('product.edit_product', id=details.P_ID) }}">
+
+        <div class="info-item">
+            <label for="productName"><strong>Product Name:</strong></label>
+            <input type="text" id="productName" name="productName" placeholder="Product A" value="{{details.P_Name}}">
+        </div>
+
+        <!-- Adding foreign key for Stocks -->
+        <div class="info-item">
+            <label for="stocksId"><strong>Stocks ID:</strong></label>
+            <input type="text" id="stocksId" name="stocksId" placeholder="STOCK-001" value="{{details.St_ID}}">
+        </div>
+
+        <div class="info-item">
+            <label for="description"><strong>Description:</strong></label>
+            <input type="text" id="description" name="description" placeholder="Description of the product" value="{{details.P_Description}}">
+        </div>
+ </div> 
+
+
+        <!--- Price Information -->
+        <div class="card">
+        <h2 class="section-title">Price Information</h2>
+
+        <div class="info-item">
+            <label for="unitPrice"><strong>Unit Price:</strong></label>
+            <input type="text" id="unitPrice" name="unitPrice" placeholder="$100.00" value="{{details.P_Unit_Price}}">
+        </div>
+
+        <div class="info-item">
+            <label for="costPrice"><strong>Cost Price:</strong></label>
+            <input type="text" id="costPrice" name="costPrice" placeholder="$80.00" value="{{details.P_Cost_Price}}">
+        </div>
+
+ </div>
+
+        <!--- Expiration Information -->
+
+        <div class="card">
+        <h2 class="section-title">Expiration Information</h2>
+       
+        <div class="info-item">
+            <label for="expirationDate"><strong>Expiration Duration:</strong></label>
+            <input type="text" id="expirationDate" name="expirationDate" placeholder="12 months" value="{{details.P_Expiry_Duration}}">
+        </div>
+ </div>
+
+        <!-- Accessibility & Storage Information  -->
+        <div class="card">
+        <h2 class="section-title">Accessibility & Storage Information</h2>
+
+        <div class="info-item">
+            <label for="canBePurchased"><strong>Can be Purchased:</strong></label>
+            <select id="canBePurchased" name="canBePurchased">
+                <option value="">Select...</option>
+                <option value="1" {% if details.P_Can_buy == 1 or details.P_Can_buy == '1' %}selected{% endif %}>Yes</option>
+                <option value="0" {% if details.P_Can_buy == 0 or details.P_Can_buy == '0' %}selected{% endif %}>No</option>
+            </select>
+        </div>
+
+
+        <div class="info-item">
+            <label for="amountStored"><strong>Amount Stored:</strong></label>
+            <input type="text" id="amountStored" name="amountStored" placeholder="100 units" value="{{details.P_Amount}}">
+        </div>
+
+
+        <!--  Bottoms  -->
+        <div class="button-group">
+            <button type="submit" class="btn btn-save">Update</button>
+            <button type="reset" class="btn btn-cancel">Cancel</button>
+        </div>
+</form>
+
+<div class="help-text">
+    Need to update your information? <a href="#" class="help-link">Contact HR</a>
+</body>
+</html>

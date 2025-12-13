@@ -20,7 +20,7 @@
         <button class="action-btn hidden" id="save-btn" onclick="saveTransport()" title="Save Changes" aria-label="Save changes to transportation record">
             <img src="../static/assets/diskette.png" alt="save" style="width:30px; height:30px;">
         </button>
-        <button class="action-btn" id="edit-btn" onclick="toggleEditMode()" title="Edit" aria-label="Edit transportation record">
+        <button class="action-btn" id="edit-btn" onclick="window.location.href='/edit_product/{{details.P_ID}}'" title="Edit" aria-label="Edit transportation record">
             <img src="../static/assets/edit.png" alt="Edit" style="width:30px; height:30px;">
         </button>
     </div>
