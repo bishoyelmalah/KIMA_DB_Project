@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
+    <title>Add Invoices</title>
     <link rel="stylesheet" href="../Form Pages/Form_Style.css">
 </head>
 <body class="profile-page">
@@ -30,80 +30,73 @@
           <!--- Personal Information -->
         <main class="main-content">
          <div class="card">
-    <h2 class="section-title">Product Information</h2>
+    <h2 class="section-title">Personal Information</h2>
 
     <form>
+        <div class="info-item">
+            <label for="invoicesId"><strong>Invoices ID:</strong></label>
+            <input type="text" id="invoicesId" name="invoicesId" placeholder="INV-001">
+        </div>
+        <!-- Adding foreign key for Customer -->
          <div class="info-item">
-            <label for="productName"><strong>Product Name:</strong></label>
-            <input type="text" id="productName" name="productName" placeholder="Product A">
+            <label for="customerName"><strong>Customer Name:</strong></label>
+            <input type="text" id="customerName" name="customerName" placeholder="John Doe">
         </div>
+        <!--Adding foreign key for Cost -->
+         <div class="info-item">
+            <label for="costId"><strong>Cost ID:</strong></label>
+            <input type="text" id="costId" name="costId" placeholder="John Doe">
+        </div>
+        <!--Adding foreign key for Customer Feedbacks -->
         <div class="info-item">
-            <label for="productId"><strong>Product ID:</strong></label>
-            <input type="text" id="productId" name="productId" placeholder="PROD-001">
+            <label for="customerFeedbacksId"><strong>Customer Feedbacks ID:</strong></label>
+            <input type="text" id="customerFeedbacksId" name="customerFeedbacksId" placeholder="John Doe">
         </div>
-        <!-- Adding foreign key for Stocks -->
-       <div class="info-item">
-            <label for="stocksId"><strong>Stocks ID:</strong></label>
-            <input type="text" id="stocksId" name="stocksId" placeholder="STOCK-001">
-        </div>
-        <div class="info-item">
-            <label for="Description"><strong>Description:</strong></label>
-            <input type="text" id="description" name="description" placeholder="Description of the product">
-        </div>
-
     </form>
 </div> 
-
-
-                <!--- Price Information -->
+<!-- Issue Details -->
  <div class="card">
-    <h2 class="section-title">Price Information</h2>
-
+    <h2 class="section-title">Issue Details </h2>
     <form>
         <div class="info-item">
-            <label for="Unit price"><strong>Unit Price:</strong></label>
-            <input type="text" id="unitPrice" name="unitPrice" placeholder="$100.00">
+            <label for="amount"><strong>Amount:</strong></label>
+            <input type="text" id="amount" name="amount" placeholder="1000">
         </div>
 
         <div class="info-item">
-            <label for="costPrice"><strong>Cost Price:</strong></label>
-            <input type="text" id="costPrice" name="costPrice" placeholder="$80.00">
+            <label for="issueDate"><strong>Currency:</strong></label>
+            <input type="text" id="currency" name="currency" placeholder="USD">
         </div>
-    </form>
+        </form>
 </div>
-
-            <!--- Expiration Information -->
-
-<div class="card">
-    <h2 class="section-title">Expiration Information</h2>
+<!-- Payment Information -->
+  <div class="card">
+    <h2 class="section-title">Payment Information </h2>
     <form>
         <div class="info-item">
-            <label for="expirationDate"><strong>Expiration Duration:</strong></label>
-            <input type="text" id="expirationDate" name="expirationDate" placeholder="12 months">
-        </div>
-    </form>
-</div>
-
-<!--- Accessibility & Storage Information  --->
-<div class="card">
-    <h2 class="section-title">Accessibility & Storage Information</h2>
-
-    <form>
-        <div class="info-item">
-            <label for="canBePurchased"><strong>Can be Purchased:</strong></label>
-            <select id="canBePurchased" name="canBePurchased">
+            <label for="Status"><strong>Status:</strong></label>
+            <select id="Status" name="Status">
                 <option value="">Select...</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="Succsesful">Succsesful</option>
+                <option value="Pending">Pending</option>
+                <option value="Cancelled">Cancelled</option>
             </select>
         </div>
+        <div class="info-item">
+            <label for="Method"><strong>Method:</strong></label>
+            <select id="Method" name="Method">
+                <option value="">Select...</option>
+                <option value="Credit card">Credit card</option>
+                <option value="Cash">Cash</option>
+                <option value="Bank">Bank</option>
+            </select>
+        </div>    
+        <div class="info-item">
+            <label for="paymentDate"><strong>Payment Date:</strong></label>
+            <input type="date" id="paymentDate" name="paymentDate">
+        </div>
     </form>
-
-    <div class="info-item">
-        <label for="amountStored"><strong>Amount Stored:</strong></label>
-        <input type="text" id="amountStored" name="amountStored" placeholder="100 units">
 </div>
-
 
 <!--  Bottoms  -->
 <div class="button-group">

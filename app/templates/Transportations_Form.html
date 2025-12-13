@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
+    <title>Add Transportation</title>
     <link rel="stylesheet" href="../Form Pages/Form_Style.css">
 </head>
 <body class="profile-page">
@@ -30,80 +30,50 @@
           <!--- Personal Information -->
         <main class="main-content">
          <div class="card">
-    <h2 class="section-title">Product Information</h2>
+    <h2 class="section-title">Transportation Information</h2>
 
     <form>
-         <div class="info-item">
-            <label for="productName"><strong>Product Name:</strong></label>
-            <input type="text" id="productName" name="productName" placeholder="Product A">
+        <div class="info-item">
+            <label for="transportationId"><strong>Transportation ID:</strong></label>
+            <input type="text" id="transportationId" name="transportationId" placeholder="TRANS-001">
         </div>
         <div class="info-item">
-            <label for="productId"><strong>Product ID:</strong></label>
-            <input type="text" id="productId" name="productId" placeholder="PROD-001">
-        </div>
-        <!-- Adding foreign key for Stocks -->
-       <div class="info-item">
-            <label for="stocksId"><strong>Stocks ID:</strong></label>
-            <input type="text" id="stocksId" name="stocksId" placeholder="STOCK-001">
+            <!-- Adding foreign key for Cost -->
+            <label for="costId"><strong>Cost ID:</strong></label>
+            <input type="text" id="costId" name="costId" placeholder="COST-001">
         </div>
         <div class="info-item">
-            <label for="Description"><strong>Description:</strong></label>
-            <input type="text" id="description" name="description" placeholder="Description of the product">
+            <!-- Adding foreign key for Invoices -->
+            <label for="invoiceId"><strong>Invoice ID:</strong></label>
+            <input type="text" id="invoiceId" name="invoiceId" placeholder="INV-001">
         </div>
-
     </form>
 </div> 
 
 
-                <!--- Price Information -->
+                <!--- Distination Information -->
  <div class="card">
-    <h2 class="section-title">Price Information</h2>
+    <h2 class="section-title">Distination Information</h2>
 
     <form>
         <div class="info-item">
-            <label for="Unit price"><strong>Unit Price:</strong></label>
-            <input type="text" id="unitPrice" name="unitPrice" placeholder="$100.00">
+            <label for="status"><strong>Status:</strong></label>
+            <input type="text" id="status" name="status" placeholder="In Transit">
         </div>
-
         <div class="info-item">
-            <label for="costPrice"><strong>Cost Price:</strong></label>
-            <input type="text" id="costPrice" name="costPrice" placeholder="$80.00">
+            <label for="shippingAddress"><strong>Shipping Address:</strong></label>
+            <input type="text" id="shippingAddress" name="shippingAddress" placeholder="123 Nile St., Aswan, Egypt  ">
+        </div>
+        <div class="info-item">
+            <label for="departureDate"><strong>Departure Date:</strong></label>
+            <input type="date" id="departureDate" name="departureDate">
+        </div>
+        <div class="info-item">
+            <label for="arrivalDate"><strong>Arrival Date:</strong></label>
+            <input type="date" id="arrivalDate" name="arrivalDate">
         </div>
     </form>
 </div>
-
-            <!--- Expiration Information -->
-
-<div class="card">
-    <h2 class="section-title">Expiration Information</h2>
-    <form>
-        <div class="info-item">
-            <label for="expirationDate"><strong>Expiration Duration:</strong></label>
-            <input type="text" id="expirationDate" name="expirationDate" placeholder="12 months">
-        </div>
-    </form>
-</div>
-
-<!--- Accessibility & Storage Information  --->
-<div class="card">
-    <h2 class="section-title">Accessibility & Storage Information</h2>
-
-    <form>
-        <div class="info-item">
-            <label for="canBePurchased"><strong>Can be Purchased:</strong></label>
-            <select id="canBePurchased" name="canBePurchased">
-                <option value="">Select...</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </div>
-    </form>
-
-    <div class="info-item">
-        <label for="amountStored"><strong>Amount Stored:</strong></label>
-        <input type="text" id="amountStored" name="amountStored" placeholder="100 units">
-</div>
-
 
 <!--  Bottoms  -->
 <div class="button-group">
