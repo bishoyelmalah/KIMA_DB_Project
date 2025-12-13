@@ -80,38 +80,89 @@
                 </div>
             </div>
 
-            <!-- Content Cards -->
-            <div class="cards-container">
-                <div class="card-section">
-                    <h3 class="section-header">Job information</h3>
-                    <div class="card">
-                        <div class="card-content">
-                            <p><strong>Job type:</strong></p>
-                            <p><strong>positions:</strong></p>
-                            <p><strong>shift:</strong></p>
-                            <p><strong>salary:</strong></p>
-                            <p><strong>scientific degree:</strong></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-section">
-                    <h3 class="section-header">Personal details</h3>
-                    <div class="card">
-                        <div class="card-content">
-                            <p><strong>Birth date:</strong></p>
-                            <p><strong>Age:</strong></p>
-                            <p><strong>Gender:</strong></p>
-                            <p><strong>Marital status:</strong></p>
-                            <p><strong>Military status:</strong></p>
-                        </div>
-                    </div>
-                </div>
+            <!-- More Details Button -->
+            <div class="more-details-section">
+                <button class="more-details-btn" onclick="openDetailsModal()">
+                    More Details
+                </button>
             </div>
 
             <!-- Bottom Button -->
             <button class="departments-btn">
                 Departments details →
             </button>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detailsModal" class="details-modal">
+        <div class="details-modal-content">
+            <div class="details-modal-header">
+                <h2>Employee Details</h2>
+                <span class="details-close-btn" onclick="closeDetailsModal()">&times;</span>
+            </div>
+            <div class="details-modal-body">
+                <!-- Content Cards in Modal -->
+                <div class="cards-container">
+                    <div class="card-section">
+                        <h3 class="section-header">Job information</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Job type:</strong></p>
+                                <p><strong>positions:</strong></p>
+                                <p><strong>shift:</strong></p>
+                                <p><strong>salary:</strong></p>
+                                <p><strong>scientific degree:</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h3 class="section-header">Personal details</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Birth date:</strong></p>
+                                <p><strong>Age:</strong></p>
+                                <p><strong>Gender:</strong></p>
+                                <p><strong>Marital status:</strong></p>
+                                <p><strong>Military status:</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="details-modal-footer">
+                <button class="btn-secondary" onclick="closeDetailsModal()">Close</button>
+                <button class="btn-primary">Edit Details</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openDetailsModal() {
+            const modal = document.getElementById('detailsModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeDetailsModal() {
+            const modal = document.getElementById('detailsModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailsModal');
+            if (event.target === modal) {
+                closeDetailsModal();
+            }
+        }
+    </script>
         </div>
     </div>
 

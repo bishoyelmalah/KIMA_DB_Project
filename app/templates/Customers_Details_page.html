@@ -8,30 +8,33 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="card-container">
+<div class="customer-details-component">
+    <div class="modal-overlay hidden"></div>
+
+    <div class="card-container customer-card-modal">
         <div class="action-buttons">
-            <button class="action-btn" onclick="deleteTransport()" title="Delete" aria-label="Delete transportation record">
+            <button class="action-btn delete-btn" onclick="deleteTransport()" title="Delete" aria-label="Delete transportation record">
                 <img src="../static/assets/delete.png" alt="Delete" style="width:30px; height:30px;">
             </button>
-            <button class="action-btn hidden" id="save-btn" onclick="saveTransport()" title="Save Changes" aria-label="Save changes to transportation record">
-                <img src="../static/assets/diskette.png" alt="save" style="width:30px; height:30px;">
+            <button class="action-btn save-btn hidden" id="save-btn" onclick="saveTransport()" title="Save Changes" aria-label="Save changes to transportation record">
+                <img src="../static/assets/diskette.png" alt="Save" style="width:30px; height:30px;">
             </button>
-            <button class="action-btn" id="edit-btn" onclick="toggleEditMode()" title="Edit" aria-label="Edit transportation record">
+            <button class="action-btn edit-btn" id="edit-btn" onclick="toggleEditMode()" title="Edit" aria-label="Edit transportation record">
                 <img src="../static/assets/edit.png" alt="Edit" style="width:30px; height:30px;">
             </button>
         </div>
-    
-        <div class="card">
+
+        <div class="card header-card">
             <div class="card-header">
                 <div class="card-avatar">
-                    <img src="../../static/assets/user.png" alt="user avatar" width="130px" height="130px">
+                    <img src="../static/assets/user.png" alt="user avatar" width="130px" height="130px">
                 </div>
                 <div class="card-info">
                     <div class="info-row">
                         <span class="info-label">Name:</span>
                         <div class="detail-content">
-                            <span class="detail-text" data-field="name">Test</span>
-                            <input type="text" class="detail-value detail-input hidden" id="name" name="name" value="Test">
+                            <span class="detail-text" data-field="name">Test Name</span>
+                            <input type="text" class="detail-value detail-input hidden" id="name" name="name" value="Test Name">
                         </div>
                     </div>
                     <div class="info-row">
@@ -44,57 +47,129 @@
                 </div>
             </div>
         </div>
-    
-        <div class="transport-details-card">
+
+        <div class="transport-details-card details-card">
             <div class="details-list" id="transport-details-form">
+                
                 <div class="detail-item">
-                    <label class="detail-label" for="category">Address:</label>
+                    <label class="detail-label" for="address">Address:</label>
                     <div class="detail-content">
-                        <span class="detail-text" data-field="category">Chemicals</span>
-                        <input type="text" class="detail-value detail-input hidden" id="category" name="category" value="Chemicals">
+                        <span class="detail-text" data-field="address">123 Example St</span>
+                        <input type="text" class="detail-value detail-input hidden" id="address" name="address" value="123 Example St">
                     </div>
                 </div>
+                
                 <div class="detail-item">
-                    <label class="detail-label" for="category">Phone:</label>
+                    <label class="detail-label" for="phone">Phone:</label>
                     <div class="detail-content">
-                        <span class="detail-text" data-field="category">Chemicals</span>
-                        <input type="text" class="detail-value detail-input hidden" id="category" name="category" value="Chemicals">
+                        <span class="detail-text" data-field="phone">555-1234</span>
+                        <input type="text" class="detail-value detail-input hidden" id="phone" name="phone" value="555-1234">
                     </div>
                 </div>
+                
                 <div class="detail-item">
-                    <label class="detail-label" for="productionDate">Status:</label>
+                    <label class="detail-label" for="status">Status:</label>
                     <div class="detail-content">
-                        <span class="detail-text" data-field="productionDate">2025-01-15</span>
-                        <input type="text" class="detail-value detail-input hidden" id="productionDate" name="productionDate" value="2025-01-15">
+                        <span class="detail-text" data-field="status">Active</span>
+                        <input type="text" class="detail-value detail-input hidden" id="status" name="status" value="Active">
                     </div>
                 </div>
-    
+                
                 <div class="detail-item">
-                    <label class="detail-label" for="expiryDuration">Phone:</label>
+                    <label class="detail-label" for="phone_alt">Phone (Alt):</label>
                     <div class="detail-content">
-                        <span class="detail-text" data-field="expiryDuration">12 months</span>
-                        <input type="text" class="detail-value detail-input hidden" id="expiryDuration" name="expiryDuration" value="12 months">
+                        <span class="detail-text" data-field="phone_alt">555-5678</span>
+                        <input type="text" class="detail-value detail-input hidden" id="phone_alt" name="phone_alt" value="555-5678">
                     </div>
                 </div>
-    
+                
                 <div class="detail-item">
-                    <label class="detail-label" for="costPrice">Rating:</label>
+                    <label class="detail-label" for="rating">Rating:</label>
                     <div class="detail-content">
-                        <span class="detail-text" data-field="costPrice">50.00</span>
-                        <input type="text" class="detail-value detail-input hidden" id="costPrice" name="costPrice" value="50.00">
+                        <span class="detail-text" data-field="rating">4.5 Stars</span>
+                        <input type="text" class="detail-value detail-input hidden" id="rating" name="rating" value="4.5 Stars">
                     </div>
                 </div>
-    
+                
                 <div class="detail-item">
-                    <label class="detail-label" for="weight">Email:</label>
+                    <label class="detail-label" for="email">Email:</label>
                     <div class="detail-content">
-                        <span class="detail-text" data-field="weight">20 kg</span>
-                        <input type="text" class="detail-value detail-input hidden" id="weight" name="weight" value="20 kg">
+                        <span class="detail-text" data-field="email">test@example.com</span>
+                        <input type="text" class="detail-value detail-input hidden" id="email" name="email" value="test@example.com">
                     </div>
                 </div>
-    
+                
             </div>
         </div>
     </div>
+</div>
+
+<script>
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Edit functionality
+        function toggleEdit(modalId) {
+            const modal = document.getElementById(modalId);
+            const editBtn = modal.querySelector('.btn-primary');
+            const editableElements = modal.querySelectorAll('.editable-text');
+            
+            if (editBtn.textContent === 'Edit Details') {
+                // Switch to edit mode
+                editBtn.textContent = 'Save Changes';
+                editBtn.style.backgroundColor = '#4caf50';
+                
+                editableElements.forEach(element => {
+                    const currentText = element.textContent;
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = currentText;
+                    input.className = 'edit-input';
+                    input.dataset.originalValue = currentText;
+                    
+                    element.style.display = 'none';
+                    element.parentNode.insertBefore(input, element.nextSibling);
+                });
+            } else {
+                // Save changes and switch back to view mode
+                editBtn.textContent = 'Edit Details';
+                editBtn.style.backgroundColor = '#F6A416';
+                
+                const inputs = modal.querySelectorAll('.edit-input');
+                inputs.forEach(input => {
+                    const editableElement = input.previousSibling;
+                    editableElement.textContent = input.value;
+                    editableElement.style.display = 'inline';
+                    input.remove();
+                });
+                
+                // You can add AJAX call here to save data to server
+                console.log('Changes saved for', modalId);
+            }
+        }
+
+</script>
 </body>
 </html>
