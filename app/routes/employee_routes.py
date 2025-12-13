@@ -11,3 +11,8 @@ def list_products():
 @employee_bp.route('/add_employee')
 def add_employee():
     return render_template('Employee_Form.html')
+
+@employee_bp.route('/employee_details/<int:id>')
+def employee_details(id):
+    data = Employees.get(conditions=f"E_ID = {id}")
+    return render_template('Employee_Page_Details.html', details = data)

@@ -57,7 +57,7 @@
                                 <td class="employee-job-position">{{employee.E_Job_Position}}</td>
                                 <td class="employee-job-position">{{employee.E_Job_Degree}}</td>
                                 <td>
-                                    <button class="details-btn" onclick="openModal('modal1')">More details...</button>
+                                    <button class="details-btn" onclick="window.location.href='/employee_details/{{employee.E_ID}}'">More details...</button>
                                 </td>
                             </tr>
                             {% endfor %}
