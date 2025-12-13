@@ -53,10 +53,10 @@
 
                 <!-- Dependents Grid -->
                 <div class="dependents-grid" id="dependentsGrid">
-                    <!-- Dependent Card 1 -->
+                    {% for dependent in dependents %}
                     <div class="dependent-card">
                         <div class="card-header">
-                            <div class="dependent-header">Dependent 1</div>
+                            <div class="dependent-header">{{dependent.D_Name}}</div>
                             <div class="card-actions">
                                 <button class="action-icon edit-icon" onclick="editDependent(1)" title="Edit">
                                     <img src="../KIMA_DB_Project/static/assets/pen-line-svgrepo-com.png" alt="Edit">
@@ -70,241 +70,45 @@
                             <div class="info-row">
                                 <div class="info-item">
                                     <span class="info-label">ID:</span>
-                                    <span class="info-value">DEP-001</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Name:</span>
-                                    <span class="info-value">Ahmed Hassan</span>
+                                    <span class="info-value">{{dependent.D_ID}}</span>
                                 </div>
                             </div>
                             <div class="info-row">
                                 <div class="info-item">
                                     <span class="info-label">Phone:</span>
-                                    <span class="info-value">+20 123 456 789</span>
+                                    <span class="info-value">{{dependent.D_Phone}}</span>
                                 </div>
                                 <div class="info-item">
                                     <span class="info-label">SSN:</span>
-                                    <span class="info-value">***-**-1234</span>
+                                    <span class="info-value">{{dependent.D_SSN}}</span>
                                 </div>
                             </div>
                             <div class="info-row">
                                 <div class="info-item">
-                                    <span class="info-label">Age:</span>
-                                    <span class="info-value">14 years</span>
-                                </div>
-                                <div class="info-item">
                                     <span class="info-label">Birth Date:</span>
-                                    <span class="info-value">10/06/2010</span>
+                                    <span class="info-value">{{dependent.D_BD}}</span>
                                 </div>
                             </div>
                             <div class="info-row">
                                 <div class="info-item">
                                     <span class="info-label">Relationship:</span>
-                                    <span class="info-value">Son</span>
+                                    <span class="info-value">{{dependent.D_Relation_Type}}</span>
                                 </div>
                                 <div class="info-item">
                                     <span class="info-label">Gender:</span>
-                                    <span class="info-value">Male</span>
+                                    <span class="info-value">{{dependent.D_Gender}}</span>
                                 </div>
                             </div>
                             <div class="info-row full-width">
                                 <div class="info-item">
                                     <span class="info-label">Military Status:</span>
-                                    <span class="info-value">Not Applicable</span>
+                                    <span class="info-value">{{dependent.D_Marital_status}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Dependent Card 2 -->
-                    <div class="dependent-card">
-                        <div class="card-header">
-                            <div class="dependent-header">Dependent 2</div>
-                            <div class="card-actions">
-                                <button class="action-icon edit-icon" onclick="editDependent(2)" title="Edit">
-                                    <img src="https://i.postimg.cc/fy3szJyY/pen_line_svgrepo_com.png" alt="Edit">
-                                </button>
-                                <button class="action-icon delete-icon" onclick="deleteDependent(2)" title="Delete">
-                                    <img src="https://i.postimg.cc/cJHTvY78/trash-alt-svgrepo-com.png" alt="Delete">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="dependent-info">
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">ID:</span>
-                                    <span class="info-value">DEP-002</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Name:</span>
-                                    <span class="info-value">Fatma Mohamed</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Phone:</span>
-                                    <span class="info-value">+20 123 456 790</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">SSN:</span>
-                                    <span class="info-value">***-**-5678</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Age:</span>
-                                    <span class="info-value">12 years</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Birth Date:</span>
-                                    <span class="info-value">15/03/2012</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Relationship:</span>
-                                    <span class="info-value">Daughter</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Gender:</span>
-                                    <span class="info-value">Female</span>
-                                </div>
-                            </div>
-                            <div class="info-row full-width">
-                                <div class="info-item">
-                                    <span class="info-label">Military Status:</span>
-                                    <span class="info-value">Not Applicable</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dependent Card 3 -->
-                    <div class="dependent-card">
-                        <div class="card-header">
-                            <div class="dependent-header">Dependent 3</div>
-                            <div class="card-actions">
-                                <button class="action-icon edit-icon" onclick="editDependent(3)" title="Edit">
-                                    <img src="https://i.postimg.cc/fy3szJyY/pen_line_svgrepo_com.png" alt="Edit">
-                                </button>
-                                <button class="action-icon delete-icon" onclick="deleteDependent(3)" title="Delete">
-                                    <img src="https://i.postimg.cc/cJHTvY78/trash-alt-svgrepo-com.png" alt="Delete">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="dependent-info">
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">ID:</span>
-                                    <span class="info-value">DEP-003</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Name:</span>
-                                    <span class="info-value">Omar Ali</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Phone:</span>
-                                    <span class="info-value">+20 123 456 791</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">SSN:</span>
-                                    <span class="info-value">***-**-9012</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Age:</span>
-                                    <span class="info-value">16 years</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Birth Date:</span>
-                                    <span class="info-value">22/08/2008</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Relationship:</span>
-                                    <span class="info-value">Son</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Gender:</span>
-                                    <span class="info-value">Male</span>
-                                </div>
-                            </div>
-                            <div class="info-row full-width">
-                                <div class="info-item">
-                                    <span class="info-label">Military Status:</span>
-                                    <span class="info-value">Not Applicable</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dependent Card 4 -->
-                    <div class="dependent-card">
-                        <div class="card-header">
-                            <div class="dependent-header">Dependent 4</div>
-                            <div class="card-actions">
-                                <button class="action-icon edit-icon" onclick="editDependent(4)" title="Edit">
-                                    <img src="https://i.postimg.cc/fy3szJyY/pen_line_svgrepo_com.png" alt="Edit">
-                                </button>
-                                <button class="action-icon delete-icon" onclick="deleteDependent(4)" title="Delete">
-                                    <img src="https://i.postimg.cc/cJHTvY78/trash-alt-svgrepo-com.png" alt="Delete">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="dependent-info">
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">ID:</span>
-                                    <span class="info-value">DEP-004</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Name:</span>
-                                    <span class="info-value">Layla Ibrahim</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Phone:</span>
-                                    <span class="info-value">+20 123 456 792</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">SSN:</span>
-                                    <span class="info-value">***-**-3456</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Age:</span>
-                                    <span class="info-value">10 years</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Birth Date:</span>
-                                    <span class="info-value">05/11/2014</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="info-label">Relationship:</span>
-                                    <span class="info-value">Daughter</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Gender:</span>
-                                    <span class="info-value">Female</span>
-                                </div>
-                            </div>
-                            <div class="info-row full-width">
-                                <div class="info-item">
-                                    <span class="info-label">Military Status:</span>
-                                    <span class="info-value">Not Applicable</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    {% endfor %}
+              </div>
             </div>
 
             <!-- Footer -->

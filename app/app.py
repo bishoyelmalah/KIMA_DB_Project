@@ -9,6 +9,7 @@ from routes.Suppliers_routes import suppliers_bp
 from routes.employee_routes import employee_bp
 from routes.transportation_routes import transportation_bp
 from routes.invoice_routes import invoice_bp
+from routes.dependent_routes import dependent_bp
 
 def create_app():
     app = Flask(__name__)
@@ -22,7 +23,8 @@ def create_app():
     app.register_blueprint(employee_bp)
     app.register_blueprint(transportation_bp)
     app.register_blueprint(invoice_bp)
-
+    app.register_blueprint(dependent_bp)
+   
     #Home Page
     @app.route('/')
     def login():
