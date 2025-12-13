@@ -68,151 +68,35 @@
         </main>
     </div>
 
-
-
-    <!-- Customer Details Modal -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Customer Details</h2>
-                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <!-- Content Cards in Modal -->
-                <div class="cards-container">
-                    <div class="card-section">
-                        <h3 class="section-header">Business Information</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Company Name:</strong> <span class="editable-text" data-field="companyName">Ethyco</span></p>
-                                <p><strong>Industry:</strong> <span class="editable-text" data-field="industry">Chemical Manufacturing</span></p>
-                                <p><strong>Business Type:</strong> <span class="editable-text" data-field="businessType">Corporation</span></p>
-                                <p><strong>Registration Number:</strong> <span class="editable-text" data-field="regNumber">REG-ETH-2020-001</span></p>
-                                <p><strong>Tax ID:</strong> <span class="editable-text" data-field="taxId">TAX-ETH-789456</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <h3 class="section-header">Contact Details</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Email:</strong> <span class="editable-text" data-field="email">produce.ETHYDCO@example.com</span></p>
-                                <p><strong>Phone:</strong> <span class="editable-text" data-field="phone">+20 123 456 7890</span></p>
-                                <p><strong>Address:</strong> <span class="editable-text" data-field="address">Industrial Zone, Cairo, Egypt</span></p>
-                                <p><strong>Website:</strong> <span class="editable-text" data-field="website">www.ethyco.com</span></p>
-                                <p><strong>Contact Person:</strong> <span class="editable-text" data-field="contactPerson">Ahmed El-Masry</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
-                <button class="btn-primary" id="editBtn1" onclick="toggleEdit('modal1')">Edit Details</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     {% include 'components/footer.html' %}
 
     <script>
-        function openModal(id) {
-            const modal = document.getElementById(id);
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
         function openAddModal() {
-            document.getElementById('customerForm').reset();
-            document.getElementById('customerModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeAddModal() {
-            document.getElementById('customerModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function saveCustomer() {
-            alert('Customer saved successfully!');
-            closeAddModal();
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Edit functionality
-        function toggleEdit(modalId) {
-            const modal = document.getElementById(modalId);
-            const editBtn = modal.querySelector('.btn-primary');
-            const editableElements = modal.querySelectorAll('.editable-text');
-            
-            if (editBtn.textContent === 'Edit Details') {
-                // Switch to edit mode
-                editBtn.textContent = 'Save Changes';
-                editBtn.style.backgroundColor = '#4caf50';
-                
-                editableElements.forEach(element => {
-                    const currentText = element.textContent;
-                    const input = document.createElement('input');
-                    input.type = 'text';
-                    input.value = currentText;
-                    input.className = 'edit-input';
-                    input.dataset.originalValue = currentText;
-                    
-                    element.style.display = 'none';
-                    element.parentNode.insertBefore(input, element.nextSibling);
-                });
-            } else {
-                // Save changes and switch back to view mode
-                editBtn.textContent = 'Edit Details';
-                editBtn.style.backgroundColor = '#4caf50';
-                
-                const inputs = modal.querySelectorAll('.edit-input');
-                inputs.forEach(input => {
-                    const editableElement = input.previousSibling;
-                    editableElement.textContent = input.value;
-                    editableElement.style.display = 'inline';
-                    input.remove();
-                });
-                
-                // You can add AJAX call here to save data to server
-                console.log('Customer changes saved for', modalId);
-            }
+            alert('Add customer functionality will be implemented');
         }
 
         // Search functionality
-        document.getElementById('searchBox').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('.employee-row');
-            
-            rows.forEach(row => {
-                const name = row.querySelector('.employee-name').textContent.toLowerCase();
-                const id = row.querySelector('.employee-id').textContent.toLowerCase();
-                const email = row.querySelectorAll('td')[3].textContent.toLowerCase();
-                
-                if (name.includes(searchTerm) || id.includes(searchTerm) || email.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.querySelector('.search-box');
+            if (searchBox) {
+                searchBox.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const rows = document.querySelectorAll('.employee-row');
+                    
+                    rows.forEach(row => {
+                        const name = row.querySelector('.employee-name').textContent.toLowerCase();
+                        const id = row.querySelector('.employee-id').textContent.toLowerCase();
+                        const email = row.querySelectorAll('td')[3].textContent.toLowerCase();
+                        
+                        if (name.includes(searchTerm) || id.includes(searchTerm) || email.includes(searchTerm)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            }
         });
     </script>
 

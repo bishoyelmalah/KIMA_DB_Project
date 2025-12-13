@@ -1,9 +1,15 @@
 
 // Variable to track the current mode
 let isEditing = false;
-const transportIdElement = document.querySelector('.transport-id');
-// Assuming the transport ID is stored in a data attribute
-const transportId = transportIdElement.getAttribute('data-transport-id');
+
+// Function to get transport ID dynamically
+function getTransportId() {
+    const transportIdElement = document.querySelector('.transport-id');
+    if (transportIdElement) {
+        return transportIdElement.getAttribute('data-transport-id');
+    }
+    return null;
+}
 
 /**
  * Toggles the card between view and edit modes.
@@ -53,6 +59,7 @@ function toggleEditMode() {
 async function saveTransport() {
     const formData = {};
     const detailInputs = document.querySelectorAll('.detail-input');
+    const transportId = getTransportId();
     
     // 1. Collect data from input fields
     detailInputs.forEach(input => {
@@ -61,6 +68,11 @@ async function saveTransport() {
     });
 
     console.log('Data to be sent:', formData);
+
+    if (!transportId) {
+        alert('Transport ID not found');
+        return;
+    }
 
     try {
         // 2. Send data using the Fetch API (AJAX)
@@ -101,10 +113,17 @@ async function saveTransport() {
 /**
  * Handles the delete action (as you had before)
  */
+<<<<<<< HEAD
 function deleteTransport(id) {
+=======
+function deleteTransport() {
+    const transportId = getTransportId();
+>>>>>>> 0d0222236de163a0b3ebf9579fb1a0a5a42ec84f
     if (confirm('Are you sure you want to delete this transportation record?')) {
         console.log('Delete action triggered for ID:', transportId);
         window.location.href='/delete_product/';
         // Add your AJAX delete logic here
+        // After successful deletion, you might want to close the modal
+        // closeTransportModal();
     }
 }
