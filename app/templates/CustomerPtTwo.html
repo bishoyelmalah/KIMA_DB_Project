@@ -25,7 +25,7 @@
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" style="width:20px; height:20px;"></button>
                         <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" style="width:20px; height:20px;"></button>
-                        <button class="btn-add-employee" onclick="openAddModal()">+ Add Customer</button>
+                        <button class="btn-add-employee" onclick="window.location.href = '/add_customer'">+ Add Customer</button>
                     </div>
                 </div>
 
@@ -59,28 +59,9 @@
                                 <td>{{ customer.C_Phone }}</td>
                                 <td><button class="details-btn" onclick="openModal('modal1')">More details...</button></td>
                             </tr>
-                            {% endfor %}
-
-                            <!-- Customer Row 2 -->
-                            <tr class="employee-row">
-                                <td><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="employee-photo" alt="Adam Samuel"></td>
-                                <td class="employee-name">Adam Samuel</td>
-                                <td class="employee-id">CUST-002</td>
-                                <td>produce.ADAM@example.com</td>
-                                <td>+20 123 456 7891</td>
-                                <td><button class="details-btn" onclick="alert('Details not available for this customer')">More details...</button></td>
-                            </tr>
-
-                            <!-- Customer Row 3 -->
-                            <tr class="employee-row">
-                                <td><img src="../static/assets/0000004486.jpg" class="employee-photo" alt="Evergrow"></td>
-                                <td class="employee-name">Evergrow</td>
-                                <td class="employee-id">CUST-003</td>
-                                <td>produce.EVERGROW@example.com</td>
-                                <td>+20 123 456 7892</td>
-                                <td><button class="details-btn" onclick="alert('Details not available for this customer')">More details...</button></td>
-                            </tr>
+                                {% endfor %}
                         </tbody>
+                       
                     </table>
                 </div>
             </div>

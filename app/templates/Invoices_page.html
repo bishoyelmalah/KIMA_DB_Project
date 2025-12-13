@@ -101,6 +101,18 @@
                 </div>
 
                 <!-- Supplier cards -->
+<<<<<<< HEAD:app/templates/Invoices_page.html
+
+                {% for invoice in invoices %}
+                <div class="supplier-card">
+                    <div class="supplier-card__image"> <img src="../static/assets/receipt.png" width="150px" height="150px"></div>
+                    <div class="supplier-card__content">
+                        <div class="supplier-card__id">Invoice ID: {{invoice.I_ID}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+
+=======
                 <div class="cards-container">
                         <div class="supplier-card">
                             <div class="supplier-card__image"> <img src="../static/assets/receipt.png" width="150px" height="150px"></div>
@@ -121,6 +133,7 @@
                             </div>
                         </div>
                 </div>
+>>>>>>> b37a881b96b1a0377f19277feb50e6db30c10e9f:app/templates/Incoives_page.html
             </div>
         </main>
     </div>
