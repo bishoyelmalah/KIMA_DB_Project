@@ -9,7 +9,9 @@
 
     position: relative;
 }
-
+.icon{
+    margin-bottom: 70px;
+}
 .transport-icon-section {
     display: flex;
     flex-direction: column;

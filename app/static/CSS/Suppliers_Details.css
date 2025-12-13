@@ -1,3 +1,4 @@
+
 .transport-details-card {
     background: #ffffff;
     border-radius: 1.5rem;
@@ -6,7 +7,6 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: min(1100px, 90%);
     height: auto;
-
     position: relative;
 }
 
@@ -20,7 +20,7 @@
 .transport-badge {
     background: #064e3b;
     width: 250px;
-    height: 300px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,7 +76,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem 3rem;
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 2rem 2rem;
     width: 100%;
 }
 
@@ -172,4 +172,8 @@
     display: flex; /* or block, depending on desired layout */
     width: 100%;
     /* No change to the existing detail-value styling, as it applies to detail-input now */
+}
+.icon{
+    margin-bottom: 40px;
+
 }
