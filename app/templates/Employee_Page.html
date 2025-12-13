@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <!-- Include sidebar component from static/components/Sidebar/Sidebar.html -->
-        <link rel="stylesheet" href="../../static/CSS/components/sidebar.css">
+        <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
 
 <!-- Sidebar Toggle Button (for mobile) -->
 <button id="sidebarToggle" class="sidebar-toggle">
@@ -38,11 +38,11 @@
     </div>
 </aside>
 
-<script src="../../static/JS/components/sidebar.js"></script>
+<script src="../static/JS/components/sidebar.js"></script>
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <link rel="stylesheet" href="../../static/CSS/components/header.css">
+            <link rel="stylesheet" href="../static/CSS/components/header.css">
 
 <header class="header">
     <div class="search-container">
@@ -80,7 +80,7 @@
     </div>
 </header>
 
-<script src="../../static/JS/components/profile-dropdown.js"></script>
+<script src="../static/JS/components/profile-dropdown.js"></script>
 
 
             <!-- Content -->
@@ -90,7 +90,7 @@
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
                         <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
-                        <button class="btn-add-employee">+ Add Employees</button>
+                        <button class="btn-add-employee" onclick="window.location.href='Employee_Form.html'">+ Add Employees</button>
                     </div>
                 </div>
 <!-- ComputerShow? -->
@@ -163,100 +163,37 @@
                 <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
             </div>
             <div class="modal-body">
-                <div class="detail-section">
-                    <div class="detail-photo-container">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop" alt="Sarah Johnson" class="detail-photo">
-                        <h3 class="detail-name">Sarah Johnson</h3>
-                        <p class="detail-position">Senior Chemical Engineer</p>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Personal Information</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Employee ID:</span>
-                            <span class="detail-value">EMP-001</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Gender:</span>
-                            <span class="detail-value">Female</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Birth Date:</span>
-                            <span class="detail-value">March 15, 1990</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Age:</span>
-                            <span class="detail-value">34 years</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Marital Status:</span>
-                            <span class="detail-value">Married</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">SSN:</span>
-                            <span class="detail-value">***-**-7890</span>
+                <!-- Content Cards in Modal -->
+                <div class="cards-container">
+                    <div class="card-section">
+                        <h3 class="section-header">Job information</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Job type:</strong> <span class="editable-text" data-field="jobType">Full-time</span></p>
+                                <p><strong>positions:</strong> <span class="editable-text" data-field="position">Senior Chemical Engineer</span></p>
+                                <p><strong>shift:</strong> <span class="editable-text" data-field="shift">Morning (8 AM - 4 PM)</span></p>
+                                <p><strong>salary:</strong> <span class="editable-text" data-field="salary">$45,000/year</span></p>
+                                <p><strong>scientific degree:</strong> <span class="editable-text" data-field="degree">Master's in Chemical Engineering</span></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Contact Information</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Email:</span>
-                            <span class="detail-value">sarah.johnson@kimaaswan.com</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Phone:</span>
-                            <span class="detail-value">+20 123 456 7890</span>
-                        </div>
-                        <div class="detail-item full-width">
-                            <span class="detail-label">Address:</span>
-                            <span class="detail-value">123 Nile Street, Aswan, Egypt</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Employment Details</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Position:</span>
-                            <span class="detail-value">Senior Chemical Engineer</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Job Type:</span>
-                            <span class="detail-value">Full-time</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Shift:</span>
-                            <span class="detail-value">Morning (8 AM - 4 PM)</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Scientific Degree:</span>
-                            <span class="detail-value">Master's in Chemical Engineering</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Military Status:</span>
-                            <span class="detail-value">Exempted</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Salary:</span>
-                            <span class="detail-value">$45,000/year</span>
+                    <div class="card-section">
+                        <h3 class="section-header">Personal details</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Birth date:</strong> <span class="editable-text" data-field="birthDate">March 15, 1990</span></p>
+                                <p><strong>Age:</strong> <span class="editable-text" data-field="age">34 years</span></p>
+                                <p><strong>Gender:</strong> <span class="editable-text" data-field="gender">Female</span></p>
+                                <p><strong>Marital status:</strong> <span class="editable-text" data-field="maritalStatus">Married</span></p>
+                                <p><strong>Military status:</strong> <span class="editable-text" data-field="militaryStatus">Exempted</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="dependent-btn" onclick="window.location.href='Dependents.html'">
-                    Dependents details
-                </button>
-                <div class="modal-footer-right">
-                    <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
-                    <button class="btn-primary">Edit Employee</button>
-                </div>
+                <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
+                <button class="btn-primary" id="editBtn1" onclick="toggleEdit('modal1')">Edit Details</button>
             </div>
         </div>
     </div>
@@ -285,11 +222,37 @@
                 <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
             </div>
             <div class="modal-body">
-                <p>Details for Michael Chen...</p>
+                <!-- Content Cards in Modal -->
+                <div class="cards-container">
+                    <div class="card-section">
+                        <h3 class="section-header">Job information</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Job type:</strong> <span class="editable-text" data-field="jobType">Full-time</span></p>
+                                <p><strong>positions:</strong> <span class="editable-text" data-field="position">Software Engineer</span></p>
+                                <p><strong>shift:</strong> <span class="editable-text" data-field="shift">Flexible</span></p>
+                                <p><strong>salary:</strong> <span class="editable-text" data-field="salary">$42,000/year</span></p>
+                                <p><strong>scientific degree:</strong> <span class="editable-text" data-field="degree">Bachelor's in Computer Science</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h3 class="section-header">Personal details</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Birth date:</strong> <span class="editable-text" data-field="birthDate">July 22, 1988</span></p>
+                                <p><strong>Age:</strong> <span class="editable-text" data-field="age">36 years</span></p>
+                                <p><strong>Gender:</strong> <span class="editable-text" data-field="gender">Male</span></p>
+                                <p><strong>Marital status:</strong> <span class="editable-text" data-field="maritalStatus">Single</span></p>
+                                <p><strong>Military status:</strong> <span class="editable-text" data-field="militaryStatus">Completed</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn-secondary" onclick="closeModal('modal3')">Close</button>
-                <button class="btn-primary">Edit Employee</button>
+                <button class="btn-primary" id="editBtn3" onclick="toggleEdit('modal3')">Edit Details</button>
             </div>
         </div>
     </div>
@@ -301,11 +264,37 @@
                 <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
             </div>
             <div class="modal-body">
-                <p>Details for Omar Mahmoud...</p>
+                <!-- Content Cards in Modal -->
+                <div class="cards-container">
+                    <div class="card-section">
+                        <h3 class="section-header">Job information</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Job type:</strong> <span class="editable-text" data-field="jobType">Part-time</span></p>
+                                <p><strong>positions:</strong> <span class="editable-text" data-field="position">Production Assistant</span></p>
+                                <p><strong>shift:</strong> <span class="editable-text" data-field="shift">Evening (4 PM - 12 AM)</span></p>
+                                <p><strong>salary:</strong> <span class="editable-text" data-field="salary">$28,000/year</span></p>
+                                <p><strong>scientific degree:</strong> <span class="editable-text" data-field="degree">High School Diploma</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h3 class="section-header">Personal details</h3>
+                        <div class="card">
+                            <div class="card-content">
+                                <p><strong>Birth date:</strong> <span class="editable-text" data-field="birthDate">December 10, 1995</span></p>
+                                <p><strong>Age:</strong> <span class="editable-text" data-field="age">29 years</span></p>
+                                <p><strong>Gender:</strong> <span class="editable-text" data-field="gender">Male</span></p>
+                                <p><strong>Marital status:</strong> <span class="editable-text" data-field="maritalStatus">Married</span></p>
+                                <p><strong>Military status:</strong> <span class="editable-text" data-field="militaryStatus">Completed</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn-secondary" onclick="closeModal('modal4')">Close</button>
-                <button class="btn-primary">Edit Employee</button>
+                <button class="btn-primary" id="editBtn4" onclick="toggleEdit('modal4')">Edit Details</button>
             </div>
         </div>
     </div>
@@ -349,6 +338,46 @@
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
                 document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Edit functionality
+        function toggleEdit(modalId) {
+            const modal = document.getElementById(modalId);
+            const editBtn = modal.querySelector('.btn-primary');
+            const editableElements = modal.querySelectorAll('.editable-text');
+            
+            if (editBtn.textContent === 'Edit Details') {
+                // Switch to edit mode
+                editBtn.textContent = 'Save Changes';
+                editBtn.style.backgroundColor = '#4caf50';
+                
+                editableElements.forEach(element => {
+                    const currentText = element.textContent;
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = currentText;
+                    input.className = 'edit-input';
+                    input.dataset.originalValue = currentText;
+                    
+                    element.style.display = 'none';
+                    element.parentNode.insertBefore(input, element.nextSibling);
+                });
+            } else {
+                // Save changes and switch back to view mode
+                editBtn.textContent = 'Edit Details';
+                editBtn.style.backgroundColor = '#F6A416';
+                
+                const inputs = modal.querySelectorAll('.edit-input');
+                inputs.forEach(input => {
+                    const editableElement = input.previousSibling;
+                    editableElement.textContent = input.value;
+                    editableElement.style.display = 'inline';
+                    input.remove();
+                });
+                
+                // You can add AJAX call here to save data to server
+                console.log('Changes saved for', modalId);
             }
         }
 
