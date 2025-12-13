@@ -24,6 +24,14 @@ body {
     min-height: 100vh;
 }
 
+.cards-container{
+    padding: 30px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    align-content: start;
+}
 
 /* Content Area */
 .content {
