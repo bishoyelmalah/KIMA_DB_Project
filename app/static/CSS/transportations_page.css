@@ -14,10 +14,16 @@ body {
 .container {
     display: flex;
 }
-
+.cards-container{
+    padding: 30px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    align-content: start;
+}
 /* Main Content */
 .main-content {
-    margin-left: 200px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -238,6 +244,7 @@ body {
     background: #a5d6a7;
 }
 
+<<<<<<< HEAD
 /* Modal Styles */
 .modal {
     display: none;
@@ -399,6 +406,8 @@ body {
     border-radius: 0 0 12px 12px;
 }
 
+=======
+>>>>>>> efec6085875db037bee1baad2317076bb1b4bd3d
 /* Footer */
 .footer {
     background: #2d5f4f;
@@ -436,28 +445,19 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
-
-    .detail-grid {
-        grid-template-columns: 1fr;
-    }
-
     .page-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
 
-    .table-container {
-        overflow-x: scroll;
+    .cards-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .supplier-card {
+        width: 100%;
     }
 
     .transport-modal-content {

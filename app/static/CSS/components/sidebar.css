@@ -1,62 +1,33 @@
-/* ---------------- Sidebar ---------------- */
+/* Sidebar Container */
 .sidebar {
-    width: 250px;
-    background: linear-gradient(180deg, #2d5f4f, #1a3d32);
+    width: 200px;
+    background: linear-gradient(180deg, #2d5f4f 0%, #1a3d32 100%);
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+/* Sidebar Closed State */
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+/* Mobile Overlay - Gray background when sidebar is open */
+.sidebar-overlay {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
-    color: white;
-    z-index: 1000;
-    overflow-y: auto;
-    transition: transform 0.35s ease-in-out;
-}
-
-/* Sidebar closed state */
-.sidebar.closed {
-    transform: translateX(-250px);
-}
-
-/* ---------------- Toggle Button ---------------- */
-.sidebar-toggle {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    width: 40px;
-    height: 40px;
-    size: 50px;
-    background: #F5F5F5;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 1100;
-    display: flex; /* دايمًا ظاهر */
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transition: opacity 0.3s ease 0.3s;
-}
-
-.sidebar-toggle .bar {
-    width: 70%;
-    height: 5px;
-    background: #2d5f4f;
-    margin: 4px 0;
-    transition: 0.3s ease;
-    border-radius: 8px;
-    
-}
-
-
-
-/* ---------------- Overlay ---------------- */
-.sidebar-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 900;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
     opacity: 0;
-    display: none;
     transition: opacity 0.3s ease;
 }
 
@@ -64,31 +35,13 @@
     display: block;
     opacity: 1;
 }
-.sidebar-toggle:hover {
-    background: #e0e0e0;
-    transform: scale(1.02);
-}
 
-
-/* When sidebar is closed */
-.sidebar.closed ~ .main-content {
-    margin-left: 0;
-}
-.sidebar:not(.closed) ~ .sidebar-toggle {
-    display: none;
-}
-/* لما ال sidebar مفتوحة الزرار يختفي */
-body.sidebar-open .sidebar-toggle {
-    display: none;
-}
-/* Add these styles after the .container section and before .main-content */
-
-/* ---------------- Logo ---------------- */
+/* Sidebar Logo Section */
 .logo {
     background: #e8f5e9;
     color: #2d5f4f;
     padding: 20px;
-    margin: 20px 20px 30px 20px;
+    margin: 0 20px 30px 20px;
     text-align: center;
     border-radius: 8px;
 }
@@ -104,7 +57,7 @@ body.sidebar-open .sidebar-toggle {
     letter-spacing: 2px;
 }
 
-/* ---------------- Navigation ---------------- */
+/* Sidebar Navigation Menu */
 .nav-menu {
     list-style: none;
 }
@@ -114,8 +67,6 @@ body.sidebar-open .sidebar-toggle {
     cursor: pointer;
     transition: all 0.3s;
     font-size: 15px;
-    border-radius: 8px;
-    margin: 5px 10px;
 }
 
 .nav-item:hover {
@@ -126,17 +77,16 @@ body.sidebar-open .sidebar-toggle {
     background: #e8f5e9;
     color: #2d5f4f;
     font-weight: 600;
+    border-radius: 8px;
+    margin: 0 10px;
 }
 
-/* ---------------- Help Section ---------------- */
+/* Sidebar Help Section */
 .help-section {
     position: absolute;
     bottom: 20px;
     left: 20px;
     right: 20px;
-    background: rgba(255,255,255,0.05);
-    padding: 15px;
-    border-radius: 8px;
 }
 
 .help-title {
@@ -148,9 +98,4 @@ body.sidebar-open .sidebar-toggle {
     font-size: 12px;
     color: #a5d6a7;
     cursor: pointer;
-}
-
-.main-content {
-    margin-left: 250px; /* Sidebar width */
-    transition: margin-left 0.35s ease-in-out;
 }

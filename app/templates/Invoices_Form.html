@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Invoices</title>
+    <link rel="stylesheet" href="../Form Pages/Form_Style.css">
+</head>
+<body class="profile-page">
+    <!-- Profile Page -->
+    <header class="header">
+                <div class="logo">
+                    <img src="../app/static/assets/KimaLogo.png" style="width: 50px; height: 70px;" alt="logo" class="logo-icon">
+                    <h2> KIMA </h2>
+                </div>  
+                <div class="search-container">
+                    <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
+                    <input type="text" class="search-box" placeholder="Search">
+                    <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
+                </div>
+        <div class="user-section">
+            <a href="Home_Page.html" class="header-link">Home</a>
+                <div class="header-right">
+                    <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
+                    <button class="icon-btn"><img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;"></button>
+                </div>
+        </div>
+    </header>
+
+          <!--- Personal Information -->
+        <main class="main-content">
+         <div class="card">
+    <h2 class="section-title">Personal Information</h2>
+
+    <form>
+        <div class="info-item">
+            <label for="invoicesId"><strong>Invoices ID:</strong></label>
+            <input type="text" id="invoicesId" name="invoicesId" placeholder="INV-001">
+        </div>
+        <!-- Adding foreign key for Customer -->
+         <div class="info-item">
+            <label for="customerName"><strong>Customer Name:</strong></label>
+            <input type="text" id="customerName" name="customerName" placeholder="John Doe">
+        </div>
+        <!--Adding foreign key for Cost -->
+         <div class="info-item">
+            <label for="costId"><strong>Cost ID:</strong></label>
+            <input type="text" id="costId" name="costId" placeholder="John Doe">
+        </div>
+        <!--Adding foreign key for Customer Feedbacks -->
+        <div class="info-item">
+            <label for="customerFeedbacksId"><strong>Customer Feedbacks ID:</strong></label>
+            <input type="text" id="customerFeedbacksId" name="customerFeedbacksId" placeholder="John Doe">
+        </div>
+    </form>
+</div> 
+<!-- Issue Details -->
+ <div class="card">
+    <h2 class="section-title">Issue Details </h2>
+    <form>
+        <div class="info-item">
+            <label for="amount"><strong>Amount:</strong></label>
+            <input type="text" id="amount" name="amount" placeholder="1000">
+        </div>
+
+        <div class="info-item">
+            <label for="issueDate"><strong>Currency:</strong></label>
+            <input type="text" id="currency" name="currency" placeholder="USD">
+        </div>
+        </form>
+</div>
+<!-- Payment Information -->
+  <div class="card">
+    <h2 class="section-title">Payment Information </h2>
+    <form>
+        <div class="info-item">
+            <label for="Status"><strong>Status:</strong></label>
+            <select id="Status" name="Status">
+                <option value="">Select...</option>
+                <option value="Succsesful">Succsesful</option>
+                <option value="Pending">Pending</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+        <div class="info-item">
+            <label for="Method"><strong>Method:</strong></label>
+            <select id="Method" name="Method">
+                <option value="">Select...</option>
+                <option value="Credit card">Credit card</option>
+                <option value="Cash">Cash</option>
+                <option value="Bank">Bank</option>
+            </select>
+        </div>    
+        <div class="info-item">
+            <label for="paymentDate"><strong>Payment Date:</strong></label>
+            <input type="date" id="paymentDate" name="paymentDate">
+        </div>
+    </form>
+</div>
+
+<!--  Bottoms  -->
+<div class="button-group">
+    <button type="submit" class="btn btn-save">Save</button>
+    <button type="reset" class="btn btn-cancel">Cancel</button>
+</div>
+
+<div class="help-text">
+    Need to update your information? <a href="#" class="help-link">Contact HR</a>
+</body>
+</html>

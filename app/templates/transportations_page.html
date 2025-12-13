@@ -13,9 +13,7 @@
         <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
 
 <!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
+
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
@@ -46,9 +44,12 @@
             <link rel="stylesheet" href="../static/CSS/components/header.css">
 
 <header class="header">
+    <button id="sidebarToggle" class="sidebar-toggle">
+        <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+    </button>
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-        <input type="text" class="search-box" placeholder="Search">
+        <input type="text" id="searchBox" class="search-box" placeholder="Search">
         <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
     </div>
     <div class="header-right">
@@ -102,13 +103,57 @@
                 </div>
 
                 <!-- Supplier cards -->
+<<<<<<< HEAD
                 <div class="supplier-card" onclick="openTransportModal('1200')">
                     <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
                     <div class="supplier-card__content">
                         <div class="supplier-card__id">Transportation ID: 1200</div>
+=======
+                <div class="cards-container">
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+>>>>>>> efec6085875db037bee1baad2317076bb1b4bd3d
                     </div>
                 </div>
-
             </div>
         </main>
     </div>
@@ -193,99 +238,23 @@
     </footer>
 
     <script>
-        // Modal Functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
         // Search functionality
-        const searchBox = document.querySelector('.search-box');
+        const searchBox = document.getElementById('searchBox');
         if (searchBox) {
             searchBox.addEventListener('input', function(e) {
                 const searchTerm = e.target.value.toLowerCase();
-                const rows = document.querySelectorAll('.employee-row');
+                const cards = document.querySelectorAll('.supplier-card');
                 
-                rows.forEach(row => {
-                    const name = row.querySelector('.employee-name')?.textContent.toLowerCase();
-                    const id = row.querySelector('.employee-id')?.textContent.toLowerCase();
+                cards.forEach(card => {
+                    const transportId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
                     
-                    if (name && id && (name.includes(searchTerm) || id.includes(searchTerm))) {
-                        row.style.display = '';
-                    } else if (name || id) {
-                        row.style.display = 'none';
+                    if (transportId && transportId.includes(searchTerm)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
                     }
                 });
             });
-        }
-
-        // Transportation Modal Functions
-        function openTransportModal(transportId) {
-            const modal = document.getElementById('transportModal');
-            const modalTransportId = document.getElementById('modalTransportId');
-            
-            if (modal && modalTransportId) {
-                modalTransportId.textContent = 'ID: ' + transportId;
-                modalTransportId.setAttribute('data-transport-id', transportId);
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                
-                // Reset edit mode when opening modal
-                const editBtn = document.getElementById('edit-btn');
-                const saveBtn = document.getElementById('save-btn');
-                const detailTexts = modal.querySelectorAll('.detail-text');
-                const detailInputs = modal.querySelectorAll('.detail-input');
-                
-                if (editBtn && saveBtn) {
-                    editBtn.classList.remove('hidden');
-                    saveBtn.classList.add('hidden');
-                }
-                
-                detailTexts.forEach(text => text.classList.remove('hidden'));
-                detailInputs.forEach(input => input.classList.add('hidden'));
-            }
-        }
-
-        function closeTransportModal() {
-            const modal = document.getElementById('transportModal');
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                // Reset edit mode when closing
-                if (typeof toggleEditMode === 'function') {
-                    const isEditing = document.getElementById('edit-btn')?.classList.contains('hidden');
-                    if (isEditing) {
-                        toggleEditMode();
-                    }
-                }
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('transportModal');
-            if (event.target === modal) {
-                closeTransportModal();
-            }
         }
     </script>
     <script src="../static/JS/Details.js"></script>

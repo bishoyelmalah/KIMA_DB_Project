@@ -12,9 +12,7 @@
         <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
 
 <!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
+
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
@@ -45,6 +43,9 @@
             <link rel="stylesheet" href="../static/CSS/components/header.css">
 
 <header class="header">
+    <button id="sidebarToggle" class="sidebar-toggle">
+            <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+    </button>
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
         <input type="text" class="search-box" placeholder="Search">
@@ -101,6 +102,7 @@
                 </div>
 
                 <!-- Supplier cards -->
+            <div class="cards-container">
                 <div class="supplier-card">
                     <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
                     <div class="supplier-card__content">
@@ -108,164 +110,46 @@
                         <div class="supplier-card__name">Name: ABC Company</div>
                     </div>
                 </div>
+                <div class="supplier-card">
+                    <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
+                    <div class="supplier-card__content">
+                        <div class="supplier-card__id">Supplier ID: 1200</div>
+                        <div class="supplier-card__name">Name: ABC Company</div>
+                    </div>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
+                    <div class="supplier-card__content">
+                        <div class="supplier-card__id">Supplier ID: 1200</div>
+                        <div class="supplier-card__name">Name: ABC Company</div>
+                    </div>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
+                    <div class="supplier-card__content">
+                        <div class="supplier-card__id">Supplier ID: 1200</div>
+                        <div class="supplier-card__name">Name: ABC Company</div>
+                    </div>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
+                    <div class="supplier-card__content">
+                        <div class="supplier-card__id">Supplier ID: 1200</div>
+                        <div class="supplier-card__name">Name: ABC Company</div>
+                    </div>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
+                    <div class="supplier-card__content">
+                        <div class="supplier-card__id">Supplier ID: 1200</div>
+                        <div class="supplier-card__name">Name: ABC Company</div>
+                    </div>   
+                </div>
+                
+            </div>
 
             </div>
         </main>
-    </div>
-
-    <!-- Modal for Employee Details (Example: Employee 1) -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="detail-section">
-                    <div class="detail-photo-container">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop" alt="Sarah Johnson" class="detail-photo">
-                        <h3 class="detail-name">Sarah Johnson</h3>
-                        <p class="detail-position">Senior Chemical Engineer</p>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Personal Information</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Employee ID:</span>
-                            <span class="detail-value">EMP-001</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Gender:</span>
-                            <span class="detail-value">Female</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Birth Date:</span>
-                            <span class="detail-value">March 15, 1990</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Age:</span>
-                            <span class="detail-value">34 years</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Marital Status:</span>
-                            <span class="detail-value">Married</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">SSN:</span>
-                            <span class="detail-value">***-**-7890</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Contact Information</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Email:</span>
-                            <span class="detail-value">sarah.johnson@kimaaswan.com</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Phone:</span>
-                            <span class="detail-value">+20 123 456 7890</span>
-                        </div>
-                        <div class="detail-item full-width">
-                            <span class="detail-label">Address:</span>
-                            <span class="detail-value">123 Nile Street, Aswan, Egypt</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3 class="section-title">Employment Details</h3>
-                    <div class="detail-grid">
-                        <div class="detail-item">
-                            <span class="detail-label">Position:</span>
-                            <span class="detail-value">Senior Chemical Engineer</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Job Type:</span>
-                            <span class="detail-value">Full-time</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Shift:</span>
-                            <span class="detail-value">Morning (8 AM - 4 PM)</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Scientific Degree:</span>
-                            <span class="detail-value">Master's in Chemical Engineering</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Military Status:</span>
-                            <span class="detail-value">Exempted</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Salary:</span>
-                            <span class="detail-value">$45,000/year</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="dependent-btn" onclick="window.location.href='Dependents.html'">
-                    Dependents details
-                </button>
-                <div class="modal-footer-right">
-                    <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
-                    <button class="btn-primary">Edit Employee</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Additional modals for other employees would follow the same structure -->
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>Details for Ahmed Hassan...</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal2')">Close</button>
-                <button class="btn-primary">Edit Employee</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>Details for Michael Chen...</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal3')">Close</button>
-                <button class="btn-primary">Edit Employee</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal4" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>Details for Omar Mahmoud...</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal4')">Close</button>
-                <button class="btn-primary">Edit Employee</button>
-            </div>
-        </div>
     </div>
 
     <!-- Include footer component from static/components/Footer/footer.html -->
@@ -285,47 +169,27 @@
     </footer>
 
     <script>
-        // Modal Functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
         // Search functionality
-        document.getElementById('searchBox').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('.employee-row');
-            
-            rows.forEach(row => {
-                const name = row.querySelector('.employee-name').textContent.toLowerCase();
-                const id = row.querySelector('.employee-id').textContent.toLowerCase();
+        const searchBox = document.querySelector('.search-box');
+        if (searchBox) {
+            searchBox.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('.supplier-card');
                 
-                if (name.includes(searchTerm) || id.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+                cards.forEach(card => {
+                    const id = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
+                    const name = card.querySelector('.supplier-card__name')?.textContent.toLowerCase();
+                    
+                    if (id && name) {
+                        if (id.includes(searchTerm) || name.includes(searchTerm)) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
             });
-        });
+        }
     </script>
 </body>
 </html>

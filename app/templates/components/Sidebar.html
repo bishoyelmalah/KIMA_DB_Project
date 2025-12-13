@@ -1,9 +1,5 @@
-<link rel="stylesheet" href="../../static/CSS/components/sidebar.css">
-
-<!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
+<!-- Sidebar Component -->
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/components/sidebar.css') }}">
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
@@ -19,6 +15,9 @@
         <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
         <li class="nav-item" onclick="window.location.href='/products'">Products</li>
         <li class="nav-item" onclick="window.location.href='/customers'">Customers</li>
+        <li class="nav-item" onclick="window.location.href='/Suppliers'">Suppliers</li>
+        <li class="nav-item" onclick="window.location.href='/Transportation'">Transportation</li>
+        <li class="nav-item" onclick="window.location.href='/Invoices'">Invoices</li>
     </ul>
 
     <div class="help-section">
@@ -27,4 +26,4 @@
     </div>
 </aside>
 
-<script src="../../static/JS/components/sidebar.js"></script>
+<script src="{{ url_for('static', filename='JS/components/sidebar.js') }}"></script>

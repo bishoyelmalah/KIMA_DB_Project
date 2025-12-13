@@ -3,98 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Profile Card</title>
     <link rel="stylesheet" href="../static/CSS/Customers_Details.css">
-    <script src="../static/JS/Details.js"></script>
-    <title>Document</title>
 </head>
 <body>
-    <div class="card-container">
-        <div class="action-buttons">
-            <button class="action-btn" onclick="deleteTransport()" title="Delete" aria-label="Delete transportation record">
-                <img src="../static/assets/delete.png" alt="Delete" style="width:30px; height:30px;">
-            </button>
-            <button class="action-btn hidden" id="save-btn" onclick="saveTransport()" title="Save Changes" aria-label="Save changes to transportation record">
-                <img src="../static/assets/diskette.png" alt="save" style="width:30px; height:30px;">
-            </button>
-            <button class="action-btn" id="edit-btn" onclick="toggleEditMode()" title="Edit" aria-label="Edit transportation record">
-                <img src="../static/assets/edit.png" alt="Edit" style="width:30px; height:30px;">
-            </button>
-        </div>
-    
-        <div class="card">
-            <div class="card-header">
-                <div class="card-avatar">
-                    <img src="../../static/assets/user.png" alt="user avatar" width="130px" height="130px">
-                </div>
-                <div class="card-info">
-                    <div class="info-row">
-                        <span class="info-label">Name:</span>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="name">Test</span>
-                            <input type="text" class="detail-value detail-input hidden" id="name" name="name" value="Test">
+    <div class="container">
+        <h1>Customer Profile</h1>
+        
+        <div class="profile-wrapper" data-profile-id="12345">
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn" onclick="profileManager.deleteProfile()" title="Delete Profile" aria-label="Delete profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6'/%3E%3C/svg%3E" alt="Delete">
+                </button>
+                <button class="action-btn hidden" id="save-btn" onclick="profileManager.saveProfile()" title="Save Changes" aria-label="Save changes">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z'/%3E%3Cpolyline points='17 21 17 13 7 13 7 21'/%3E%3Cpolyline points='7 3 7 8 15 8'/%3E%3C/svg%3E" alt="Save">
+                </button>
+                <button class="action-btn" id="edit-btn" onclick="profileManager.toggleEditMode()" title="Edit Profile" aria-label="Edit profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/%3E%3Cpath d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/%3E%3C/svg%3E" alt="Edit">
+                </button>
+            </div>
+
+            <!-- Upper Section -->
+            <div class="upper-section">
+                <div class="profile-image-container">
+                    <div class="white-circle" onclick="profileManager.triggerImageUpload()">
+                        <img src="https://via.placeholder.com/200/0d4d3d/ffffff?text=Customer" alt="Profile" class="profile-image" id="profile-img">
+                        <div class="image-upload-overlay">
+                            📷 Change Photo
                         </div>
                     </div>
-                    <div class="info-row">
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="profileManager.handleImageUpload(event)">
+                </div>
+                
+                <div class="green-info-box">
+                    <div class="info-item">
+                        <span class="info-label">Name:</span>
+                        <span class="info-text" data-field="name">John Doe</span>
+                        <input type="text" class="info-input hidden" name="name" placeholder="Enter name">
+                    </div>
+                    <div class="info-item">
                         <span class="info-label">ID:</span>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="id">12345</span>
-                            <input type="text" class="detail-value detail-input hidden" id="id" name="id" value="12345">
-                        </div>
+                        <span class="info-text" data-field="id">CUST-12345</span>
+                        <input type="text" class="info-input hidden" name="id" placeholder="Enter ID">
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-text" data-field="phone">+1 (555) 123-4567</span>
+                        <input type="tel" class="info-input hidden" name="phone" placeholder="Enter phone">
                     </div>
                 </div>
             </div>
-        </div>
-    
-        <div class="transport-details-card">
-            <div class="details-list" id="transport-details-form">
-                <div class="detail-item">
-                    <label class="detail-label" for="category">Address:</label>
-                    <div class="detail-content">
-                        <span class="detail-text" data-field="category">Chemicals</span>
-                        <input type="text" class="detail-value detail-input hidden" id="category" name="category" value="Chemicals">
+
+            <!-- Lower Sections -->
+            <div class="lower-sections">
+                <div class="section">
+                    <h3 class="section-title">Customer Details</h3>
+                    <div class="detail-item">
+                        <span class="detail-label">Status:</span>
+                        <span class="detail-text" data-field="status">Active</span>
+                        <select class="detail-input hidden" name="status">
+                            <option value="Active">Active</option>
+                            <option value="Not Active">Not Active</option>
+                            <option value="Unverified">Unverified</option>
+                        </select>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Registration Date:</span>
+                        <span class="detail-text" data-field="registration_date">25/10/2015</span>
+                        <input type="date" class="detail-input hidden" name="registration_date">
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Address:</span>
+                        <span class="detail-text" data-field="address">New York</span>
+                        <input type="text" class="detail-input hidden" name="address" placeholder="Enter Address">
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Type:</span>
+                        <span class="detail-text" data-field="type">Individual</span>
+                        <select class="detail-input hidden" name="type">
+                            <option value="Individual">Individual</option>
+                            <option value="Business">Business</option>
+                            <option value="Corporate">Corporate</option>
+                        </select>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Email:</span>
+                        <span class="detail-text" data-field="email">test@gmail.com</span>
+                        <input type="email" class="detail-input hidden" name="email" placeholder="Enter Email">
                     </div>
                 </div>
-                <div class="detail-item">
-                    <label class="detail-label" for="category">Phone:</label>
-                    <div class="detail-content">
-                        <span class="detail-text" data-field="category">Chemicals</span>
-                        <input type="text" class="detail-value detail-input hidden" id="category" name="category" value="Chemicals">
-                    </div>
-                </div>
-                <div class="detail-item">
-                    <label class="detail-label" for="productionDate">Status:</label>
-                    <div class="detail-content">
-                        <span class="detail-text" data-field="productionDate">2025-01-15</span>
-                        <input type="text" class="detail-value detail-input hidden" id="productionDate" name="productionDate" value="2025-01-15">
-                    </div>
-                </div>
-    
-                <div class="detail-item">
-                    <label class="detail-label" for="expiryDuration">Phone:</label>
-                    <div class="detail-content">
-                        <span class="detail-text" data-field="expiryDuration">12 months</span>
-                        <input type="text" class="detail-value detail-input hidden" id="expiryDuration" name="expiryDuration" value="12 months">
-                    </div>
-                </div>
-    
-                <div class="detail-item">
-                    <label class="detail-label" for="costPrice">Rating:</label>
-                    <div class="detail-content">
-                        <span class="detail-text" data-field="costPrice">50.00</span>
-                        <input type="text" class="detail-value detail-input hidden" id="costPrice" name="costPrice" value="50.00">
-                    </div>
-                </div>
-    
-                <div class="detail-item">
-                    <label class="detail-label" for="weight">Email:</label>
-                    <div class="detail-content">
-                        <span class="detail-text" data-field="weight">20 kg</span>
-                        <input type="text" class="detail-value detail-input hidden" id="weight" name="weight" value="20 kg">
-                    </div>
-                </div>
-    
             </div>
         </div>
     </div>
+
+    <script src="../static/JS/CustomerDetails.js">
+    </script>
 </body>
 </html>
