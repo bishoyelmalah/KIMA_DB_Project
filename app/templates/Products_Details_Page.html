@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/CSS/Products_Details.css">
-    <title>Document</title>
+    <title>KIMA ASWAN Product Details</title>
 </head>
 <body>
         <!-- header -->
-
+        {% include 'components/header.html' %}
         <!-- sidebar -->
-
+        {% include 'components/Sidebar.html' %}
         
 <div class="transport-details-card">
     <div class="action-buttons">
-        <button class="action-btn" onclick="deleteTransport()" title="Delete" aria-label="Delete transportation record">
+        <button class="action-btn" onclick="window.location.href='/delete_product/{{details.P_ID}}'" title="Delete" aria-label="Delete transportation record">
             <img src="../static/assets/delete.png" alt="Delete" style="width:30px; height:30px;">
         </button>
         <button class="action-btn hidden" id="save-btn" onclick="saveTransport()" title="Save Changes" aria-label="Save changes to transportation record">
@@ -28,31 +28,23 @@
     <div class="transport-icon-section">
         <div class="transport-badge">
             <div class="icon"><img src="../../static/assets/box.png" alt="user" width="150px" height="150px"></div>
-            <div class="transport-id" data-transport-id="12345">ID: 12345</div>
+            <div class="transport-id" data-transport-id="12345">ID: {{details.P_ID}}</div>
         </div>
     </div>
 
     <div class="details-list" id="transport-details-form">
         <div class="detail-item">
-            <label class="detail-label" for="category">Category:</label>
+            <label class="detail-label" for="category">Name:</label>
             <div class="detail-content">
-                <span class="detail-text" data-field="category">Chemicals</span>
+                <span class="detail-text" data-field="category">{{details.P_Name}}</span>
                 <input type="text" class="detail-value detail-input hidden" id="category" name="category" value="Chemicals">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="productionDate">Production Date:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="productionDate">2025-01-15</span>
-                <input type="text" class="detail-value detail-input hidden" id="productionDate" name="productionDate" value="2025-01-15">
             </div>
         </div>
 
         <div class="detail-item">
             <label class="detail-label" for="expiryDuration">Expiry Duration:</label>
             <div class="detail-content">
-                <span class="detail-text" data-field="expiryDuration">12 months</span>
+                <span class="detail-text" data-field="expiryDuration">{{details.P_Expiry_Duration}} Years</span>
                 <input type="text" class="detail-value detail-input hidden" id="expiryDuration" name="expiryDuration" value="12 months">
             </div>
         </div>
@@ -60,39 +52,23 @@
         <div class="detail-item">
             <label class="detail-label" for="costPrice">Cost Price:</label>
             <div class="detail-content">
-                <span class="detail-text" data-field="costPrice">50.00</span>
+                <span class="detail-text" data-field="costPrice">{{details.P_Cost_Price}}</span>
                 <input type="text" class="detail-value detail-input hidden" id="costPrice" name="costPrice" value="50.00">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="weight">Weight:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="weight">20 kg</span>
-                <input type="text" class="detail-value detail-input hidden" id="weight" name="weight" value="20 kg">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="expiryDate">Expiry Date:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="expiryDate">2026-01-15</span>
-                <input type="text" class="detail-value detail-input hidden" id="expiryDate" name="expiryDate" value="2026-01-15">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="status">Status:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="status">Available</span>
-                <input type="text" class="detail-value detail-input hidden" id="status" name="status" value="Available">
             </div>
         </div>
 
         <div class="detail-item">
             <label class="detail-label" for="unitPrice">Unit Price:</label>
             <div class="detail-content">
-                <span class="detail-text" data-field="unitPrice">75.00</span>
+                <span class="detail-text" data-field="unitPrice">{{details.P_Unit_Price}}</span>
+                <input type="text" class="detail-value detail-input hidden" id="unitPrice" name="unitPrice" value="75.00">
+            </div>
+        </div>
+
+        <div class="detail-item">
+            <label class="detail-label" for="amount">Amount in stock:</label>
+            <div class="detail-content">
+                <span class="detail-text" data-field="unitPrice">{{details.P_Amount}}</span>
                 <input type="text" class="detail-value detail-input hidden" id="unitPrice" name="unitPrice" value="75.00">
             </div>
         </div>
@@ -100,7 +76,7 @@
         <div class="detail-item">
             <label class="detail-label" for="productDescription">Product Description:</label>
             <div class="detail-content">
-                <span class="detail-text" data-field="productDescription">High-grade industrial chemical</span>
+                <span class="detail-text" data-field="productDescription">{{details.P_Description}}</span>
                 <input type="text" class="detail-value detail-input hidden" id="productDescription" name="productDescription" value="High-grade industrial chemical">
             </div>
         </div>
@@ -108,6 +84,7 @@
 </div>
 
         <!-- footer -->
-         <script src="../static/JS/Details.js"></script>
+        {% include 'components/footer.html' %}
+        <script src="../static/JS/Details.js"></script>
 </body>
 </html>

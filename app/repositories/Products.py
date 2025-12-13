@@ -2,8 +2,8 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import db
-# from extensions import db
+# import db
+from extensions import db
 from sqlalchemy import text
 
 def get(columns="*", conditions=None, order_by=None):

@@ -46,7 +46,7 @@ function logout() {
     if (confirm('Are you sure you want to log out?')) {
         // Update this to use Flask's url_for when route is available
         // window.location.href = "{{ url_for('logout') }}";
-        window.location.href = '/login';
+        window.location.href = '/';
     }
 }
 
