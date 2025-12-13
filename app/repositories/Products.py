@@ -38,7 +38,3 @@ def delete(condition):
             f"DELETE FROM Products WHERE {condition}")
         conn.execute(sql)
         conn.commit()
-
-delete(
-    "P_ID = 11",
-)

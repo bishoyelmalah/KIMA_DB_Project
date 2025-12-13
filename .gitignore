@@ -1,6 +1,6 @@
 venv/
 .vscode/
-db_config.py
-__pycache__/
-repositories/__pycache__/
-routes/__pycache__/
+app/db_config.py
+app/__pycache__/
+app/repositories/__pycache__/
+app/routes/__pycache__/
