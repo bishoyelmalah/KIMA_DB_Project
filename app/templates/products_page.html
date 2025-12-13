@@ -48,7 +48,7 @@
 <header class="header">
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-        <input type="text" class="search-box" placeholder="Search">
+        <input type="text" id="searchBox" class="search-box" placeholder="Search">
         <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
     </div>
     <div class="header-right">
@@ -347,21 +347,21 @@
         }
 
         // Search functionality
-        const searchBox = document.querySelector('.search-box');
+        const searchBox = document.getElementById('searchBox');
         if (searchBox) {
             searchBox.addEventListener('input', function(e) {
                 const searchTerm = e.target.value.toLowerCase();
-                const rows = document.querySelectorAll('.employee-row');
+                const cards = document.querySelectorAll('.supplier-card');
                 
-                rows.forEach(row => {
-                    const name = row.querySelector('.employee-name')?.textContent.toLowerCase();
-                    const id = row.querySelector('.employee-id')?.textContent.toLowerCase();
+                cards.forEach(card => {
+                    const productId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
+                    const productName = card.querySelector('.supplier-card__name')?.textContent.toLowerCase();
                     
-                    if (name && id) {
-                        if (name.includes(searchTerm) || id.includes(searchTerm)) {
-                            row.style.display = '';
+                    if (productId && productName) {
+                        if (productId.includes(searchTerm) || productName.includes(searchTerm)) {
+                            card.style.display = '';
                         } else {
-                            row.style.display = 'none';
+                            card.style.display = 'none';
                         }
                     }
                 });
