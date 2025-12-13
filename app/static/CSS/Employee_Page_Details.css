@@ -70,6 +70,35 @@
             filter: brightness(0) invert(1);
         }
 
+        /* Dependents Button */
+        .dependents-btn {
+            background: #f59e0b;
+            border: none;
+            height: 50px;
+            padding: 0 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .dependents-btn:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+        }
+
+        .dependents-btn:active {
+            transform: translateY(0);
+        }
+
         .hidden {
             display: none !important;
         }
