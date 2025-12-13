@@ -7,7 +7,7 @@ dependent_bp = Blueprint('dependent', __name__)
 
 # 2. Define routes using the Blueprint object instead of 'app'
 @dependent_bp.route('/dependents')
-def list_customers():
+def list_dependents():
     data = Dependents.get()
     return render_template("Dependents.html", dependents=data)
 
