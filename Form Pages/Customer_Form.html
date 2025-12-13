@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Employee</title>
-    <link rel="stylesheet" href="../Form Pages/Form.css">
+    <title>Add Customer</title>
+    <link rel="stylesheet" href="../Form Pages/Form_Style.css">
 </head>
 <body class="profile-page">
     <!-- Profile Page -->
@@ -34,13 +34,8 @@
 
     <form>
         <div class="info-item">
-            <label for="employeeId"><strong>Employee ID:</strong></label>
-            <input type="text" id="employeeId" name="employeeId" placeholder="EMP-001">
-        </div>
-
-        <div class="info-item">
-            <label for="birthDate"><strong>Birth Date:</strong></label>
-            <input type="date" id="birthDate" name="birthDate">
+            <label for="customerId"><strong>Customer ID:</strong></label>
+            <input type="text" id="customerId" name="customerId" placeholder="CUST-001">
         </div>
 
         <div class="info-item">
@@ -48,19 +43,6 @@
             <input type="text" id="address" name="address" placeholder="123 Nile St., Aswan, Egypt">
         </div>
 
-        <div class="info-item">
-            <label for="gender"><strong>Gender:</strong></label>
-            <select id="gender" name="gender">
-                <option value="">Select</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-        </div>
-
-        <div class="info-item">
-            <label for="ssn"><strong>SSN:</strong></label>
-            <input type="text" id="ssn" name="ssn" placeholder="123-45-6789">
-        </div>
     </form>
 </div> 
 
@@ -85,52 +67,17 @@
             <!--- Employee Information -->
 
                 <div class="card">
-    <h2 class="section-title">Employee Information</h2>
+    <h2 class="section-title">Customer Information</h2>
 
     <form>
         <div class="info-item">
-            <label for="department"><strong>Department:</strong></label>
-            <input type="text" id="department" name="department" placeholder="Chemical Engineering">
+            <label for="type"><strong>Type:</strong></label>
+            <input type="text" id="type" name="type" placeholder="Chemical Engineering">
         </div>
 
         <div class="info-item">
-            <label for="position"><strong>Position:</strong></label>
-            <input type="text" id="position" name="position" placeholder="Senior Engineer">
-        </div>
-
-        <div class="info-item">
-            <label for="employeeId2"><strong>Employee ID:</strong></label>
-            <input type="text" id="employeeId2" name="employeeId" placeholder="EMP-001" readonly>
-        </div>
-
-        <div class="info-item">
-            <label for="hireDate"><strong>Date of Hire:</strong></label>
-            <input type="date" id="hireDate" name="hireDate">
-        </div>
-
-        <div class="info-item">
-            <label for="manager"><strong>Manager:</strong></label>
-            <input type="text" id="manager" name="manager" placeholder="Sarah Johnson">
-        </div>
-
-        <div class="info-item">
-            <label for="jobType"><strong>Job Type:</strong></label>
-            <select id="jobType" name="jobType">
-                <option value="">Select</option>
-                <option value="full-time">Full-time</option>
-                <option value="part-time">Part-time</option>
-                <option value="contract">Contract</option>
-            </select>
-        </div>
-
-        <div class="info-item">
-            <label for="shift"><strong>Shift:</strong></label>
-            <input type="text" id="shift" name="shift" placeholder="Morning 8 AM - 4 PM">
-        </div>
-
-        <div class="info-item">
-            <label for="degree"><strong>Scientific Degree:</strong></label>
-            <input type="text" id="degree" name="degree" placeholder="PhD in Chemical Engineering">
+            <label for="registrationDate"><strong>Date of Registration:</strong></label>
+            <input type="date" id="registrationDate" name="registrationDate">
         </div>
     </form>
 </div>
