@@ -3,3 +3,4 @@ venv/
 db_config.py
 __pycache__/
 repositories/__pycache__/
+routes/__pycache__/
