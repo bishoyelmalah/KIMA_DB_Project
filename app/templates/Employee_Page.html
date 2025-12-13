@@ -12,9 +12,7 @@
         <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
 
 <!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
+
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
@@ -45,6 +43,9 @@
             <link rel="stylesheet" href="../static/CSS/components/header.css">
 
 <header class="header">
+    <button id="sidebarToggle" class="sidebar-toggle">
+        <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+    </button>
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
         <input type="text" id="searchBox" class="search-box" placeholder="Search">
@@ -120,7 +121,7 @@
                                 <td class="employee-name">Sarah Johnson</td>
                                 <td class="employee-id">EMP-001</td>
                                 <td>
-                                    <button class="details-btn" onclick="openModal('modal1')">More details...</button>
+                                    <button class="details-btn" onclick="viewEmployeeDetails('EMP-001')">More details...</button>
                                 </td>
                             </tr>
 
@@ -133,7 +134,7 @@
                                 <td class="employee-name">Michael Chen</td>
                                 <td class="employee-id">EMP-003</td>
                                 <td>
-                                    <button class="details-btn" onclick="openModal('modal3')">More details...</button>
+                                    <button class="details-btn" onclick="viewEmployeeDetails('EMP-003')">More details...</button>
                                 </td>
                             </tr>
 
@@ -145,7 +146,7 @@
                                 <td class="employee-name">Omar Mahmoud</td>
                                 <td class="employee-id">EMP-004</td>
                                 <td>
-                                    <button class="details-btn" onclick="openModal('modal4')">More details...</button>
+                                    <button class="details-btn" onclick="viewEmployeeDetails('EMP-004')">More details...</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -154,51 +155,6 @@
             </div>
         </main>
     </div>
-
-    <!-- Modal for Employee Details (Example: Employee 1) -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <!-- Content Cards in Modal -->
-                <div class="cards-container">
-                    <div class="card-section">
-                        <h3 class="section-header">Job information</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Job type:</strong> <span class="editable-text" data-field="jobType">Full-time</span></p>
-                                <p><strong>positions:</strong> <span class="editable-text" data-field="position">Senior Chemical Engineer</span></p>
-                                <p><strong>shift:</strong> <span class="editable-text" data-field="shift">Morning (8 AM - 4 PM)</span></p>
-                                <p><strong>salary:</strong> <span class="editable-text" data-field="salary">$45,000/year</span></p>
-                                <p><strong>scientific degree:</strong> <span class="editable-text" data-field="degree">Master's in Chemical Engineering</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <h3 class="section-header">Personal details</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Birth date:</strong> <span class="editable-text" data-field="birthDate">March 15, 1990</span></p>
-                                <p><strong>Age:</strong> <span class="editable-text" data-field="age">34 years</span></p>
-                                <p><strong>Gender:</strong> <span class="editable-text" data-field="gender">Female</span></p>
-                                <p><strong>Marital status:</strong> <span class="editable-text" data-field="maritalStatus">Married</span></p>
-                                <p><strong>Military status:</strong> <span class="editable-text" data-field="militaryStatus">Exempted</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
-                <button class="btn-primary" id="editBtn1" onclick="toggleEdit('modal1')">Edit Details</button>
-            </div>
-        </div>
-    </div>
-
-
 
     <!-- Include footer component from static/components/Footer/footer.html -->
     <link rel="stylesheet" href="../../static/CSS/components/footer.css">
@@ -217,72 +173,8 @@
     </footer>
 
     <script>
-        // Modal Functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Edit functionality
-        function toggleEdit(modalId) {
-            const modal = document.getElementById(modalId);
-            const editBtn = modal.querySelector('.btn-primary');
-            const editableElements = modal.querySelectorAll('.editable-text');
-            
-            if (editBtn.textContent === 'Edit Details') {
-                // Switch to edit mode
-                editBtn.textContent = 'Save Changes';
-                editBtn.style.backgroundColor = '#4caf50';
-                
-                editableElements.forEach(element => {
-                    const currentText = element.textContent;
-                    const input = document.createElement('input');
-                    input.type = 'text';
-                    input.value = currentText;
-                    input.className = 'edit-input';
-                    input.dataset.originalValue = currentText;
-                    
-                    element.style.display = 'none';
-                    element.parentNode.insertBefore(input, element.nextSibling);
-                });
-            } else {
-                // Save changes and switch back to view mode
-                editBtn.textContent = 'Edit Details';
-                editBtn.style.backgroundColor = '#F6A416';
-                
-                const inputs = modal.querySelectorAll('.edit-input');
-                inputs.forEach(input => {
-                    const editableElement = input.previousSibling;
-                    editableElement.textContent = input.value;
-                    editableElement.style.display = 'inline';
-                    input.remove();
-                });
-                
-                // You can add AJAX call here to save data to server
-                console.log('Changes saved for', modalId);
-            }
-        }   
-
-        const searchBox = document.getElementById('searchBox');
+        // Search functionality
+        const searchBox = document.querySelector('.search-box');
         if (searchBox) {
             searchBox.addEventListener('input', function(e) {
                 const searchTerm = e.target.value.toLowerCase();
@@ -299,6 +191,12 @@
                     }
                 });
             });
+        }
+
+        // Navigate to employee details page instead of opening modal
+        function viewEmployeeDetails(employeeId) {
+            // Replace with your Flask route for employee details
+            window.location.href = `/employee/${employeeId}`;
         }
     </script>
 </body>
