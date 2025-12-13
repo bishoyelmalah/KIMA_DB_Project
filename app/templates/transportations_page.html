@@ -168,47 +168,15 @@
     </footer>
 
     <script>
-        // Modal Functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Search functionality
-        document.getElementById('searchBox').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('.employee-row');
-            
-            rows.forEach(row => {
-                const name = row.querySelector('.employee-name').textContent.toLowerCase();
-                const id = row.querySelector('.employee-id').textContent.toLowerCase();
-                
-                if (name.includes(searchTerm) || id.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+        // Search functionality - update based on actual page structure
+        const searchBox = document.querySelector('.search-box');
+        if (searchBox) {
+            searchBox.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                // Add search logic based on your transportation cards/content structure
+                console.log('Searching for:', searchTerm);
             });
-        });
+        }
     </script>
 </body>
 </html>
