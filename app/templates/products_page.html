@@ -12,13 +12,8 @@
         <!-- Include sidebar component from static/components/Sidebar/Sidebar.html -->
         <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
 
-<!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
 
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
-
 <aside id="sidebar" class="sidebar closed">
     <div class="logo">
         <div class="logo-icon">☥</div>
@@ -46,6 +41,9 @@
             <link rel="stylesheet" href="../static/CSS/components/header.css">
 
 <header class="header">
+    <button id="sidebarToggle" class="sidebar-toggle">
+        <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+    </button>
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
         <input type="text" class="search-box" placeholder="Search">
@@ -103,56 +101,7 @@
 
                 <!-- Supplier cards -->
             <div class="cards-container">
-                <div class="supplier-card" onclick="openProductModal()">
-                    <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Product ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
-                    </div>
-                </div>
-                <div class="supplier-card" onclick="openProductModal()">
-                    <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Product ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
-                    </div>
-                </div>
-                <div class="supplier-card" onclick="openProductModal()">
-                    <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Product ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
-                    </div>
-                </div>
-                <div class="supplier-card" onclick="openProductModal()">
-                    <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Product ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
-                    </div>
-                </div>
-                <div class="supplier-card" onclick="openProductModal()">
-                    <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Product ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
-                    </div>
-                </div>
-                                <div class="supplier-card" onclick="openProductModal()">
-                    <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Product ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
-                    </div>
-                </div>
-                                <div class="supplier-card" onclick="openProductModal()">
-                    <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Product ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
-                    </div>
-                </div>
-                <div class="supplier-card" onclick="openProductModal()">
+                <div class="supplier-card">
                     <div class="supplier-card__image"> <img src="../static/assets/box.png" width="150px" height="150px"></div>
                     <div class="supplier-card__content">
                         <div class="supplier-card__id">Product ID: 1200</div>
@@ -162,107 +111,6 @@
             </div>
             </div>
         </main>
-    </div>
-
-    <!-- Product Details Modal -->
-    <div id="productDetailsModal" class="product-modal">
-        <div class="product-modal-content">
-            <span class="product-modal-close" onclick="closeProductModal()">&times;</span>
-            <div class="transport-details-card">
-                <div class="action-buttons">
-                    <button class="action-btn" onclick="deleteProduct()" title="Delete" aria-label="Delete product record">
-                        <img src="../static/assets/delete.png" alt="Delete" style="width:30px; height:30px;">
-                    </button>
-                    <button class="action-btn hidden" id="save-btn" onclick="saveProduct()" title="Save Changes" aria-label="Save changes to product record">
-                        <img src="../static/assets/diskette.png" alt="save" style="width:30px; height:30px;">
-                    </button>
-                    <button class="action-btn" id="edit-btn" onclick="toggleEditMode()" title="Edit" aria-label="Edit product record">
-                        <img src="../static/assets/edit.png" alt="Edit" style="width:30px; height:30px;">
-                    </button>
-                </div>
-
-                <div class="transport-icon-section">
-                    <div class="transport-badge">
-                        <div class="icon"><img src="../static/assets/box.png" alt="product" width="150px" height="150px"></div>
-                        <div class="transport-id" data-transport-id="1200">ID: 1200</div>
-                    </div>
-                </div>
-
-                <div class="details-list" id="transport-details-form">
-                    <div class="detail-item">
-                        <label class="detail-label" for="category">Category:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="category">Chemicals</span>
-                            <input type="text" class="detail-value detail-input hidden" id="category" name="category" value="Chemicals">
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <label class="detail-label" for="productionDate">Production Date:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="productionDate">2025-01-15</span>
-                            <input type="text" class="detail-value detail-input hidden" id="productionDate" name="productionDate" value="2025-01-15">
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <label class="detail-label" for="expiryDuration">Expiry Duration:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="expiryDuration">12 months</span>
-                            <input type="text" class="detail-value detail-input hidden" id="expiryDuration" name="expiryDuration" value="12 months">
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <label class="detail-label" for="costPrice">Cost Price:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="costPrice">50.00</span>
-                            <input type="text" class="detail-value detail-input hidden" id="costPrice" name="costPrice" value="50.00">
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <label class="detail-label" for="weight">Weight:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="weight">20 kg</span>
-                            <input type="text" class="detail-value detail-input hidden" id="weight" name="weight" value="20 kg">
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <label class="detail-label" for="expiryDate">Expiry Date:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="expiryDate">2026-01-15</span>
-                            <input type="text" class="detail-value detail-input hidden" id="expiryDate" name="expiryDate" value="2026-01-15">
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <label class="detail-label" for="status">Status:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="status">Available</span>
-                            <input type="text" class="detail-value detail-input hidden" id="status" name="status" value="Available">
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <label class="detail-label" for="unitPrice">Unit Price:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="unitPrice">75.00</span>
-                            <input type="text" class="detail-value detail-input hidden" id="unitPrice" name="unitPrice" value="75.00">
-                        </div>
-                    </div>
-
-                    <div class="detail-item">
-                        <label class="detail-label" for="productDescription">Product Description:</label>
-                        <div class="detail-content">
-                            <span class="detail-text" data-field="productDescription">High-grade industrial chemical</span>
-                            <input type="text" class="detail-value detail-input hidden" id="productDescription" name="productDescription" value="High-grade industrial chemical">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Include footer component from static/components/Footer/footer.html -->
@@ -282,70 +130,6 @@
     </footer>
 
     <script>
-        // Product Modal Functions
-        function openProductModal() {
-            const modal = document.getElementById('productDetailsModal');
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeProductModal() {
-            const modal = document.getElementById('productDetailsModal');
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('productDetailsModal');
-            if (event.target === modal) {
-                closeProductModal();
-            }
-        }
-
-        // Edit mode toggle (from Details.js functionality)
-        function toggleEditMode() {
-            const editBtn = document.getElementById('edit-btn');
-            const saveBtn = document.getElementById('save-btn');
-            const detailTexts = document.querySelectorAll('.detail-text');
-            const detailInputs = document.querySelectorAll('.detail-input');
-
-            if (editBtn && saveBtn) {
-                const isEditing = !saveBtn.classList.contains('hidden');
-                
-                if (isEditing) {
-                    // Switch to view mode
-                    editBtn.classList.remove('hidden');
-                    saveBtn.classList.add('hidden');
-                    detailTexts.forEach(text => text.classList.remove('hidden'));
-                    detailInputs.forEach(input => input.classList.add('hidden'));
-                } else {
-                    // Switch to edit mode
-                    editBtn.classList.add('hidden');
-                    saveBtn.classList.remove('hidden');
-                    detailTexts.forEach(text => text.classList.add('hidden'));
-                    detailInputs.forEach(input => input.classList.remove('hidden'));
-                }
-            }
-        }
-
-        function saveProduct() {
-            // Save functionality - implement as needed
-            toggleEditMode();
-            alert('Product details saved!');
-        }
-
-        function deleteProduct() {
-            if (confirm('Are you sure you want to delete this product?')) {
-                alert('Product deleted!');
-                closeProductModal();
-            }
-        }
-
         // Search functionality
         const searchBox = document.querySelector('.search-box');
         if (searchBox) {
@@ -368,6 +152,5 @@
             });
         }
     </script>
-    <script src="../static/JS/Details.js"></script>
 </body>
 </html>

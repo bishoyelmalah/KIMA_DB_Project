@@ -1,4 +1,4 @@
-/* Header Component Styles */
+/* Header Container */
 .header {
     background: white;
     padding: 15px 30px;
@@ -11,6 +11,7 @@
     z-index: 50;
 }
 
+/* Hamburger Menu Toggle Button */
 .sidebar-toggle {
     width: 40px;
     height: 40px;
@@ -31,11 +32,13 @@
     background: #f5f5f5;
 }
 
+/* Hidden state when sidebar is open */
 .sidebar-toggle.hidden {
     opacity: 0;
     pointer-events: none;
 }
 
+/* Search Bar Section */
 .search-container {
     flex: 1;
     max-width: 500px;
@@ -72,6 +75,7 @@
     align-items: center;
 }
 
+/* Header Right Section - Navigation and Profile */
 .header-right {
     display: flex;
     align-items: center;
@@ -102,7 +106,7 @@
     background: #e0e0e0;
 }
 
-/* Profile Dropdown Styles */
+/* Profile Dropdown Component */
 .profile-dropdown-wrapper {
     position: relative;
 }
