@@ -23,10 +23,10 @@
             <label for="productName"><strong>Product Name:</strong></label>
             <input type="text" id="productName" name="productName" placeholder="Product A">
         </div>
-        <div class="info-item">
+        {% comment %} <div class="info-item">
             <label for="productId"><strong>Product ID:</strong></label>
             <input type="text" id="productId" name="productId" placeholder="PROD-001">
-        </div>
+        </div> {% endcomment %}
         <!-- Adding foreign key for Stocks -->
        <div class="info-item">
             <label for="stocksId"><strong>Stocks ID:</strong></label>
@@ -37,7 +37,6 @@
             <input type="text" id="description" name="description" placeholder="Description of the product">
         </div>
 
-    </form>
 </div> 
 
 
@@ -45,7 +44,6 @@
  <div class="card">
     <h2 class="section-title">Price Information</h2>
 
-    <form>
         <div class="info-item">
             <label for="Unit price"><strong>Unit Price:</strong></label>
             <input type="text" id="unitPrice" name="unitPrice" placeholder="$100.00">
@@ -62,19 +60,17 @@
 
 <div class="card">
     <h2 class="section-title">Expiration Information</h2>
-    <form>
         <div class="info-item">
             <label for="expirationDate"><strong>Expiration Duration:</strong></label>
             <input type="text" id="expirationDate" name="expirationDate" placeholder="12 months">
         </div>
-    </form>
 </div>
 
-<!--- Accessibility & Storage Information  --->
+<!-- Accessibility & Storage Information  -->
 <div class="card">
     <h2 class="section-title">Accessibility & Storage Information</h2>
 
-    <form>
+   
         <div class="info-item">
             <label for="canBePurchased"><strong>Can be Purchased:</strong></label>
             <select id="canBePurchased" name="canBePurchased">
