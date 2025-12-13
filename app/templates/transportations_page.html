@@ -48,7 +48,7 @@
     </button>
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-        <input type="text" class="search-box" placeholder="Search">
+        <input type="text" id="searchBox" class="search-box" placeholder="Search">
         <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
     </div>
     <div class="header-right">
@@ -102,49 +102,50 @@
                 </div>
 
                 <!-- Supplier cards -->
-                <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Transportation ID: 1200</div>
+                <div class="cards-container">
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
+                    </div>
+                    <div class="supplier-card">
+                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                        <div class="supplier-card__content">
+                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                        </div>
                     </div>
                 </div>
-                <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Transportation ID: 1200</div>
-                    </div>
-                </div>
-                <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Transportation ID: 1200</div>
-                    </div>
-                </div>
-                <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Transportation ID: 1200</div>
-                    </div>
-                </div>
-                <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Transportation ID: 1200</div>
-                    </div>
-                </div>
-                <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Transportation ID: 1200</div>
-                    </div>
-                </div>
-                <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                    <div class="supplier-card__content">
-                        <div class="supplier-card__id">Transportation ID: 1200</div>
-                    </div>
-                </div>
-
             </div>
         </main>
     </div>
@@ -168,13 +169,22 @@
     </footer>
 
     <script>
-        // Search functionality - update based on actual page structure
-        const searchBox = document.querySelector('.search-box');
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
         if (searchBox) {
             searchBox.addEventListener('input', function(e) {
                 const searchTerm = e.target.value.toLowerCase();
-                // Add search logic based on your transportation cards/content structure
-                console.log('Searching for:', searchTerm);
+                const cards = document.querySelectorAll('.supplier-card');
+                
+                cards.forEach(card => {
+                    const transportId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
+                    
+                    if (transportId && transportId.includes(searchTerm)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         }
     </script>
