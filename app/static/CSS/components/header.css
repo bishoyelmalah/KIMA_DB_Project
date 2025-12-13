@@ -1,18 +1,45 @@
+/* Header Component Styles */
 .header {
     background: white;
     padding: 15px 30px;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.sidebar-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    margin-right: 15px;
+    position: relative;
+    z-index: 101;
+}
+
+.sidebar-toggle:hover {
+    background: #f5f5f5;
+}
+
+.sidebar-toggle.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .search-container {
     flex: 1;
     max-width: 500px;
     position: relative;
-    margin-left: 50px;
 }
 
 .search-box {
@@ -24,21 +51,25 @@
     background: #f5f5f5;
 }
 
-.search-icon,
-.mic-icon {
+.search-icon {
     position: absolute;
+    left: 15px;
     top: 50%;
     transform: translateY(-50%);
     color: #888;
-}
-
-.search-icon {
-    left: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .mic-icon {
+    position: absolute;
     right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .header-right {
@@ -52,7 +83,6 @@
     font-weight: 600;
     text-decoration: none;
     font-size: 16px;
-    cursor: pointer;
 }
 
 .icon-btn {
@@ -65,54 +95,43 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.icon-btn:hover {
+    background: #e0e0e0;
 }
 
 /* Profile Dropdown Styles */
 .profile-dropdown-wrapper {
     position: relative;
-    display: inline-block;
-}
-
-.profile-icon-btn {
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
 }
 
 .profile-dropdown {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    width: 250px;
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    z-index: 1000;
     display: none;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 200px;
+    z-index: 1000;
 }
 
 .profile-dropdown.show {
     display: block;
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .user-info {
+    padding: 15px;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    gap: 10px;
 }
 
 .user-icon {
     font-size: 24px;
-    margin-right: 10px;
 }
 
 .user-details {
@@ -120,73 +139,39 @@
 }
 
 .username {
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: 600;
     color: #333;
-    margin-bottom: 4px;
+    font-size: 14px;
 }
 
 .email {
-    font-size: 14px;
     color: #666;
+    font-size: 12px;
 }
 
 .separator {
     border: none;
-    border-top: 1px solid #e0e0e0;
-    margin: 15px 0;
+    border-top: 1px solid #eee;
+    margin: 0;
 }
 
 .dropdown-item {
-    display: flex;
-    align-items: center;
     width: 100%;
-    padding: 12px 0;
-    cursor: pointer;
+    padding: 12px 15px;
     border: none;
     background: none;
     text-align: left;
-    transition: background-color 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s;
 }
 
 .dropdown-item:hover {
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
+    background: #f5f5f5;
 }
 
-.setting-icon, .logout-icon {
-    font-size: 18px;
-    margin-right: 12px;
-    width: 20px;
-    text-align: center;
-}
-
-.setting span {
-    font-size: 16px;
-    color: #333;
-}
-
-.logout span {
-    font-size: 16px;
-    font-weight: bold;
-    color: #d32f2f;
-}
-
-.logout-icon {
-    color: #d32f2f;
-}
-
-/* Arrow pointing up to the profile button */
-.profile-dropdown::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    right: 20px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid white;
+.dropdown-item:last-child {
+    border-radius: 0 0 8px 8px;
 }
