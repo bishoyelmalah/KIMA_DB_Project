@@ -9,15 +9,10 @@
 <body>
     <div class="container">
         <!-- Include sidebar component from static/components/Sidebar/Sidebar.html -->
-        <link rel="stylesheet" href="../../static/CSS/components/sidebar.css">
+        <link rel="stylesheet" href="../app/static/CSS/components/sidebar.css">
 
 <!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
-
 <div id="sidebarOverlay" class="sidebar-overlay"></div>
-
 <aside id="sidebar" class="sidebar closed">
     <div class="logo">
         <div class="logo-icon">☥</div>
@@ -25,7 +20,7 @@
     </div>
 
     <ul class="nav-menu">
-        <li class="nav-item" onclick="window.location.href='/'">Home Page</li>
+        <li class="nav-item" onclick="window.location.href='/'">Dashboard</li>
         <li class="nav-item" onclick="window.location.href='/employees'">Employees</li>
         <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
         <li class="nav-item" onclick="window.location.href='/products'">Products</li>
@@ -38,13 +33,70 @@
     </div>
 </aside>
 
-<script src="../../static/JS/components/sidebar.js"></script>
+<script>
+// Sidebar functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    // Toggle sidebar
+    function toggleSidebar() {
+        const isOpen = !sidebar.classList.contains('closed');
+        
+        if (isOpen) {
+            // Close sidebar
+            sidebar.classList.add('closed');
+            sidebarOverlay.classList.remove('active');
+            sidebarToggle.classList.remove('hidden');
+        } else {
+            // Open sidebar
+            sidebar.classList.remove('closed');
+            sidebarOverlay.classList.add('active');
+            sidebarToggle.classList.add('hidden');
+        }
+    }
+
+    // Close sidebar
+    function closeSidebar() {
+        sidebar.classList.add('closed');
+        sidebarOverlay.classList.remove('active');
+        sidebarToggle.classList.remove('hidden');
+    }
+
+    // Event listeners
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', toggleSidebar);
+    }
+
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSidebar();
+        }
+    });
+
+    // Initialize sidebar as closed
+    sidebar.classList.add('closed');
+});
+</script>
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <link rel="stylesheet" href="../../static/CSS/components/header.css">
+            <link rel="stylesheet" href="../app/static/CSS/components/header.css">
+
+<link rel="stylesheet" href="../app/static/CSS/components/header.css">
+
 
 <header class="header">
+    <!-- Sidebar Toggle Button (for mobile) -->
+    <button id="sidebarToggle" class="sidebar-toggle">
+        <img src="../app/static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
+    </button>
     <div class="search-container">
         <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
         <input type="text" class="search-box" placeholder="Search">
@@ -80,7 +132,42 @@
     </div>
 </header>
 
-<script src="../../static/JS/components/profile-dropdown.js"></script>
+<script>
+// Profile dropdown functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const profileBtn = document.getElementById('profileIconBtn');
+    const profileDropdown = document.getElementById('profileDropdown');
+
+    if (profileBtn && profileDropdown) {
+        profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+    }
+});
+
+// Settings and logout functions
+function openSettings() {
+    alert('Settings functionality will be implemented');
+    document.getElementById('profileDropdown').classList.remove('show');
+}
+
+function logout() {
+    if (confirm('Are you sure you want to log out?')) {
+        alert('Logout functionality will be implemented');
+        document.getElementById('profileDropdown').classList.remove('show');
+    }
+}
+</script>
+
+
 
 
             <!-- Content -->
@@ -102,7 +189,7 @@
 
                 <!-- Supplier cards -->
                 <div class="supplier-card">
-                    <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
+                    <div class="supplier-card__image"> <img src="../app/static/assets/truck.png" width="150px" height="150px"></div>
                     <div class="supplier-card__content">
                         <div class="supplier-card__id">Transportation ID: 1200</div>
                     </div>
@@ -115,7 +202,7 @@
 
 
     <!-- Include footer component from static/components/Footer/footer.html -->
-    <link rel="stylesheet" href="../../static/CSS/components/footer.css">
+    <link rel="stylesheet" href="../static/CSS/components/footer.css">
 
     <footer class="footer">
         <div class="footer-content">

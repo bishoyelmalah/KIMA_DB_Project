@@ -3,169 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Profile - KIMA ASWAN</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Profile Card</title>
+    <link rel="stylesheet" href="../static/CSS/Employee_Page_Details.css">
+    <style>
+       
+    </style>
 </head>
 <body>
-    <!-- Left Sidebar -->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <div class="logo-icon">☥</div>
-            <h1>KIMA ASWAN</h1>
-        </div>
-        <nav class="sidebar-nav">
-            <a href="#" class="nav-item">Dashboard</a>
-            <a href="#" class="nav-item active">Employees</a>
-            <a href="#" class="nav-item">Suppliers</a>
-            <a href="#" class="nav-item">Products</a>
-            <a href="#" class="nav-item">Customers</a>
-        </nav>
-        <div class="sidebar-footer">
-            <p class="help-text"><strong>Need help?</strong></p>
-            <p class="help-text small">Open our help center</p>
-        </div>
-    </div>
-
-    <!-- Top Right Icons -->
-    <div class="top-right-icons">
-        <span class="home-text">Home</span>
-        <div class="icon-circle">
-            <i class="fas fa-bell"></i>
-        </div>
-        <div class="icon-circle">
-            <i class="fas fa-user"></i>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Top Bar -->
-        <header class="top-bar">
-            <div class="search-container">
-                <div class="search-input-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="Search" class="search-input">
-                    <i class="fas fa-microphone mic-icon"></i>
-                </div>
-            </div>
-        </header>
-
-        <!-- Page Content -->
-        <div class="page-content">
-            <h2 class="page-title">Profile</h2>
-
-            <!-- Profile Section -->
-            <div class="profile-section">
-                <div class="profile-image-container">
-                    <img src="image.jpg" alt="Profile" class="profile-image">
-                </div>
-                <div class="profile-info-centered">
-                    <p><strong>Name:</strong></p>
-                    <p><strong>ID:</strong></p>
-                    <p><strong>SSN:</strong></p>
-                    <p><strong>Email:</strong></p>
-                    <p><strong>Phone:</strong></p>
-                </div>
-            </div>
-
-            <!-- Floating Icons -->
-            <div class="floating-icons">
-                <div class="action-icon">
-                    <i class="fas fa-trash"></i>
-                </div>
-                <div class="action-icon">
-                    <i class="fas fa-pencil"></i>
-                </div>
-            </div>
-
-            <!-- More Details Button -->
-            <div class="more-details-section">
-                <button class="more-details-btn" onclick="openDetailsModal()">
-                    More Details
+    <div class="container">
+        <h1>Profile</h1>
+        
+        <div class="profile-wrapper" data-profile-id="12345">
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn" onclick="profileManager.deleteProfile()" title="Delete Profile" aria-label="Delete profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6'/%3E%3C/svg%3E" alt="Delete">
+                </button>
+                <button class="action-btn hidden" id="save-btn" onclick="profileManager.saveProfile()" title="Save Changes" aria-label="Save changes">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z'/%3E%3Cpolyline points='17 21 17 13 7 13 7 21'/%3E%3Cpolyline points='7 3 7 8 15 8'/%3E%3C/svg%3E" alt="Save">
+                </button>
+                <button class="action-btn" id="edit-btn" onclick="profileManager.toggleEditMode()" title="Edit Profile" aria-label="Edit profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/%3E%3Cpath d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/%3E%3C/svg%3E" alt="Edit">
                 </button>
             </div>
 
-            <!-- Bottom Button -->
-            <button class="departments-btn">
-                Departments details →
-            </button>
-        </div>
-    </div>
-
-    <!-- Details Modal -->
-    <div id="detailsModal" class="details-modal">
-        <div class="details-modal-content">
-            <div class="details-modal-header">
-                <h2>Employee Details</h2>
-                <span class="details-close-btn" onclick="closeDetailsModal()">&times;</span>
-            </div>
-            <div class="details-modal-body">
-                <!-- Content Cards in Modal -->
-                <div class="cards-container">
-                    <div class="card-section">
-                        <h3 class="section-header">Job information</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Job type:</strong></p>
-                                <p><strong>positions:</strong></p>
-                                <p><strong>shift:</strong></p>
-                                <p><strong>salary:</strong></p>
-                                <p><strong>scientific degree:</strong></p>
-                            </div>
+            <!-- Upper Section -->
+            <div class="upper-section">
+                <div class="profile-image-container">
+                    <div class="white-circle" onclick="profileManager.triggerImageUpload()">
+                        <img src="https://via.placeholder.com/200/0d4d3d/ffffff?text=Profile" alt="Profile" class="profile-image" id="profile-img">
+                        <div class="image-upload-overlay">
+                            📷 Change Photo
                         </div>
                     </div>
-                    <div class="card-section">
-                        <h3 class="section-header">Personal details</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Birth date:</strong></p>
-                                <p><strong>Age:</strong></p>
-                                <p><strong>Gender:</strong></p>
-                                <p><strong>Marital status:</strong></p>
-                                <p><strong>Military status:</strong></p>
-                            </div>
-                        </div>
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="profileManager.handleImageUpload(event)">
+                </div>
+                
+                <div class="green-info-box">
+                    <div class="info-item">
+                        <span class="info-label">Name:</span>
+                        <span class="info-text" data-field="name">John Doe</span>
+                        <input type="text" class="info-input hidden" name="name" placeholder="Enter name">
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">ID:</span>
+                        <span class="info-text" data-field="id">EMP-12345</span>
+                        <input type="text" class="info-input hidden" name="id" placeholder="Enter ID">
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">SSN:</span>
+                        <span class="info-text" data-field="ssn">***-**-1234</span>
+                        <input type="text" class="info-input hidden" name="ssn" placeholder="Enter SSN">
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span class="info-text" data-field="email">john.doe@company.com</span>
+                        <input type="email" class="info-input hidden" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-text" data-field="phone">+1 (555) 123-4567</span>
+                        <input type="tel" class="info-input hidden" name="phone" placeholder="Enter phone">
                     </div>
                 </div>
             </div>
-            <div class="details-modal-footer">
-                <button class="btn-secondary" onclick="closeDetailsModal()">Close</button>
-                <button class="btn-primary">Edit Details</button>
+
+            <!-- Lower Sections -->
+            <div class="lower-sections">
+                <div class="section">
+                    <h3 class="section-title">Job Information</h3>
+                    <div class="detail-item">
+                        <span class="detail-label">Job type:</span>
+                        <span class="detail-text" data-field="job_type">Full-time</span>
+                        <input type="text" class="detail-input hidden" name="job_type" placeholder="Enter job type">
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Position:</span>
+                        <span class="detail-text" data-field="position">Senior Developer</span>
+                        <input type="text" class="detail-input hidden" name="position" placeholder="Enter position">
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Shift:</span>
+                        <span class="detail-text" data-field="shift">Day Shift (9AM - 5PM)</span>
+                        <input type="text" class="detail-input hidden" name="shift" placeholder="Enter shift">
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Salary:</span>
+                        <span class="detail-text" data-field="salary">$85,000/year</span>
+                        <input type="text" class="detail-input hidden" name="salary" placeholder="Enter salary">
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Scientific degree:</span>
+                        <span class="detail-text" data-field="degree">Bachelor of Science</span>
+                        <input type="text" class="detail-input hidden" name="degree" placeholder="Enter degree">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Personal Details</h3>
+                    <div class="detail-item">
+                        <span class="detail-label">Birth date:</span>
+                        <span class="detail-text" data-field="birth_date">January 15, 1990</span>
+                        <input type="date" class="detail-input hidden" name="birth_date">
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Age:</span>
+                        <span class="detail-text" data-field="age">34 years</span>
+                        <input type="number" class="detail-input hidden" name="age" placeholder="Enter age">
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Gender:</span>
+                        <span class="detail-text" data-field="gender">Male</span>
+                        <select class="detail-input hidden" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Marital status:</span>
+                        <span class="detail-text" data-field="marital_status">Married</span>
+                        <select class="detail-input hidden" name="marital_status">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Military status:</span>
+                        <span class="detail-text" data-field="military_status">Completed</span>
+                        <select class="detail-input hidden" name="military_status">
+                            <option value="Completed">Completed</option>
+                            <option value="Exempted">Exempted</option>
+                            <option value="Postponed">Postponed</option>
+                            <option value="Not Applicable">Not Applicable</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // Modal Functions
-        function openDetailsModal() {
-            const modal = document.getElementById('detailsModal');
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeDetailsModal() {
-            const modal = document.getElementById('detailsModal');
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('detailsModal');
-            if (event.target === modal) {
-                closeDetailsModal();
-            }
-        }
-    </script>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="../static/JS/Employee&CustomerDetails.js"></script>
 </body>
 </html>
