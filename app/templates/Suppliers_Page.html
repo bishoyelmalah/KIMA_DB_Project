@@ -101,12 +101,13 @@
                 </div>
 
                 <!-- Supplier cards -->
-            <div class="cards-container">
+                {% for supplier in suppliers %}
+
                 <div class="supplier-card">
                     <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
                     <div class="supplier-card__content">
-                        <div class="supplier-card__id">Supplier ID: 1200</div>
-                        <div class="supplier-card__name">Name: ABC Company</div>
+                        <div class="supplier-card__id">Supplier ID: {{supplier.Sup_ID}}</div>
+                        <div class="supplier-card__name">Name: {{supplier.Sup_Name}}</div>
                     </div>
                 </div>
                 <div class="supplier-card">
@@ -146,6 +147,8 @@
                 </div>
                 
             </div>
+
+                {% endfor %}
 
             </div>
         </main>
