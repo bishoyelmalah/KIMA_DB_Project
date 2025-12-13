@@ -17,6 +17,10 @@ def create_app():
 
     #Home Page
     @app.route('/')
+    def login():
+        return render_template("login.html")
+    
+    @app.route('/dashboard')
     def home():
         return render_template("Home_Page.html")
 
