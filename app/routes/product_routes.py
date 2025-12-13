@@ -18,3 +18,7 @@ def product_details(id):
 def delete_product(id):
     Products.delete(f"P_ID = {id}")
     return redirect(list_products())
+
+@product_bp.route('/add_product')
+def add_product_page():
+    return render_template('Products_Form.html')

@@ -9,79 +9,11 @@
 <body>
     <div class="container">
         <!-- Include sidebar component from static/components/Sidebar/Sidebar.html -->
-        <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
+        {% include 'components/Sidebar.html' %}
 
-<!-- Sidebar Toggle Button (for mobile) -->
-<button id="sidebarToggle" class="sidebar-toggle">
-    <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-</button>
-
-<div id="sidebarOverlay" class="sidebar-overlay"></div>
-
-<aside id="sidebar" class="sidebar closed">
-    <div class="logo">
-        <div class="logo-icon">☥</div>
-        <div class="logo-text">KIMA ASWAN</div>
-    </div>
-
-    <ul class="nav-menu">
-        <li class="nav-item" onclick="window.location.href='/'">Home Page</li>
-        <li class="nav-item" onclick="window.location.href='/employees'">Employees</li>
-        <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
-        <li class="nav-item" onclick="window.location.href='/products'">Products</li>
-        <li class="nav-item" onclick="window.location.href='/customers'">Customers</li>
-    </ul>
-
-    <div class="help-section">
-        <div class="help-title">Need help?</div>
-        <div class="help-link">Open our help center</div>
-    </div>
-</aside>
-
-<script src="../static/JS/components/sidebar.js"></script>
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Header -->
-            <link rel="stylesheet" href="../static/CSS/components/header.css">
-
-<header class="header">
-    <div class="search-container">
-        <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-        <input type="text" class="search-box" placeholder="Search">
-        <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
-    </div>
-    <div class="header-right">
-        <a class="header-link" onclick="window.location.href='/'">Home</a>
-        <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
-        <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
-        <div class="profile-dropdown-wrapper">
-            <button class="icon-btn profile-icon-btn" id="profileIconBtn" type="button">
-                <img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;">
-            </button>
-            <div class="profile-dropdown" id="profileDropdown">
-                <div class="user-info">
-                    <div class="user-icon">👤</div>
-                    <div class="user-details">
-                        <div class="username">Username</div>
-                        <div class="email">user.mail@gmail.com</div>
-                    </div>
-                </div>
-                <hr class="separator">
-                <button class="dropdown-item setting" onclick="openSettings()">
-                    <div class="setting-icon">⚙️</div>
-                    <span>Setting</span>
-                </button>
-                <button class="dropdown-item logout" onclick="logout()">
-                    <div class="logout-icon">▶</div>
-                    <span>Log out</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</header>
-
-<script src="../static/JS/components/profile-dropdown.js"></script>
-
+        {% include 'components/header.html' %}
 
             <!-- Content -->
             <div class="content">
@@ -90,7 +22,7 @@
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
                         <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
-                        <button class="btn-add-employee" onclick="window.location.href='Employee_Form.html'">+ Add Employees</button>
+                        <button class="btn-add-employee" onclick="window.location.href='/add_employee'">+ Add Employees</button>
                     </div>
                 </div>
 <!-- ComputerShow? -->
@@ -106,99 +38,35 @@
                         <thead>
                             <tr>
                                 <th>Photo</th>
-                                <th>Name</th>
                                 <th>ID</th>
+                                <th>Name</th>
+                                <th>Job Position</th>
+                                <th>Job Degree</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Employee Row 1 -->
+                            <!-- Employee Row -->
+                            {% for employee in employees %}
                             <tr class="employee-row">
                                 <td>
                                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Sarah Johnson" class="employee-photo">
                                 </td>
-                                <td class="employee-name">Sarah Johnson</td>
-                                <td class="employee-id">EMP-001</td>
+                                <td class="employee-id">{{employee.E_ID}}</td>
+                                <td class="employee-name">{{employee.Fname + " " + employee.Mname + " " + employee.Lname}}</td>
+                                <td class="employee-job-position">{{employee.E_Job_Position}}</td>
+                                <td class="employee-job-position">{{employee.E_Job_Degree}}</td>
                                 <td>
                                     <button class="details-btn" onclick="openModal('modal1')">More details...</button>
                                 </td>
                             </tr>
-
-                    
-                            <!-- Employee Row 3 -->
-                            <tr class="employee-row">
-                                <td>
-                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop" alt="Michael Chen" class="employee-photo">
-                                </td>
-                                <td class="employee-name">Michael Chen</td>
-                                <td class="employee-id">EMP-003</td>
-                                <td>
-                                    <button class="details-btn" onclick="openModal('modal3')">More details...</button>
-                                </td>
-                            </tr>
-
-                            <!-- Employee Row 4 -->
-                            <tr class="employee-row">
-                                <td>
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Omar Mahmoud" class="employee-photo">
-                                </td>
-                                <td class="employee-name">Omar Mahmoud</td>
-                                <td class="employee-id">EMP-004</td>
-                                <td>
-                                    <button class="details-btn" onclick="openModal('modal4')">More details...</button>
-                                </td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
         </main>
     </div>
-
-    <!-- Modal for Employee Details (Example: Employee 1) -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Employee Details</h2>
-                <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <!-- Content Cards in Modal -->
-                <div class="cards-container">
-                    <div class="card-section">
-                        <h3 class="section-header">Job information</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Job type:</strong> <span class="editable-text" data-field="jobType">Full-time</span></p>
-                                <p><strong>positions:</strong> <span class="editable-text" data-field="position">Senior Chemical Engineer</span></p>
-                                <p><strong>shift:</strong> <span class="editable-text" data-field="shift">Morning (8 AM - 4 PM)</span></p>
-                                <p><strong>salary:</strong> <span class="editable-text" data-field="salary">$45,000/year</span></p>
-                                <p><strong>scientific degree:</strong> <span class="editable-text" data-field="degree">Master's in Chemical Engineering</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <h3 class="section-header">Personal details</h3>
-                        <div class="card">
-                            <div class="card-content">
-                                <p><strong>Birth date:</strong> <span class="editable-text" data-field="birthDate">March 15, 1990</span></p>
-                                <p><strong>Age:</strong> <span class="editable-text" data-field="age">34 years</span></p>
-                                <p><strong>Gender:</strong> <span class="editable-text" data-field="gender">Female</span></p>
-                                <p><strong>Marital status:</strong> <span class="editable-text" data-field="maritalStatus">Married</span></p>
-                                <p><strong>Military status:</strong> <span class="editable-text" data-field="militaryStatus">Exempted</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal('modal1')">Close</button>
-                <button class="btn-primary" id="editBtn1" onclick="toggleEdit('modal1')">Edit Details</button>
-            </div>
-        </div>
-    </div>
-
-
 
     <!-- Include footer component from static/components/Footer/footer.html -->
     {% include 'components/footer.html' %}
