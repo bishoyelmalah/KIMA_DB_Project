@@ -98,7 +98,7 @@
                 <!-- Supplier cards -->
             <div class="cards-container">
                 {% for supplier in suppliers %}
-                <div class="supplier-card">
+                <div class="supplier-card" onclick="window.location.href='/edit'">
                     <div class="supplier-card__image"> <img src="../static/assets/user.png" width="150px" height="150px"></div>
                     <div class="supplier-card__content">
                         <div class="supplier-card__id">Supplier ID: {{supplier.Sup_ID}}</div>
