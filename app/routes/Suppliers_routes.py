@@ -28,7 +28,10 @@ def add_supplier():
             contract_end_date = request.form.get("supplierContractEndDate")
             
             # Add supplier to database
-            Suppliers.add(supplier_name, phone,contract_end_date,contract_start_date, email, bank_account,address)
+            Suppliers.add(
+                supplier_name, phone,contract_end_date, 
+                contract_start_date, email, 
+                bank_account, address)
             
             return redirect('/suppliers')
             
