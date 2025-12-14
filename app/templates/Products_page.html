@@ -22,15 +22,39 @@
                     <h1 class="page-title">Products</h1>
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
-                        <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
                         <button class="btn-add-employee" onclick="window.location.href='/add_product'">+ Add Product</button>
                     </div>
                 </div>
             <!-- ComputerShow? -->
-                <!-- Filter and Sort -->
-                <div class="table-controls">
-                    <button class="control-btn"><img src="https://i.postimg.cc/tg4Mg8N2/filter-icon.png" alt="Filter Icon" style="width:16px; height:16px; margin-right:5px;"> Filter</button>
-                    <button class="control-btn"><img src="https://i.postimg.cc/ZYdD0865/sort-icon.png" alt="Sort Icon" style="width:16px; height:16px; margin-right:5px;"> Sort</button>
+
+
+                <!-- Filter Modal -->
+                <div id="filterModal" class="filter-modal">
+                    <div class="filter-modal-content">
+                        <div class="filter-header">
+                            <h3>Filter Products</h3>
+                            <span class="close-filter">&times;</span>
+                        </div>
+                        <div class="filter-body">
+                            <div class="filter-group">
+                                <label for="productNameFilter">Product Name:</label>
+                                <input type="text" id="productNameFilter" placeholder="Search by name..." class="filter-input">
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="idRangeFilter">Product ID Range:</label>
+                                <div class="range-inputs">
+                                    <input type="number" id="minIdFilter" placeholder="Min ID" class="filter-input">
+                                    <span>to</span>
+                                    <input type="number" id="maxIdFilter" placeholder="Max ID" class="filter-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-footer">
+                            <button id="clearFilters" class="btn-clear">Clear All</button>
+                            <button id="applyFilters" class="btn-apply">Apply Filters</button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Supplier cards -->
@@ -53,28 +77,5 @@
     <!-- Include footer component from static/components/Footer/footer.html -->
     {% include 'components/footer.html' %}
 
-    <script>
-        // Search functionality
-        const searchBox = document.getElementById('searchBox');
-        if (searchBox) {
-            searchBox.addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                const cards = document.querySelectorAll('.supplier-card');
-                
-                cards.forEach(card => {
-                    const productId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
-                    const productName = card.querySelector('.supplier-card__name')?.textContent.toLowerCase();
-                    
-                    if (productId && productName) {
-                        if (productId.includes(searchTerm) || productName.includes(searchTerm)) {
-                            card.style.display = '';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-            });
-        }
-    </script>
 </body>
 </html>

@@ -90,16 +90,10 @@
                     <h1 class="page-title">Suppliers</h1>
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
-                        <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" alt="Download" style="width:20px; height:20px;"></button>
-                        <button class="btn-add-employee">+ Add Suppliers</button>
+                        <button class="btn-add-employee" onclick="window.location.href='/add_supplier'">+ Add Suppliers</button>
                     </div>
                 </div>
         <!-- ComputerShow? -->
-                <!-- Filter and Sort -->
-                <div class="table-controls">
-                    <button class="control-btn"><img src="https://i.postimg.cc/tg4Mg8N2/filter-icon.png" alt="Filter Icon" style="width:16px; height:16px; margin-right:5px;"> Filter</button>
-                    <button class="control-btn"><img src="https://i.postimg.cc/ZYdD0865/sort-icon.png" alt="Sort Icon" style="width:16px; height:16px; margin-right:5px;"> Sort</button>
-                </div>
 
                 <!-- Supplier cards -->
             <div class="cards-container">
@@ -170,18 +164,18 @@
 
      <script>
         // Search functionality
-        const searchBox = document.querySelector('.search-box');
+        const searchBox = document.getElementById('searchBox');
         if (searchBox) {
             searchBox.addEventListener('input', function(e) {
                 const searchTerm = e.target.value.toLowerCase();
                 const cards = document.querySelectorAll('.supplier-card');
                 
                 cards.forEach(card => {
-                    const supplierId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
-                    const supplierName = card.querySelector('.supplier-card__name')?.textContent.toLowerCase();
+                    const productId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
+                    const productName = card.querySelector('.supplier-card__name')?.textContent.toLowerCase();
                     
-                    if (supplierId && supplierName) {
-                        if (supplierId.includes(searchTerm) || supplierName.includes(searchTerm)) {
+                    if (productId && productName) {
+                        if (productId.includes(searchTerm) || productName.includes(searchTerm)) {
                             card.style.display = '';
                         } else {
                             card.style.display = 'none';
