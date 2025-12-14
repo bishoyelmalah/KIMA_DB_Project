@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Supplier</title>
+    <title>Edit Supplier</title>
     <link rel="stylesheet" href="../static/CSS/Form_Style.css">
 </head>
 <body class="profile-page">
@@ -13,7 +13,7 @@
 
     <main class="main-content">
         {# START SINGLE FORM #}
-        <form method="POST" action="/add_supplier">
+        <form method="POST" action="/edit_supplier/{{ details.Sup_ID }}">
 
             {# Personal Information #}
             <div class="card">
@@ -21,12 +21,12 @@
 
                 <div class="info-item">
                     <label for="supplierName"><strong>Supplier Name:</strong></label>
-                    <input type="text" id="supplierName" name="supplierName" placeholder="Enter supplier name" required>
+                    <input type="text" id="supplierName" name="supplierName" placeholder="Enter supplier name" value="{{ details.Sup_Name }}" required>
                 </div>
 
                 <div class="info-item">
                     <label for="address"><strong>Address:</strong></label>
-                    <input type="text" id="address" name="address" placeholder="123 Nile St., Aswan, Egypt" required>
+                    <input type="text" id="address" name="address" placeholder="123 Nile St., Aswan, Egypt" value="{{ details.Sup_Address }}" required>
                 </div>
             </div>
 
@@ -36,12 +36,12 @@
 
                 <div class="info-item">
                     <label for="phone"><strong>Phone:</strong></label>
-                    <input type="tel" id="phone" name="phone" placeholder="+20 123 456 7890" required>
+                    <input type="tel" id="phone" name="phone" placeholder="+20 123 456 7890" value="{{ details.Sup_phone }}" required>
                 </div>
 
                 <div class="info-item">
                     <label for="email"><strong>Email:</strong></label>
-                    <input type="email" id="email" name="email" placeholder="supplier@example.com" required>
+                    <input type="email" id="email" name="email" placeholder="supplier@example.com" value="{{ details.Sup_Email }}" required>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
 
                 <div class="info-item">
                     <label for="supplierBankAccount"><strong>Bank Account:</strong></label>
-                    <input type="text" id="supplierBankAccount" name="supplierBankAccount" placeholder="1234567890" required>
+                    <input type="text" id="supplierBankAccount" name="supplierBankAccount" placeholder="1234567890" value="{{ details.Sup_Bank_Acc }}" required>
                 </div>
             </div>
 
@@ -61,18 +61,18 @@
 
                 <div class="info-item">
                     <label for="supplierContractStartDate"><strong>Contract Start Date:</strong></label>
-                    <input type="date" id="supplierContractStartDate" name="supplierContractStartDate" required>
+                    <input type="date" id="supplierContractStartDate" name="supplierContractStartDate" value="{{ details.Sup_CSD }}" required>
                 </div>
 
                 <div class="info-item">
                     <label for="supplierContractEndDate"><strong>Contract End Date:</strong></label>
-                    <input type="date" id="supplierContractEndDate" name="supplierContractEndDate" required>
+                    <input type="date" id="supplierContractEndDate" name="supplierContractEndDate" value="{{ details.Sup_CED }}" required>
                 </div>
 
                 {# Buttons #}
                 <div class="button-group">
-                    <button type="submit" class="btn btn-save">Save Supplier</button>
-                    <a href="/suppliers" class="btn btn-cancel">Cancel</a>
+                    <button type="submit" class="btn btn-save">Update Supplier</button>
+                    <a href="/supplier_details/{{ details.Sup_ID }}" class="btn btn-cancel">Cancel</a>
                 </div>
             </div>
 

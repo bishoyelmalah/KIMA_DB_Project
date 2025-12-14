@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Transportation</title>
+    <title>Edit Transportation</title>
     <link rel="stylesheet" href="../static/CSS/Form_Style.css">
 </head>
 <body class="profile-page">
@@ -13,7 +13,7 @@
 
     <main class="main-content">
         {# START SINGLE FORM #}
-        <form method="POST" action="/add_transportation">
+        <form method="POST" action="/edit_transportation/{{ details.Tr_ID }}">
 
             {# Transportation Information #}
             <div class="card">
@@ -21,12 +21,12 @@
 
                 <div class="info-item">
                     <label for="costId"><strong>Cost ID:</strong></label>
-                    <input type="text" id="costId" name="costId" placeholder="Enter cost ID" required>
+                    <input type="text" id="costId" name="costId" placeholder="Enter cost ID" value="{{ details.Co_ID }}" required>
                 </div>
 
                 <div class="info-item">
                     <label for="invoiceId"><strong>Invoice ID:</strong></label>
-                    <input type="text" id="invoiceId" name="invoiceId" placeholder="Enter invoice ID" required>
+                    <input type="text" id="invoiceId" name="invoiceId" placeholder="Enter invoice ID" value="{{ details.I_ID }}" required>
                 </div>
             </div>
 
@@ -38,32 +38,32 @@
                     <label for="status"><strong>Status:</strong></label>
                     <select id="status" name="status" required>
                         <option value="">Select Status...</option>
-                        <option value="In Transit">In Transit</option>
-                        <option value="Delivered">Delivered</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Cancelled">Cancelled</option>
+                        <option value="In Transit" {% if details.Tr_status == 'In Transit' %}selected{% endif %}>In Transit</option>
+                        <option value="Delivered" {% if details.Tr_status == 'Delivered' %}selected{% endif %}>Delivered</option>
+                        <option value="Pending" {% if details.Tr_status == 'Pending' %}selected{% endif %}>Pending</option>
+                        <option value="Cancelled" {% if details.Tr_status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
                     </select>
                 </div>
 
                 <div class="info-item">
                     <label for="shippingAddress"><strong>Shipping Address:</strong></label>
-                    <input type="text" id="shippingAddress" name="shippingAddress" placeholder="123 Nile St., Aswan, Egypt" required>
+                    <input type="text" id="shippingAddress" name="shippingAddress" placeholder="123 Nile St., Aswan, Egypt" value="{{ details.Tr_shipping_Address }}" required>
                 </div>
 
                 <div class="info-item">
                     <label for="departureDate"><strong>Departure Date:</strong></label>
-                    <input type="date" id="departureDate" name="departureDate" required>
+                    <input type="date" id="departureDate" name="departureDate" value="{{ details.Tr_departure_date }}" required>
                 </div>
 
                 <div class="info-item">
                     <label for="arrivalDate"><strong>Arrival Date:</strong></label>
-                    <input type="date" id="arrivalDate" name="arrivalDate" required>
+                    <input type="date" id="arrivalDate" name="arrivalDate" value="{{ details.Tr_arrival_date }}" required>
                 </div>
 
                 {# Buttons #}
                 <div class="button-group">
-                    <button type="submit" class="btn btn-save">Save Transportation</button>
-                    <a href="/transportations" class="btn btn-cancel">Cancel</a>
+                    <button type="submit" class="btn btn-save">Update Transportation</button>
+                    <a href="/transportation_details/{{ details.Tr_ID }}" class="btn btn-cancel">Cancel</a>
                 </div>
             </div>
 

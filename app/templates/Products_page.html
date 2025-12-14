@@ -27,36 +27,6 @@
                 </div>
             <!-- ComputerShow? -->
 
-
-                <!-- Filter Modal -->
-                <div id="filterModal" class="filter-modal">
-                    <div class="filter-modal-content">
-                        <div class="filter-header">
-                            <h3>Filter Products</h3>
-                            <span class="close-filter">&times;</span>
-                        </div>
-                        <div class="filter-body">
-                            <div class="filter-group">
-                                <label for="productNameFilter">Product Name:</label>
-                                <input type="text" id="productNameFilter" placeholder="Search by name..." class="filter-input">
-                            </div>
-                            
-                            <div class="filter-group">
-                                <label for="idRangeFilter">Product ID Range:</label>
-                                <div class="range-inputs">
-                                    <input type="number" id="minIdFilter" placeholder="Min ID" class="filter-input">
-                                    <span>to</span>
-                                    <input type="number" id="maxIdFilter" placeholder="Max ID" class="filter-input">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filter-footer">
-                            <button id="clearFilters" class="btn-clear">Clear All</button>
-                            <button id="applyFilters" class="btn-apply">Apply Filters</button>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Supplier cards -->
                 <div class="cards-container">
                 {% for product in products %}
@@ -77,5 +47,29 @@
     <!-- Include footer component from static/components/Footer/footer.html -->
     {% include 'components/footer.html' %}
 
+    <script>
+        // Simple search functionality for products
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.querySelector('.search-box');
+            
+            if (searchBox) {
+                searchBox.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const productCards = document.querySelectorAll('.supplier-card');
+                    
+                    productCards.forEach(card => {
+                        const productName = card.querySelector('.supplier-card__name')?.textContent.toLowerCase() || '';
+                        const productId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase() || '';
+                        
+                        if (productName.includes(searchTerm) || productId.includes(searchTerm)) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

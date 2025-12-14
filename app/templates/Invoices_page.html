@@ -3,113 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIMA ASWAN - Employees</title>
+    <title>KIMA ASWAN - Invoices</title>
     <link rel="stylesheet" href="../static/CSS/invoices_page.css">
 </head>
 <body>
     <div class="container">
         <!-- Include sidebar component from static/components/Sidebar/Sidebar.html -->
-        <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
-
-<!-- Sidebar Toggle Button (for mobile) -->
-<div id="sidebarOverlay" class="sidebar-overlay"></div>
-<aside id="sidebar" class="sidebar closed">
-    <div class="logo">
-        <div class="logo-icon">☥</div>
-        <div class="logo-text">KIMA ASWAN</div>
-    </div>
-
-    <ul class="nav-menu">
-        <li class="nav-item" onclick="window.location.href='/'">Home Page</li>
-        <li class="nav-item" onclick="window.location.href='/employees'">Employees</li>
-        <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
-        <li class="nav-item" onclick="window.location.href='/products'">Products</li>
-        <li class="nav-item" onclick="window.location.href='/customers'">Customers</li>
-    </ul>
-
-    <div class="help-section">
-        <div class="help-title">Need help?</div>
-        <div class="help-link">Open our help center</div>
-    </div>
-</aside>
-
-<script src="../static/JS/components/sidebar.js"></script>
+            {% include 'components/Sidebar.html' %}
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <link rel="stylesheet" href="../static/CSS/components/header.css">
-
-<header class="header">
-    <button id="sidebarToggle" class="sidebar-toggle">
-      <img src="../static/assets/menu-bar.png" style="width: 35px; height: 35 px;">
-    </button>
-    <div class="search-container">
-        <span class="search-icon"><img src="https://i.postimg.cc/6pMgv9SK/search-svgrepo-com.png" alt="Search Icon" style="width:20px; height:20px;"></span>
-        <input type="text" id="searchBox" class="search-box" placeholder="Search">
-        <span class="mic-icon"><img src="https://i.postimg.cc/W4rmP80k/microphone-svgrepo-com.png" alt="Microphone Icon" style="width:20px; height:20px;"></span>
-    </div>
-    <div class="header-right">
-        <a class="header-link" onclick="window.location.href='/'">Home</a>
-        <button class="icon-btn"><img src="https://i.postimg.cc/5tqH3Rw7/bell-alt-svgrepo-com.png" alt="Notification Bell" style="width:20px; height:20px;"></button>
-        <!-- Include profile dropdown component from static/utilities/Profile_DropDown/profile-dropdown.html -->
-        <div class="profile-dropdown-wrapper">
-            <button class="icon-btn profile-icon-btn" id="profileIconBtn" type="button">
-                <img src="https://i.postimg.cc/YSp2pqW5/profile-round-1342-svgrepo-com.png" alt="Profile" style="width:20px; height:20px;">
-            </button>
-            <div class="profile-dropdown" id="profileDropdown">
-                <div class="user-info">
-                    <div class="user-icon">👤</div>
-                    <div class="user-details">
-                        <div class="username">Username</div>
-                        <div class="email">user.mail@gmail.com</div>
-                    </div>
-                </div>
-                <hr class="separator">
-                <button class="dropdown-item setting" onclick="openSettings()">
-                    <div class="setting-icon">⚙️</div>
-                    <span>Setting</span>
-                </button>
-                <button class="dropdown-item logout" onclick="logout()">
-                    <div class="logout-icon">▶</div>
-                    <span>Log out</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</header>
-
-<script src="../static/JS/components/profile-dropdown.js"></script>
-
-
+             {% include 'components/header.html' %}
             <!-- Content -->
             <div class="content">
                 <div class="page-header">
                     <h1 class="page-title">Invoices</h1>
                     <div class="action-buttons">
-                        <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;"></button>
-                        <button class="btn-add-employee">+ Add Invoice</button>
+                        <button class="btn-icon" onclick="window.print()" title="Print">
+                            <img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" alt="Print" style="width:20px; height:20px;">
+                        </button>
+                        <a href="/add_invoice" class="btn-add-employee">+ Add Invoice</a>
                     </div>
                 </div>
-            <!-- ComputerShow? -->
 
-                <!-- Supplier cards -->
+                <!-- Filter and Sort -->
+                <div class="table-controls">
+                    <button class="control-btn" id="filterBtn"><img src="https://i.postimg.cc/tg4Mg8N2/filter-icon.png" alt="Filter Icon" style="width:16px; height:16px; margin-right:5px;"> Filter</button>
+                </div>
+
+                {# Invoice cards #}
                 <div class="cards-container">
-                    {% for invoice in invoices %}
-                        <div class="supplier-card">
-                            <div class="supplier-card__image"> <img src="../static/assets/receipt.png" width="150px" height="150px"></div>
-                            <div class="supplier-card__content">
-                                <div class="supplier-card__id">Invoice ID: {{invoice.I_ID}}</div>
+                    {% if invoices %}
+                        {% for invoice in invoices %}
+                            <div class="supplier-card" onclick="window.location.href='/invoice_details/{{ invoice.I_ID }}'" style="cursor: pointer;">
+                                <div class="supplier-card__image">
+                                    <img src="../static/assets/receipt.png" width="150px" height="150px" alt="invoice">
+                                </div>
+                                <div class="supplier-card__content">
+                                    <div class="supplier-card__id">Invoice ID: {{ invoice.I_ID }}</div>
+                                </div>
                             </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="no-data-message">
+                            <p>No invoices found. <a href="/add_invoice">Create one now!</a></p>
                         </div>
-                    {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </main>
     </div>
 
-
-
-    <!-- Include footer component from static/components/Footer/footer.html -->
+    <!-- Include footer component -->
     <link rel="stylesheet" href="../static/CSS/components/footer.css">
 
     <footer class="footer">
@@ -126,7 +71,6 @@
     </footer>
 
     <script>
-        // Modal Functions
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
@@ -143,7 +87,6 @@
             }
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
@@ -151,15 +94,14 @@
             }
         }
 
-        // Search functionality
-        const searchBox = document.getElementById('searchBox');
+        const searchBox = document.querySelector('.search-box');
         if (searchBox) {
             searchBox.addEventListener('input', function(e) {
                 const searchTerm = e.target.value.toLowerCase();
                 const cards = document.querySelectorAll('.supplier-card');
                 
                 cards.forEach(card => {
-                    const invoiceId = card.querySelector('.supplier-card__id').textContent.toLowerCase();
+                    const invoiceId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase() || '';
                     
                     if (invoiceId.includes(searchTerm)) {
                         card.style.display = '';
@@ -168,6 +110,16 @@
                     }
                 });
             });
+        }
+
+        function openSettings() {
+            alert('Settings page coming soon!');
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = '/logout';
+            }
         }
     </script>
 </body>

@@ -4,100 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/CSS/Suppliers_Details.css">
-    <script src="../static/JS/Details.js"></script>
-    <title>Document</title>
+    <title>Supplier Details</title>
 </head>
 <body>
-    
-        
-<div class="transport-details-card">
-    <div class="action-buttons">
-        <button class="action-btn" onclick="deleteTransport()" title="Delete" aria-label="Delete transportation record">
-            <img src="../static/assets/delete.png" alt="Delete" style="width:30px; height:30px;">
-        </button>
-        <button class="action-btn hidden" id="save-btn" onclick="saveTransport()" title="Save Changes" aria-label="Save changes to transportation record">
-            <img src="../static/assets/diskette.png" alt="save" style="width:30px; height:30px;">
-        </button>
-        <button class="action-btn" id="edit-btn" onclick="toggleEditMode()" title="Edit" aria-label="Edit transportation record">
-            <img src="../static/assets/edit.png" alt="Edit" style="width:30px; height:30px;">
-        </button>
+    {# Header #}
+    {% include 'components/header.html' %}
+    {% include 'components/Sidebar.html' %}
+
+    <div class="transport-details-card">
+        <div class="action-buttons">
+            <a href="/delete_supplier/{{ details.Sup_ID }}" class="action-btn" onclick="return confirm('Are you sure you want to delete this supplier?')" title="Delete" aria-label="Delete supplier">
+                <img src="../static/assets/delete.png" alt="Delete" style="width:30px; height:30px;">
+            </a>
+            <a href="/edit_supplier/{{ details.Sup_ID }}" class="action-btn" title="Edit" aria-label="Edit supplier">
+                <img src="../static/assets/edit.png" alt="Edit" style="width:30px; height:30px;">
+            </a>
+        </div>
+
+        <div class="transport-icon-section">
+            <div class="transport-badge">
+                <div class="icon"><img src="../static/assets/user.png" alt="supplier" width="150px" height="150px"></div>
+                <div class="transport-id">Name: {{ details.Sup_Name }}<br>ID: {{ details.Sup_ID }}</div>
+            </div>
+        </div>
+
+        <div class="details-list">
+            <div class="detail-item">
+                <label class="detail-label">Address:</label>
+                <span class="detail-text">{{ details.Sup_Address }}</span>
+            </div>
+
+            <div class="detail-item">
+                <label class="detail-label">Phone:</label>
+                <span class="detail-text">{{ details.Sup_phone }}</span>
+            </div>
+
+            <div class="detail-item">
+                <label class="detail-label">Email:</label>
+                <span class="detail-text">{{ details.Sup_Email }}</span>
+            </div>
+
+            <div class="detail-item">
+                <label class="detail-label">Bank Account:</label>
+                <span class="detail-text">{{ details.Sup_Bank_Acc }}</span>
+            </div>
+
+            <div class="detail-item">
+                <label class="detail-label">Contract Start Date:</label>
+                <span class="detail-text">{{ details.Sup_CSD }}</span>
+            </div>
+
+            <div class="detail-item">
+                <label class="detail-label">Contract End Date:</label>
+                <span class="detail-text">{{ details.Sup_CED }}</span>
+            </div>
+        </div>
     </div>
 
-    <div class="transport-icon-section">
-        <div class="transport-badge">
-            <div class="icon"><img src="../../static/assets/user.png" alt="user" width="150px" height="150"></div>
-            <div class="transport-id" data-transport-id="12345"> Name:  Test <br>ID: 12345</div>
-        </div>
-    </div>
-
-    <div class="details-list" id="transport-details-form">
-        <div class="detail-item">
-            <label class="detail-label" for="category">Address:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="category">Chemicals</span>
-                <input type="text" class="detail-value detail-input hidden" id="category" name="category" value="Chemicals">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="productionDate">Status:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="productionDate">2025-01-15</span>
-                <input type="text" class="detail-value detail-input hidden" id="productionDate" name="productionDate" value="2025-01-15">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="expiryDuration">Phone:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="expiryDuration">12 months</span>
-                <input type="text" class="detail-value detail-input hidden" id="expiryDuration" name="expiryDuration" value="12 months">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="costPrice">Rating:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="costPrice">50.00</span>
-                <input type="text" class="detail-value detail-input hidden" id="costPrice" name="costPrice" value="50.00">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="weight">Email:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="weight">20 kg</span>
-                <input type="text" class="detail-value detail-input hidden" id="weight" name="weight" value="20 kg">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="expiryDate">Bank Account:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="expiryDate">2026-01-15</span>
-                <input type="text" class="detail-value detail-input hidden" id="expiryDate" name="expiryDate" value="2026-01-15">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="status">Contract Start:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="status">Available</span>
-                <input type="text" class="detail-value detail-input hidden" id="status" name="status" value="Available">
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <label class="detail-label" for="unitPrice">Contract End:</label>
-            <div class="detail-content">
-                <span class="detail-text" data-field="unitPrice">75.00</span>
-                <input type="text" class="detail-value detail-input hidden" id="unitPrice" name="unitPrice" value="75.00">
-            </div>
-        </div>
-
-
-    </div>
-</div>
-
+    {# Footer #}
+    {% include 'components/footer.html' %}
 </body>
 </html>
