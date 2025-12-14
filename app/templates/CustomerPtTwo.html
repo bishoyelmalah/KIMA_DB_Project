@@ -57,7 +57,7 @@
                                 <td class="employee-id">{{ customer.C_ID }}</td>
                                 <td>{{ customer.C_Email }}</td>
                                 <td>{{ customer.C_Phone }}</td>
-                                <td><button class="details-btn" onclick="openModal('modal1')">More details...</button></td>
+                                <td><button class="details-btn" onclick="window.location.href='/customer_details/{{customer.C_ID}}'">More details...</button></td>
                             </tr>
                                 {% endfor %}
                         </tbody>
