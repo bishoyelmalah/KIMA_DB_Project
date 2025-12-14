@@ -34,8 +34,8 @@
                         <thead>
                             <tr>
                                 <th>Photo</th>
-                                <th>Name</th>
                                 <th>ID</th>
+                                <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Action</th>
@@ -45,9 +45,9 @@
                             {% for customer in customers %}
                             <!-- Customer Row -->
                             <tr class="employee-row">
-                                <td><img src="../static/assets/0000009295.png" class="employee-photo" alt="Ethyco"></td>
-                                <td class="employee-name">{{ customer.C_Name }}</td>
+                                <td><img src="../static/assets/user.png" class="employee-photo" alt="Ethyco"></td>
                                 <td class="employee-id">{{ customer.C_ID }}</td>
+                                <td class="employee-name">{{ customer.C_Name }}</td>
                                 <td>{{ customer.C_Email }}</td>
                                 <td>{{ customer.C_Phone }}</td>
                                 <td><button class="details-btn" onclick="window.location.href='/customer_details/{{customer.C_ID}}'">More details...</button></td>
