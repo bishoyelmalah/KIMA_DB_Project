@@ -10,7 +10,8 @@ VALID_CREDENTIALS = {
     'user@kima.com': 'user123',
     'drTamer@kima.com': 'drTamer123',
     'maivy@kima.com' : 'maivy132',
-    'bavly@kima.com' : 'bavly@2005'
+    'bavly@kima.com' : 'bavly@2005',
+    'aya@kima.com' : 'aya123'
 }
 
 @auth_bp.route('/')

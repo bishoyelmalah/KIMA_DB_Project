@@ -74,11 +74,13 @@
 }
 
 .nav-item.active {
-    background: #e8f5e9;
-    color: #2d5f4f;
+    background: linear-gradient(90deg, #ff9800 0%, #ff6f00 100%);
+    color: white;
     font-weight: 600;
     border-radius: 8px;
     margin: 0 10px;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+    border-left: 4px solid #ff6f00;
 }
 
 /* Sidebar Help Section */
