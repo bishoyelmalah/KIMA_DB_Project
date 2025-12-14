@@ -100,42 +100,14 @@
 
                 <!-- Transportation cards -->
                 <div class="cards-container">
+                    {% for transport in transportations %}
                     <div class="supplier-card">
                         <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
                         <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                            <div class="supplier-card__id">Transportation ID: {{transport.Tr_ID}}</div>
                         </div>
                     </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1201</div>
-                        </div>
-                    </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1202</div>
-                        </div>
-                    </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1203</div>
-                        </div>
-                    </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1204</div>
-                        </div>
-                    </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1205</div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </main>
