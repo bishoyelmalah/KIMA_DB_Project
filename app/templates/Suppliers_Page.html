@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         {# Sidebar #}
+<<<<<<< HEAD
         <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
 
         <div id="sidebarOverlay" class="sidebar-overlay"></div>
@@ -80,6 +81,15 @@
 
             <script src="../static/JS/components/profile-dropdown.js"></script>
 
+=======
+        {% include 'components/Sidebar.html' %}
+
+        {# Main Content #}
+        <main class="main-content">
+            {# Header #}
+            {% include 'components/header.html' %}
+
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
             {# Content #}
             <div class="content">
                 <div class="page-header">
@@ -117,23 +127,19 @@
     </div>
 
     {# Footer #}
+<<<<<<< HEAD
     <link rel="stylesheet" href="../static/CSS/components/footer.css">
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2024 KIMA ASWAN Factory Chemical Management System</p>
-            <p class="footer-text">Designed for efficient chemical material inventory management</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link" data-route="privacy_policy">Privacy Policy</a>
-                <a href="#" class="footer-link" data-route="terms_of_service">Terms of Service</a>
-                <a href="#" class="footer-link" data-route="contact_support">Contact Support</a>
-                <a href="#" class="footer-link" data-route="documentation">Documentation</a>
-            </div>
-        </div>
-    </footer>
+=======
+    {% include 'components/footer.html' %}
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
 
     <script>
+
+<<<<<<< HEAD
+    <script>
         {# Search functionality #}
+=======
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
         const searchBox = document.getElementById('searchBox');
         if (searchBox) {
             searchBox.addEventListener('input', function(e) {
@@ -153,7 +159,10 @@
             });
         }
 
+<<<<<<< HEAD
         {# Settings and logout functions #}
+=======
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
         function openSettings() {
             alert('Settings page coming soon!');
         }

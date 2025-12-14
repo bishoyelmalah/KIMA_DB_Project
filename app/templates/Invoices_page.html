@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <!-- Include sidebar component from static/components/Sidebar/Sidebar.html -->
+<<<<<<< HEAD
         <link rel="stylesheet" href="../static/CSS/components/sidebar.css">
 
         <!-- Sidebar Toggle Button (for mobile) -->
@@ -82,6 +83,13 @@
 
             <script src="../static/JS/components/profile-dropdown.js"></script>
 
+=======
+            {% include 'components/Sidebar.html' %}
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+             {% include 'components/header.html' %}
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
             <!-- Content -->
             <div class="content">
                 <div class="page-header">
@@ -94,6 +102,14 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
+=======
+                <!-- Filter and Sort -->
+                <div class="table-controls">
+                    <button class="control-btn" id="filterBtn"><img src="https://i.postimg.cc/tg4Mg8N2/filter-icon.png" alt="Filter Icon" style="width:16px; height:16px; margin-right:5px;"> Filter</button>
+                </div>
+
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
                 {# Invoice cards #}
                 <div class="cards-container">
                     {% if invoices %}
@@ -134,7 +150,10 @@
     </footer>
 
     <script>
+<<<<<<< HEAD
         {# Modal Functions #}
+=======
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
@@ -151,7 +170,10 @@
             }
         }
 
+<<<<<<< HEAD
         {# Close modal when clicking outside #}
+=======
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
@@ -159,17 +181,25 @@
             }
         }
 
+<<<<<<< HEAD
         {# Search functionality #}
         const searchBox = document.getElementById('searchBox');
+=======
+        const searchBox = document.querySelector('.search-box');
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
         if (searchBox) {
             searchBox.addEventListener('input', function(e) {
                 const searchTerm = e.target.value.toLowerCase();
                 const cards = document.querySelectorAll('.supplier-card');
                 
                 cards.forEach(card => {
+<<<<<<< HEAD
                     const invoiceId = card.querySelector('.supplier-card__id').textContent.toLowerCase();
                     const amount = card.querySelector('.supplier-card__amount').textContent.toLowerCase();
                     const status = card.querySelector('.supplier-card__status').textContent.toLowerCase();
+=======
+                    const invoiceId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase() || '';
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
                     
                     if (invoiceId.includes(searchTerm) || amount.includes(searchTerm) || status.includes(searchTerm)) {
                         card.style.display = '';
@@ -180,7 +210,10 @@
             });
         }
 
+<<<<<<< HEAD
         {# Settings and logout functions #}
+=======
+>>>>>>> 31479e2997864d429eb94aeb74fd93e43c9ac107
         function openSettings() {
             alert('Settings page coming soon!');
         }

@@ -25,6 +25,48 @@
                     </div>
                 </div>
 <!-- ComputerShow? -->
+                <!-- Filter and Sort -->
+                <div class="table-controls">
+                    <button class="control-btn" id="filterBtn"><img src="https://i.postimg.cc/tg4Mg8N2/filter-icon.png" alt="Filter Icon" style="width:16px; height:16px; margin-right:5px;"> Filter</button>
+                </div>
+
+                <!-- Filter Modal -->
+                <div id="filterModal" class="filter-modal">
+                    <div class="filter-modal-content">
+                        <div class="filter-header">
+                            <h3>Filter Employees</h3>
+                            <span class="close-filter">&times;</span>
+                        </div>
+                        <div class="filter-body">
+                            <div class="filter-group">
+                                <label for="jobPositionFilter">Job Position:</label>
+                                <select id="jobPositionFilter" class="filter-select">
+                                    <option value="">All Positions</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="jobDegreeFilter">Job Degree:</label>
+                                <select id="jobDegreeFilter" class="filter-select">
+                                    <option value="">All Degrees</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="idRangeFilter">Employee ID Range:</label>
+                                <div class="range-inputs">
+                                    <input type="number" id="minIdFilter" placeholder="Min ID" class="filter-input">
+                                    <span>to</span>
+                                    <input type="number" id="maxIdFilter" placeholder="Max ID" class="filter-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-footer">
+                            <button id="clearFilters" class="btn-clear">Clear All</button>
+                            <button id="applyFilters" class="btn-apply">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Employees Table -->
                 <div class="table-container">
@@ -49,7 +91,7 @@
                                 <td class="employee-id">{{employee.E_ID}}</td>
                                 <td class="employee-name">{{employee.Fname + " " + employee.Mname + " " + employee.Lname}}</td>
                                 <td class="employee-job-position">{{employee.E_Job_Position}}</td>
-                                <td class="employee-job-position">{{employee.E_Job_Degree}}</td>
+                                <td class="employee-job-degree">{{employee.E_Job_Degree}}</td>
                                 <td>
                                     <button class="details-btn" onclick="window.location.href='/employee_details/{{employee.E_ID}}'">More details...</button>
                                 </td>
@@ -66,29 +108,204 @@
     {% include 'components/footer.html' %}
 
     <script>
-        // Search functionality
-        const searchBox = document.querySelector('.search-box');
-        if (searchBox) {
-            searchBox.addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                const rows = document.querySelectorAll('.employee-row');
-                
-                rows.forEach(row => {
-                    const name = row.querySelector('.employee-name').textContent.toLowerCase();
-                    const id = row.querySelector('.employee-id').textContent.toLowerCase();
-                    
-                    if (name.includes(searchTerm) || id.includes(searchTerm)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
+        // Global variables
+        let allEmployees = [];
+        let activeFilters = {
+            jobPosition: '',
+            jobDegree: '',
+            minId: '',
+            maxId: ''
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEmployees();
+            initializeFilterModal();
+            initializeSearch();
+        });
+
+        // Store all employees data
+        function initializeEmployees() {
+            const rows = document.querySelectorAll('.employee-row');
+            allEmployees = Array.from(rows).map(row => ({
+                element: row,
+                id: parseInt(row.querySelector('.employee-id').textContent),
+                name: row.querySelector('.employee-name').textContent.toLowerCase(),
+                jobPosition: row.querySelector('.employee-job-position').textContent,
+                jobDegree: row.querySelector('.employee-job-degree').textContent
+            }));
+        }
+
+        // Filter Modal Functions
+        function initializeFilterModal() {
+            const filterBtn = document.getElementById('filterBtn');
+            const filterModal = document.getElementById('filterModal');
+            const closeFilter = document.querySelector('.close-filter');
+            const applyFilters = document.getElementById('applyFilters');
+            const clearFilters = document.getElementById('clearFilters');
+
+            if (!filterBtn || !filterModal) return;
+
+            // Open modal
+            filterBtn.addEventListener('click', function() {
+                filterModal.style.display = 'block';
+                populateFilterOptions();
+            });
+
+            // Close modal
+            if (closeFilter) {
+                closeFilter.addEventListener('click', function() {
+                    filterModal.style.display = 'none';
                 });
+            }
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === filterModal) {
+                    filterModal.style.display = 'none';
+                }
+            });
+
+            // Apply filters
+            if (applyFilters) {
+                applyFilters.addEventListener('click', function() {
+                    applyEmployeeFilters();
+                    filterModal.style.display = 'none';
+                    updateFilterButtonState();
+                });
+            }
+
+            // Clear filters
+            if (clearFilters) {
+                clearFilters.addEventListener('click', function() {
+                    clearAllFilters();
+                });
+            }
+        }
+
+        // Populate filter options dynamically
+        function populateFilterOptions() {
+            const jobPositions = [...new Set(allEmployees.map(emp => emp.jobPosition))];
+            const jobDegrees = [...new Set(allEmployees.map(emp => emp.jobDegree))];
+
+            const jobPositionSelect = document.getElementById('jobPositionFilter');
+            const jobDegreeSelect = document.getElementById('jobDegreeFilter');
+
+            // Clear and repopulate job positions
+            jobPositionSelect.innerHTML = '<option value="">All Positions</option>';
+            jobPositions.forEach(position => {
+                if (position.trim()) {
+                    const option = document.createElement('option');
+                    option.value = position;
+                    option.textContent = position;
+                    if (position === activeFilters.jobPosition) option.selected = true;
+                    jobPositionSelect.appendChild(option);
+                }
+            });
+
+            // Clear and repopulate job degrees
+            jobDegreeSelect.innerHTML = '<option value="">All Degrees</option>';
+            jobDegrees.forEach(degree => {
+                if (degree.trim()) {
+                    const option = document.createElement('option');
+                    option.value = degree;
+                    option.textContent = degree;
+                    if (degree === activeFilters.jobDegree) option.selected = true;
+                    jobDegreeSelect.appendChild(option);
+                }
+            });
+
+            // Restore ID range values
+            document.getElementById('minIdFilter').value = activeFilters.minId;
+            document.getElementById('maxIdFilter').value = activeFilters.maxId;
+        }
+
+        // Apply filters
+        function applyEmployeeFilters() {
+            activeFilters.jobPosition = document.getElementById('jobPositionFilter').value;
+            activeFilters.jobDegree = document.getElementById('jobDegreeFilter').value;
+            activeFilters.minId = document.getElementById('minIdFilter').value;
+            activeFilters.maxId = document.getElementById('maxIdFilter').value;
+
+            allEmployees.forEach(employee => {
+                let shouldShow = true;
+
+                if (activeFilters.jobPosition && employee.jobPosition !== activeFilters.jobPosition) {
+                    shouldShow = false;
+                }
+                if (activeFilters.jobDegree && employee.jobDegree !== activeFilters.jobDegree) {
+                    shouldShow = false;
+                }
+                if (activeFilters.minId && employee.id < parseInt(activeFilters.minId)) {
+                    shouldShow = false;
+                }
+                if (activeFilters.maxId && employee.id > parseInt(activeFilters.maxId)) {
+                    shouldShow = false;
+                }
+
+                employee.element.style.display = shouldShow ? '' : 'none';
             });
         }
 
-        // Navigate to employee details page instead of opening modal
+        // Clear all filters
+        function clearAllFilters() {
+            document.getElementById('jobPositionFilter').value = '';
+            document.getElementById('jobDegreeFilter').value = '';
+            document.getElementById('minIdFilter').value = '';
+            document.getElementById('maxIdFilter').value = '';
+
+            activeFilters = { jobPosition: '', jobDegree: '', minId: '', maxId: '' };
+
+            allEmployees.forEach(employee => {
+                employee.element.style.display = '';
+            });
+
+            updateFilterButtonState();
+        }
+
+        // Update filter button appearance
+        function updateFilterButtonState() {
+            const filterBtn = document.getElementById('filterBtn');
+            if (!filterBtn) return;
+
+            const hasActiveFilters = Object.values(activeFilters).some(filter => filter !== '');
+            
+            if (hasActiveFilters) {
+                filterBtn.classList.add('active');
+            } else {
+                filterBtn.classList.remove('active');
+            }
+        }
+
+        // Enhanced Search functionality that works with filters
+        function initializeSearch() {
+            const searchBox = document.querySelector('.search-box');
+            if (searchBox) {
+                searchBox.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    
+                    allEmployees.forEach(employee => {
+                        const matchesSearch = employee.name.includes(searchTerm) || 
+                                            employee.id.toString().includes(searchTerm);
+                        
+                        const matchesFilters = isEmployeeMatchingFilters(employee);
+                        
+                        employee.element.style.display = (matchesSearch && matchesFilters) ? '' : 'none';
+                    });
+                });
+            }
+        }
+
+        // Check if employee matches current filters
+        function isEmployeeMatchingFilters(employee) {
+            if (activeFilters.jobPosition && employee.jobPosition !== activeFilters.jobPosition) return false;
+            if (activeFilters.jobDegree && employee.jobDegree !== activeFilters.jobDegree) return false;
+            if (activeFilters.minId && employee.id < parseInt(activeFilters.minId)) return false;
+            if (activeFilters.maxId && employee.id > parseInt(activeFilters.maxId)) return false;
+            return true;
+        }
+
         function viewEmployeeDetails(employeeId) {
-            // Replace with your Flask route for employee details
             window.location.href = `/employee/${employeeId}`;
         }
     </script>

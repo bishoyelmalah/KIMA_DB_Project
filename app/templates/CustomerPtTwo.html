@@ -48,8 +48,8 @@
                                 <td><img src="../static/assets/user.png" class="employee-photo" alt="Ethyco"></td>
                                 <td class="employee-id">{{ customer.C_ID }}</td>
                                 <td class="employee-name">{{ customer.C_Name }}</td>
-                                <td>{{ customer.C_Email }}</td>
-                                <td>{{ customer.C_Phone }}</td>
+                                <td class="customer-email">{{ customer.C_Email }}</td>
+                                <td class="customer-phone">{{ customer.C_Phone }}</td>
                                 <td><button class="details-btn" onclick="window.location.href='/customer_details/{{customer.C_ID}}'">More details...</button></td>
                             </tr>
                                 {% endfor %}
@@ -65,32 +65,26 @@
     {% include 'components/footer.html' %}
 
     <script>
-        function openAddModal() {
-            alert('Add customer functionality will be implemented');
-        }
-
         // Search functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchBox = document.querySelector('.search-box');
-            if (searchBox) {
-                searchBox.addEventListener('input', function(e) {
-                    const searchTerm = e.target.value.toLowerCase();
-                    const rows = document.querySelectorAll('.employee-row');
+        const searchBox = document.querySelector('.search-box');
+        if (searchBox) {
+            searchBox.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const rows = document.querySelectorAll('.employee-row');
+                
+                rows.forEach(row => {
+                    const id = row.querySelector('.employee-id').textContent.toLowerCase();
+                    const name = row.querySelector('.employee-name').textContent.toLowerCase();
+                    const email = row.querySelector('.customer-email').textContent.toLowerCase();
                     
-                    rows.forEach(row => {
-                        const name = row.querySelector('.employee-name').textContent.toLowerCase();
-                        const id = row.querySelector('.employee-id').textContent.toLowerCase();
-                        const email = row.querySelectorAll('td')[3].textContent.toLowerCase();
-                        
-                        if (name.includes(searchTerm) || id.includes(searchTerm) || email.includes(searchTerm)) {
-                            row.style.display = '';
-                        } else {
-                            row.style.display = 'none';
-                        }
-                    });
+                    if (id.includes(searchTerm) || name.includes(searchTerm) || email.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
                 });
-            }
-        });
+            });
+        }
     </script>
 
 </body>

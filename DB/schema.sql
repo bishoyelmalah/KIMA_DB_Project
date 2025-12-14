@@ -71,7 +71,7 @@ create table Employees (
     E_Street varchar(50),
     E_Scientific_Degree varchar(100),
     Dep_ID int, 
-    foreign key (E_Job_Position, E_Job_Degree) references Salaries (S_Job_Position, S_Job_Degree)
+    foreign key (E_Job_Position, E_Job_Degree) references Salaries (S_Job_Position, S_Job_Degree) ON DELETE CASCADE
 )
 
 ------- Bavly --------
@@ -80,7 +80,7 @@ create table Departments (
     Dep_Name varchar(255) not null,
     Dep_Phone_Center varchar(15),
     Dep_Creation_date date,
-    Manager_ID int not null foreign key references Employees(E_ID)
+    Manager_ID int foreign key references Employees(E_ID) ON DELETE SET NULL
 )
 
 -- Add the missing FK for Employees
@@ -93,8 +93,8 @@ create table Maintenances (
     Ma_Start_Time datetime,
     Ma_End_Time datetime,
     Ma_Next_Schedule_Date date,
-    M_ID int not null foreign key references Machines(M_ID),
-    E_ID int not null foreign key references Employees(E_ID)
+    M_ID int not null foreign key references Machines(M_ID) ON DELETE CASCADE,
+    E_ID int not null foreign key references Employees(E_ID) ON DELETE CASCADE
 )
 
 ------- Gergis --------
@@ -112,15 +112,15 @@ CREATE TABLE Trainees (
     T_BD date, 
     T_Phone varchar(15),
     Dep_ID int,
-    foreign key (Dep_ID) references Departments(Dep_ID)
+    foreign key (Dep_ID) references Departments(Dep_ID) ON DELETE CASCADE
 )
 
 CREATE TABLE Train_on (
     T_ID int,
     M_ID int,
     primary key (T_ID, M_ID),
-    foreign key (T_ID) references Trainees(T_ID),
-    foreign key (M_ID) references Machines(M_ID)
+    foreign key (T_ID) references Trainees(T_ID) ON DELETE CASCADE,
+    foreign key (M_ID) references Machines(M_ID) ON DELETE CASCADE
 )
 
 ------- Sara --------
@@ -132,8 +132,8 @@ create table Costs(
     Co_Payment_Method varchar(100),
     Dep_ID int,
     Sup_ID int,
-    foreign key(Dep_ID) references Departments(Dep_ID),
-    foreign key(Sup_ID) references Suppliers(Sup_ID)
+    foreign key(Dep_ID) references Departments(Dep_ID) ON DELETE CASCADE,
+    foreign key(Sup_ID) references Suppliers(Sup_ID) ON DELETE CASCADE
 )
 
 ------- Marina -------- 
@@ -147,23 +147,23 @@ Create table Products(
     P_Amount int ,
     P_Can_buy bit , -- boolean
     St_ID int, 
-    Foreign key (St_ID) REFERENCES Stocks(St_ID)
+    Foreign key (St_ID) REFERENCES Stocks(St_ID) ON DELETE CASCADE
 )
 
 Create table Need_to_buy(
     Co_ID int,
     P_ID int,
     primary key (Co_ID ,P_ID),
-    Foreign key (Co_ID) References Costs(Co_ID),
-    Foreign key (P_ID) References Products(P_ID),
+    Foreign key (Co_ID) References Costs(Co_ID) ON DELETE CASCADE,
+    Foreign key (P_ID) References Products(P_ID) ON DELETE CASCADE,
 )
 
 Create table Consumes_From(
     Ma_ID int,
     P_ID int,
     primary key (Ma_ID ,P_ID),
-    Foreign key (Ma_ID) References Maintenances(Ma_ID),
-    Foreign key (P_ID) References Products(P_ID)
+    Foreign key (Ma_ID) References Maintenances(Ma_ID) ON DELETE CASCADE,
+    Foreign key (P_ID) References Products(P_ID) ON DELETE CASCADE
 )
 
 ------- Basmala --------
@@ -171,8 +171,8 @@ create table Purchased_By(
     P_ID int,
     C_ID int,
     primary key (P_ID,C_ID),
-    foreign key (C_ID) references Customers (C_ID),
-    foreign key (P_ID) references Products (P_ID)
+    foreign key (C_ID) references Customers (C_ID) ON DELETE CASCADE,
+    foreign key (P_ID) references Products (P_ID) ON DELETE CASCADE
 ) 
 
 ------- AlZahraa --------
@@ -181,7 +181,7 @@ create table Customer_feedbacks(
     CF_Responed_Dates date not null,
     CF_Rating varchar(100),
     CF_Notes varchar(300),
-    C_ID int foreign key references Customers (C_ID)
+    C_ID int foreign key references Customers (C_ID) ON DELETE CASCADE
 )
 
 create table Invoices (
@@ -189,14 +189,14 @@ create table Invoices (
     I_Amount int not null,
     I_Customer varchar(100) not null,
     I_Currency varchar (100) not null,
-    I_Status varchar (100) , -----------------
+    I_Status varchar (100),
     I_Method varchar (100) not null,
-    I_Date date not null,----------------------------
+    I_Date date not null,
     I_Recorded_By varchar(200),
 
-    CF_ID int foreign key references Customer_feedbacks (CF_ID),
-    C_ID int foreign key references Customers (C_ID),
-    Co_ID int foreign key references Costs (Co_ID)
+    CF_ID int foreign key references Customer_feedbacks (CF_ID) ON DELETE SET NULL,
+    C_ID int foreign key references Customers (C_ID) ,
+    Co_ID int foreign key references Costs (Co_ID) ON DELETE SET NULL
 )
 
 ------- Sara --------
@@ -208,8 +208,8 @@ create table Transportations(
     Tr_shipping_Address varchar(100),
     Co_ID int, 
     I_ID int,
-    foreign key(Co_ID) references Costs(Co_ID),
-    foreign key(I_ID) references Invoices(I_ID)
+    foreign key(Co_ID) references Costs(Co_ID) ON DELETE CASCADE,
+    foreign key(I_ID) references Invoices(I_ID) ON DELETE CASCADE
 )
 
 ------- AlZahraa --------
@@ -217,8 +217,8 @@ create table is_recorded_in (
     P_ID int ,
     I_ID int ,
     primary key (P_ID,I_ID),
-    foreign key (P_ID) references Products (P_ID),
-    foreign key (I_ID) references Invoices (I_ID)
+    foreign key (P_ID) references Products (P_ID) ON DELETE CASCADE,
+    foreign key (I_ID) references Invoices (I_ID) ON DELETE CASCADE
 )
 
 ------- Bishoy --------
@@ -226,7 +226,7 @@ create table Emp_Phone (
     E_ID int,
     E_Phone varchar(15),
     primary key (E_ID, E_Phone),
-    foreign key (E_ID) references Employees (E_ID)
+    foreign key (E_ID) references Employees (E_ID) ON DELETE CASCADE
 )
 
 create table Dependants (
@@ -239,5 +239,5 @@ create table Dependants (
     D_Marital_status varchar(50),
     D_Email varchar(50),
     D_Phone varchar(15),
-    E_ID int not null foreign key references Employees (E_ID),
+    E_ID int not null foreign key references Employees (E_ID) ON DELETE CASCADE,
 )

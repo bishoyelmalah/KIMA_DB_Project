@@ -10,14 +10,13 @@
     </div>
 
     <ul class="nav-menu">
-        <li class="nav-item" onclick="window.location.href='/dashboard'">Dashboard</li>
-        <li class="nav-item" onclick="window.location.href='/employees'">Employees</li>
-        <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
-        <li class="nav-item" onclick="window.location.href='/products'">Products</li>
-        <li class="nav-item" onclick="window.location.href='/customers'">Customers</li>
-        <li class="nav-item" onclick="window.location.href='/suppliers'">Suppliers</li>
-        <li class="nav-item" onclick="window.location.href='/transportation'">Transportation</li>
-        <li class="nav-item" onclick="window.location.href='/invoices'">Invoices</li>
+        <li class="nav-item" data-page="dashboard" onclick="window.location.href='/dashboard'">Dashboard</li>
+        <li class="nav-item" data-page="employees" onclick="window.location.href='/employees'">Employees</li>
+        <li class="nav-item" data-page="products" onclick="window.location.href='/products'">Products</li>
+        <li class="nav-item" data-page="customers" onclick="window.location.href='/customers'">Customers</li>
+        <li class="nav-item" data-page="suppliers" onclick="window.location.href='/suppliers'">Suppliers</li>
+        <li class="nav-item" data-page="transportations" onclick="window.location.href='/transportations'">Transportation</li>
+        <li class="nav-item" data-page="invoices" onclick="window.location.href='/invoices'">Invoices</li>
     </ul>
 
     <div class="help-section">
@@ -27,3 +26,28 @@
 </aside>
 
 <script src="{{ url_for('static', filename='JS/components/sidebar.js') }}"></script>
+<script>
+    // Highlight active page in sidebar
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname;
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            const page = item.getAttribute('data-page');
+            
+            // Check if current path includes the page name
+            if (currentPath.includes('/' + page) || 
+                (page === 'dashboard' && currentPath === '/') ||
+                (page === 'employees' && currentPath.includes('/employee')) ||
+                (page === 'products' && currentPath.includes('/product')) ||
+                (page === 'customers' && currentPath.includes('/customer')) ||
+                (page === 'suppliers' && currentPath.includes('/supplier')) ||
+                (page === 'transportations' && currentPath.includes('/transportation')) ||
+                (page === 'invoices' && currentPath.includes('/invoice'))) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    });
+</script>
