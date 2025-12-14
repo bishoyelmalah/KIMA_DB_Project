@@ -10,47 +10,37 @@
     <div class="container">
         <h1>Customer Profile</h1>
         
-        <div class="profile-wrapper" data-profile-id="12345">
+        <div class="profile-wrapper" data-profile-id="{{ details.C_ID }}">
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="action-btn" onclick="profileManager.deleteProfile()" title="Delete Profile" aria-label="Delete profile">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6'/%3E%3C/svg%3E" alt="Delete">
-                </button>
-                <button class="action-btn hidden" id="save-btn" onclick="profileManager.saveProfile()" title="Save Changes" aria-label="Save changes">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z'/%3E%3Cpolyline points='17 21 17 13 7 13 7 21'/%3E%3Cpolyline points='7 3 7 8 15 8'/%3E%3C/svg%3E" alt="Save">
-                </button>
-                <button class="action-btn" id="edit-btn" onclick="profileManager.toggleEditMode()" title="Edit Profile" aria-label="Edit profile">
+                <a href="/edit_customer/{{ details.C_ID }}" class="action-btn" title="Edit Profile" aria-label="Edit profile">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/%3E%3Cpath d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'/%3E%3C/svg%3E" alt="Edit">
+                </a>
+                <button class="action-btn" onclick="if(confirm('Are you sure you want to delete this customer?')) window.location.href='/delete_customer/{{ details.C_ID }}'" title="Delete Profile" aria-label="Delete profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6'/%3E%3C/svg%3E" alt="Delete">
                 </button>
             </div>
 
             <!-- Upper Section -->
             <div class="upper-section">
-                <div class="profile-image-container">
-                    <div class="white-circle" onclick="profileManager.triggerImageUpload()">
+                <!-- <div class="profile-image-container">
+                    <div class="white-circle">
                         <img src="https://via.placeholder.com/200/0d4d3d/ffffff?text=Customer" alt="Profile" class="profile-image" id="profile-img">
-                        <div class="image-upload-overlay">
-                            📷 Change Photo
-                        </div>
                     </div>
-                    <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="profileManager.handleImageUpload(event)">
-                </div>
+                </div> -->
                 
                 <div class="green-info-box">
                     <div class="info-item">
                         <span class="info-label">Name:</span>
-                        <span class="info-text" data-field="name">John Doe</span>
-                        <input type="text" class="info-input hidden" name="name" placeholder="Enter name">
+                        <span class="info-text" data-field="name">{{ details.C_Name }}</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">ID:</span>
-                        <span class="info-text" data-field="id">CUST-12345</span>
-                        <input type="text" class="info-input hidden" name="id" placeholder="Enter ID">
+                        <span class="info-text" data-field="id">{{ details.C_ID }}</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Phone:</span>
-                        <span class="info-text" data-field="phone">+1 (555) 123-4567</span>
-                        <input type="tel" class="info-input hidden" name="phone" placeholder="Enter phone">
+                        <span class="info-text" data-field="phone">{{ details.C_Phone }}</span>
                     </div>
                 </div>
             </div>
@@ -60,37 +50,20 @@
                 <div class="section">
                     <h3 class="section-title">Customer Details</h3>
                     <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="detail-text" data-field="status">Active</span>
-                        <select class="detail-input hidden" name="status">
-                            <option value="Active">Active</option>
-                            <option value="Not Active">Not Active</option>
-                            <option value="Unverified">Unverified</option>
-                        </select>
-                    </div>
-                    <div class="detail-item">
                         <span class="detail-label">Registration Date:</span>
-                        <span class="detail-text" data-field="registration_date">25/10/2015</span>
-                        <input type="date" class="detail-input hidden" name="registration_date">
+                        <span class="detail-text" data-field="registration_date">{{ details.C_Reg_Date }}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Address:</span>
-                        <span class="detail-text" data-field="address">New York</span>
-                        <input type="text" class="detail-input hidden" name="address" placeholder="Enter Address">
+                        <span class="detail-text" data-field="address">{{ details.C_Address }}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Type:</span>
-                        <span class="detail-text" data-field="type">Individual</span>
-                        <select class="detail-input hidden" name="type">
-                            <option value="Individual">Individual</option>
-                            <option value="Business">Business</option>
-                            <option value="Corporate">Corporate</option>
-                        </select>
+                        <span class="detail-text" data-field="type">{{ details.C_Type }}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Email:</span>
-                        <span class="detail-text" data-field="email">test@gmail.com</span>
-                        <input type="email" class="detail-input hidden" name="email" placeholder="Enter Email">
+                        <span class="detail-text" data-field="email">{{ details.C_Email }}</span>
                     </div>
                 </div>
             </div>

@@ -24,15 +24,8 @@
                     <h1 class="page-title">Customers</h1>
                     <div class="action-buttons">
                         <button class="btn-icon" onclick="window.print()"><img src="https://i.postimg.cc/C14S9y1J/print-svgrepo-com.png" style="width:20px; height:20px;"></button>
-                        <button class="btn-icon" onclick="alert('Download functionality will be implemented')"><img src="https://i.postimg.cc/HLpS3Fq2/download-svgrepo-com.png" style="width:20px; height:20px;"></button>
                         <button class="btn-add-employee" onclick="window.location.href = '/add_customer'">+ Add Customer</button>
                     </div>
-                </div>
-
-                <!-- Filter and Sort -->
-                <div class="table-controls">
-                    <button class="control-btn"><img src="https://i.postimg.cc/tg4Mg8N2/filter-icon.png" style="width:16px; margin-right:5px;"> Filter</button>
-                    <button class="control-btn"><img src="https://i.postimg.cc/ZYdD0865/sort-icon.png" style="width:16px; margin-right:5px;"> Sort</button>
                 </div>
 
                 <!-- Customers Table -->
@@ -41,8 +34,8 @@
                         <thead>
                             <tr>
                                 <th>Photo</th>
-                                <th>Name</th>
                                 <th>ID</th>
+                                <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Action</th>
@@ -52,12 +45,12 @@
                             {% for customer in customers %}
                             <!-- Customer Row -->
                             <tr class="employee-row">
-                                <td><img src="../static/assets/0000009295.png" class="employee-photo" alt="Ethyco"></td>
-                                <td class="employee-name">{{ customer.C_Name }}</td>
+                                <td><img src="../static/assets/user.png" class="employee-photo" alt="Ethyco"></td>
                                 <td class="employee-id">{{ customer.C_ID }}</td>
+                                <td class="employee-name">{{ customer.C_Name }}</td>
                                 <td>{{ customer.C_Email }}</td>
                                 <td>{{ customer.C_Phone }}</td>
-                                <td><button class="details-btn" onclick="openModal('modal1')">More details...</button></td>
+                                <td><button class="details-btn" onclick="window.location.href='/customer_details/{{customer.C_ID}}'">More details...</button></td>
                             </tr>
                                 {% endfor %}
                         </tbody>

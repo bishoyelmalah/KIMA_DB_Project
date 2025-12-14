@@ -96,50 +96,18 @@
                     </div>
                 </div>
             <!-- ComputerShow? -->
-                <!-- Filter and Sort -->
-                <div class="table-controls">
-                    <button class="control-btn"><img src="https://i.postimg.cc/tg4Mg8N2/filter-icon.png" alt="Filter Icon" style="width:16px; height:16px; margin-right:5px;"> Filter</button>
-                    <button class="control-btn"><img src="https://i.postimg.cc/ZYdD0865/sort-icon.png" alt="Sort Icon" style="width:16px; height:16px; margin-right:5px;"> Sort</button>
-                </div>
+
 
                 <!-- Transportation cards -->
                 <div class="cards-container">
+                    {% for transport in transportations %}
                     <div class="supplier-card">
                         <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
                         <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1200</div>
+                            <div class="supplier-card__id">Transportation ID: {{transport.Tr_ID}}</div>
                         </div>
                     </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1201</div>
-                        </div>
-                    </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1202</div>
-                        </div>
-                    </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1203</div>
-                        </div>
-                    </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1204</div>
-                        </div>
-                    </div>
-                    <div class="supplier-card">
-                        <div class="supplier-card__image"> <img src="../static/assets/truck.png" width="150px" height="150px"></div>
-                        <div class="supplier-card__content">
-                            <div class="supplier-card__id">Transportation ID: 1205</div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </main>
