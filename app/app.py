@@ -10,13 +10,16 @@ from routes.employee_routes import employee_bp
 from routes.transportation_routes import transportation_bp
 from routes.invoice_routes import invoice_bp
 from routes.dependents_routes import dependent_bp
+from routes.auth_routes import auth_bp
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+    app.secret_key = 'your-secret-key-here-change-this'  # Required for sessions
     db.init_app(app)
     
-    # This tells Flask: "Go look in customer_routes.py for more URLs"
+    # Register blueprints
+    app.register_blueprint(auth_bp)
     app.register_blueprint(customer_bp)
     app.register_blueprint(product_bp)
     app.register_blueprint(suppliers_bp)
@@ -24,20 +27,10 @@ def create_app():
     app.register_blueprint(transportation_bp)
     app.register_blueprint(invoice_bp)
     app.register_blueprint(dependent_bp)
-   
-    #Home Page
-    @app.route('/')
-    def login():
-        return render_template("login.html")
-    
-    @app.route('/dashboard')
-    def home():
-        return render_template("Home_Page.html")
 
     return app
 
 
 if __name__ == "__main__":
-    # This tells the server to listen on all public IPs (0.0.0.0)
     app = create_app()
     app.run(host='0.0.0.0', port=5000, debug=True)
