@@ -55,8 +55,15 @@ def add_employee():
 
 @employee_bp.route('/employee_details/<int:id>')
 def employee_details(id):
+
     data = Employees.get(conditions=f"E_ID = {id}")[0]
-    return render_template('Employee_Page_Details.html', details = data)
+
+    phone_data = Employees.custom(f"select E_Phone from Emp_Phone where E_ID = {id}")
+    phone = ', '.join([p['E_Phone'] for p in phone_data]) if phone_data else 'N/A'
+
+    salary = Employees.custom(f"select S_Amount from Employees inner join Salaries on Salaries.S_Job_Position = Employees.E_Job_Position and Salaries.S_Job_Degree = Employees.E_Job_Degree where E_ID = {id}")[0]['S_Amount']
+
+    return render_template('Employee_Page_Details.html', details = data, phone = phone, salary = salary)
 
 @employee_bp.route('/delete_employee/<int:id>')
 def delete_employee(id):
@@ -115,3 +122,7 @@ def edit_employee(id):
                         depts=departments, 
                         positions=positions, 
                         degrees=degrees)
+
+@employee_bp.route('/dependents')
+def dependents():
+    return render_template('Dependents.html')
