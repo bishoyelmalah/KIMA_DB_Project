@@ -7,7 +7,10 @@ auth_bp = Blueprint('auth', __name__)
 VALID_CREDENTIALS = {
     'admin@kima.com': 'admin123',
     'manager@kima.com': 'manager123',
-    'user@kima.com': 'user123'
+    'user@kima.com': 'user123',
+    'drTamer@kima.com': 'drTamer123',
+    'maivy@kima.com' : 'maivy132',
+    'bavly@kima.com' : 'bavly@2005'
 }
 
 @auth_bp.route('/')
