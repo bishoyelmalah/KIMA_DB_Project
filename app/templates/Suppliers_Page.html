@@ -168,7 +168,7 @@
         </div>
     </footer>
 
-    <script>
+     <script>
         // Search functionality
         const searchBox = document.querySelector('.search-box');
         if (searchBox) {
@@ -177,11 +177,11 @@
                 const cards = document.querySelectorAll('.supplier-card');
                 
                 cards.forEach(card => {
-                    const id = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
-                    const name = card.querySelector('.supplier-card__name')?.textContent.toLowerCase();
+                    const supplierId = card.querySelector('.supplier-card__id')?.textContent.toLowerCase();
+                    const supplierName = card.querySelector('.supplier-card__name')?.textContent.toLowerCase();
                     
-                    if (id && name) {
-                        if (id.includes(searchTerm) || name.includes(searchTerm)) {
+                    if (supplierId && supplierName) {
+                        if (supplierId.includes(searchTerm) || supplierName.includes(searchTerm)) {
                             card.style.display = '';
                         } else {
                             card.style.display = 'none';
